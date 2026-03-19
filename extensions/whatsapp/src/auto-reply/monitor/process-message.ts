@@ -1,35 +1,35 @@
-import { resolveIdentityNamePrefix } from "openclaw/plugin-sdk/agent-runtime";
-import { createChannelReplyPipeline } from "openclaw/plugin-sdk/channel-reply-pipeline";
-import { toLocationContext } from "openclaw/plugin-sdk/channel-runtime";
-import { resolveInboundSessionEnvelopeContext } from "openclaw/plugin-sdk/channel-runtime";
-import type { loadConfig } from "openclaw/plugin-sdk/config-runtime";
-import { resolveMarkdownTableMode } from "openclaw/plugin-sdk/config-runtime";
-import { recordSessionMetaFromInbound } from "openclaw/plugin-sdk/config-runtime";
-import { getAgentScopedMediaLocalRoots } from "openclaw/plugin-sdk/media-runtime";
-import { resolveSendableOutboundReplyParts } from "openclaw/plugin-sdk/reply-payload";
-import { resolveChunkMode, resolveTextChunkLimit } from "openclaw/plugin-sdk/reply-runtime";
-import { shouldComputeCommandAuthorized } from "openclaw/plugin-sdk/reply-runtime";
-import { formatInboundEnvelope } from "openclaw/plugin-sdk/reply-runtime";
-import type { getReplyFromConfig } from "openclaw/plugin-sdk/reply-runtime";
+import { resolveIdentityNamePrefix } from "synthios/plugin-sdk/agent-runtime";
+import { createChannelReplyPipeline } from "synthios/plugin-sdk/channel-reply-pipeline";
+import { toLocationContext } from "synthios/plugin-sdk/channel-runtime";
+import { resolveInboundSessionEnvelopeContext } from "synthios/plugin-sdk/channel-runtime";
+import type { loadConfig } from "synthios/plugin-sdk/config-runtime";
+import { resolveMarkdownTableMode } from "synthios/plugin-sdk/config-runtime";
+import { recordSessionMetaFromInbound } from "synthios/plugin-sdk/config-runtime";
+import { getAgentScopedMediaLocalRoots } from "synthios/plugin-sdk/media-runtime";
+import { resolveSendableOutboundReplyParts } from "synthios/plugin-sdk/reply-payload";
+import { resolveChunkMode, resolveTextChunkLimit } from "synthios/plugin-sdk/reply-runtime";
+import { shouldComputeCommandAuthorized } from "synthios/plugin-sdk/reply-runtime";
+import { formatInboundEnvelope } from "synthios/plugin-sdk/reply-runtime";
+import type { getReplyFromConfig } from "synthios/plugin-sdk/reply-runtime";
 import {
   buildHistoryContextFromEntries,
   type HistoryEntry,
-} from "openclaw/plugin-sdk/reply-runtime";
-import { finalizeInboundContext } from "openclaw/plugin-sdk/reply-runtime";
-import { dispatchReplyWithBufferedBlockDispatcher } from "openclaw/plugin-sdk/reply-runtime";
-import type { ReplyPayload } from "openclaw/plugin-sdk/reply-runtime";
+} from "synthios/plugin-sdk/reply-runtime";
+import { finalizeInboundContext } from "synthios/plugin-sdk/reply-runtime";
+import { dispatchReplyWithBufferedBlockDispatcher } from "synthios/plugin-sdk/reply-runtime";
+import type { ReplyPayload } from "synthios/plugin-sdk/reply-runtime";
 import {
   resolveInboundLastRouteSessionKey,
   type resolveAgentRoute,
-} from "openclaw/plugin-sdk/routing";
-import { logVerbose, shouldLogVerbose } from "openclaw/plugin-sdk/runtime-env";
-import type { getChildLogger } from "openclaw/plugin-sdk/runtime-env";
+} from "synthios/plugin-sdk/routing";
+import { logVerbose, shouldLogVerbose } from "synthios/plugin-sdk/runtime-env";
+import type { getChildLogger } from "synthios/plugin-sdk/runtime-env";
 import {
   readStoreAllowFromForDmPolicy,
   resolvePinnedMainDmOwnerFromAllowlist,
   resolveDmGroupAccessWithCommandGate,
-} from "openclaw/plugin-sdk/security-runtime";
-import { jidToE164, normalizeE164 } from "openclaw/plugin-sdk/text-runtime";
+} from "synthios/plugin-sdk/security-runtime";
+import { jidToE164, normalizeE164 } from "synthios/plugin-sdk/text-runtime";
 import { resolveWhatsAppAccount } from "../../accounts.js";
 import { newConnectionId } from "../../reconnect.js";
 import { formatError } from "../../session.js";

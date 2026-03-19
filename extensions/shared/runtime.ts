@@ -1,4 +1,4 @@
-import { createLoggerBackedRuntime } from "openclaw/plugin-sdk/runtime";
+import { createLoggerBackedRuntime } from "synthios/plugin-sdk/runtime";
 
 export function resolveLoggerBackedRuntime<TRuntime>(
   runtime: TRuntime | undefined,

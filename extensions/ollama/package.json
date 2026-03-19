@@ -1,10 +1,10 @@
 {
-  "name": "@openclaw/ollama-provider",
+  "name": "@synthios/ollama-provider",
   "version": "2026.3.14",
   "private": true,
-  "description": "OpenClaw Ollama provider plugin",
+  "description": "Synthios Ollama provider plugin",
   "type": "module",
-  "openclaw": {
+  "synthios": {
     "extensions": [
       "./index.ts"
     ]

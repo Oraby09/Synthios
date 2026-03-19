@@ -1,11 +1,11 @@
 import {
   createScopedChannelConfigAdapter,
   createScopedDmSecurityResolver,
-} from "openclaw/plugin-sdk/channel-config-helpers";
+} from "synthios/plugin-sdk/channel-config-helpers";
 import {
   createAllowlistProviderOpenWarningCollector,
   projectWarningCollector,
-} from "openclaw/plugin-sdk/channel-policy";
+} from "synthios/plugin-sdk/channel-policy";
 import {
   createChannelDirectoryAdapter,
   createPairingPrefixStripper,
@@ -14,9 +14,9 @@ import {
   createRuntimeOutboundDelegates,
   createTextPairingAdapter,
   listResolvedDirectoryEntriesFromSources,
-} from "openclaw/plugin-sdk/channel-runtime";
-import { buildTrafficStatusSummary } from "openclaw/plugin-sdk/extension-shared";
-import { createLazyRuntimeNamedExport } from "openclaw/plugin-sdk/lazy-runtime";
+} from "synthios/plugin-sdk/channel-runtime";
+import { buildTrafficStatusSummary } from "synthios/plugin-sdk/extension-shared";
+import { createLazyRuntimeNamedExport } from "synthios/plugin-sdk/lazy-runtime";
 import { matrixMessageActions } from "./actions.js";
 import { MatrixConfigSchema } from "./config-schema.js";
 import {

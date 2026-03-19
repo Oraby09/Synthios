@@ -1,13 +1,13 @@
-import { formatAllowFromLowercase } from "openclaw/plugin-sdk/allow-from";
-import { createScopedChannelConfigAdapter } from "openclaw/plugin-sdk/channel-config-helpers";
-import { createChannelPluginBase } from "openclaw/plugin-sdk/core";
+import { formatAllowFromLowercase } from "synthios/plugin-sdk/allow-from";
+import { createScopedChannelConfigAdapter } from "synthios/plugin-sdk/channel-config-helpers";
+import { createChannelPluginBase } from "synthios/plugin-sdk/core";
 import {
   buildChannelConfigSchema,
   getChatChannelMeta,
   normalizeAccountId,
   TelegramConfigSchema,
   type ChannelPlugin,
-  type OpenClawConfig,
+  type SynthiosConfig,
 } from "../runtime-api.js";
 import { inspectTelegramAccount } from "./account-inspect.js";
 import {
@@ -20,7 +20,7 @@ import {
 export const TELEGRAM_CHANNEL = "telegram" as const;
 
 export function findTelegramTokenOwnerAccountId(params: {
-  cfg: OpenClawConfig;
+  cfg: SynthiosConfig;
   accountId: string;
 }): string | null {
   const normalizedAccountId = normalizeAccountId(params.accountId);

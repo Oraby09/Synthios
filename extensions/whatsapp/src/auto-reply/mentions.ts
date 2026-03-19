@@ -1,6 +1,6 @@
-import type { loadConfig } from "openclaw/plugin-sdk/config-runtime";
-import { buildMentionRegexes, normalizeMentionText } from "openclaw/plugin-sdk/reply-runtime";
-import { isSelfChatMode, jidToE164, normalizeE164 } from "openclaw/plugin-sdk/text-runtime";
+import type { loadConfig } from "synthios/plugin-sdk/config-runtime";
+import { buildMentionRegexes, normalizeMentionText } from "synthios/plugin-sdk/reply-runtime";
+import { isSelfChatMode, jidToE164, normalizeE164 } from "synthios/plugin-sdk/text-runtime";
 import type { WebInboundMsg } from "./types.js";
 
 export type MentionConfig = {

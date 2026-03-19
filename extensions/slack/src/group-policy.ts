@@ -2,9 +2,9 @@ import {
   resolveToolsBySender,
   type GroupToolPolicyBySenderConfig,
   type GroupToolPolicyConfig,
-} from "openclaw/plugin-sdk/channel-policy";
-import { type ChannelGroupContext } from "openclaw/plugin-sdk/channel-runtime";
-import { normalizeHyphenSlug } from "openclaw/plugin-sdk/core";
+} from "synthios/plugin-sdk/channel-policy";
+import { type ChannelGroupContext } from "synthios/plugin-sdk/channel-runtime";
+import { normalizeHyphenSlug } from "synthios/plugin-sdk/core";
 import { inspectSlackAccount } from "./account-inspect.js";
 
 type SlackChannelPolicyEntry = {

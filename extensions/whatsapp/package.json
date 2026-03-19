@@ -1,12 +1,12 @@
 {
-  "name": "@openclaw/whatsapp",
+  "name": "@synthios/whatsapp",
   "version": "2026.3.14",
-  "description": "OpenClaw WhatsApp channel plugin",
+  "description": "Synthios WhatsApp channel plugin",
   "type": "module",
   "dependencies": {
     "@whiskeysockets/baileys": "7.0.0-rc.9"
   },
-  "openclaw": {
+  "synthios": {
     "extensions": [
       "./index.ts"
     ],

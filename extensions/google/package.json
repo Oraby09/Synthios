@@ -1,10 +1,10 @@
 {
-  "name": "@openclaw/google-plugin",
+  "name": "@synthios/google-plugin",
   "version": "2026.3.14",
   "private": true,
-  "description": "OpenClaw Google plugin",
+  "description": "Synthios Google plugin",
   "type": "module",
-  "openclaw": {
+  "synthios": {
     "extensions": [
       "./index.ts"
     ]

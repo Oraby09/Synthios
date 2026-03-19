@@ -1,10 +1,10 @@
 {
-  "name": "@openclaw/together-provider",
+  "name": "@synthios/together-provider",
   "version": "2026.3.14",
   "private": true,
-  "description": "OpenClaw Together provider plugin",
+  "description": "Synthios Together provider plugin",
   "type": "module",
-  "openclaw": {
+  "synthios": {
     "extensions": [
       "./index.ts"
     ]

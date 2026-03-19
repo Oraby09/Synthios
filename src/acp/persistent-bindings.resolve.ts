@@ -3,7 +3,7 @@ import {
   resolveConfiguredBindingRecordBySessionKey,
   resolveConfiguredBindingRecordForConversation,
 } from "../channels/plugins/binding-registry.js";
-import type { OpenClawConfig } from "../config/config.js";
+import type { SynthiosConfig } from "../config/config.js";
 import type { ConversationRef } from "../infra/outbound/session-binding-service.js";
 import {
   resolveConfiguredAcpBindingSpecFromRecord,
@@ -13,7 +13,7 @@ import {
 } from "./persistent-bindings.types.js";
 
 export function resolveConfiguredAcpBindingRecord(params: {
-  cfg: OpenClawConfig;
+  cfg: SynthiosConfig;
   channel: string;
   accountId: string;
   conversationId: string;
@@ -24,7 +24,7 @@ export function resolveConfiguredAcpBindingRecord(params: {
 }
 
 export function resolveConfiguredAcpBindingRecordForConversation(params: {
-  cfg: OpenClawConfig;
+  cfg: SynthiosConfig;
   conversation: ConversationRef;
 }): ResolvedConfiguredAcpBinding | null {
   const resolved = resolveConfiguredBindingRecordForConversation(params);
@@ -32,7 +32,7 @@ export function resolveConfiguredAcpBindingRecordForConversation(params: {
 }
 
 export function resolveConfiguredAcpBindingSpecBySessionKey(params: {
-  cfg: OpenClawConfig;
+  cfg: SynthiosConfig;
   sessionKey: string;
 }): ConfiguredAcpBindingSpec | null {
   const resolved = resolveConfiguredBindingRecordBySessionKey(params);

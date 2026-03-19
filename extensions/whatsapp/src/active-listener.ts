@@ -1,6 +1,6 @@
-import { formatCliCommand } from "openclaw/plugin-sdk/cli-runtime";
-import type { PollInput } from "openclaw/plugin-sdk/media-runtime";
-import { DEFAULT_ACCOUNT_ID } from "openclaw/plugin-sdk/routing";
+import { formatCliCommand } from "synthios/plugin-sdk/cli-runtime";
+import type { PollInput } from "synthios/plugin-sdk/media-runtime";
+import { DEFAULT_ACCOUNT_ID } from "synthios/plugin-sdk/routing";
 
 export type ActiveWebSendOptions = {
   gifPlayback?: boolean;
@@ -30,8 +30,8 @@ export type ActiveWebListener = {
 
 // Use process-global symbol keys to survive bundler code-splitting and loader
 // cache splits without depending on fragile string property names.
-const GLOBAL_LISTENERS_KEY = Symbol.for("openclaw.whatsapp.activeListeners");
-const GLOBAL_CURRENT_KEY = Symbol.for("openclaw.whatsapp.currentListener");
+const GLOBAL_LISTENERS_KEY = Symbol.for("synthios.whatsapp.activeListeners");
+const GLOBAL_CURRENT_KEY = Symbol.for("synthios.whatsapp.currentListener");
 
 type GlobalWithListeners = typeof globalThis & {
   [GLOBAL_LISTENERS_KEY]?: Map<string, ActiveWebListener>;
@@ -65,7 +65,7 @@ export function requireActiveWebListener(accountId?: string | null): {
   const listener = listeners.get(id) ?? null;
   if (!listener) {
     throw new Error(
-      `No active WhatsApp Web listener (account: ${id}). Start the gateway, then link WhatsApp with: ${formatCliCommand(`openclaw channels login --channel whatsapp --account ${id}`)}.`,
+      `No active WhatsApp Web listener (account: ${id}). Start the gateway, then link WhatsApp with: ${formatCliCommand(`synthios channels login --channel whatsapp --account ${id}`)}.`,
     );
   }
   return { accountId: id, listener };

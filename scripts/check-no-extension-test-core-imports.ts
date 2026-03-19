@@ -3,15 +3,15 @@ import path from "node:path";
 
 const FORBIDDEN_PATTERNS: Array<{ pattern: RegExp; hint: string }> = [
   {
-    pattern: /["']openclaw\/plugin-sdk["']/,
-    hint: "Use openclaw/plugin-sdk/<subpath> instead of the monolithic root entry.",
+    pattern: /["']synthios\/plugin-sdk["']/,
+    hint: "Use synthios/plugin-sdk/<subpath> instead of the monolithic root entry.",
   },
   {
-    pattern: /["']openclaw\/plugin-sdk\/test-utils["']/,
-    hint: "Use openclaw/plugin-sdk/testing for the public extension test surface.",
+    pattern: /["']synthios\/plugin-sdk\/test-utils["']/,
+    hint: "Use synthios/plugin-sdk/testing for the public extension test surface.",
   },
   {
-    pattern: /["']openclaw\/plugin-sdk\/compat["']/,
+    pattern: /["']synthios\/plugin-sdk\/compat["']/,
     hint: "Use a focused public plugin-sdk subpath instead of compat.",
   },
   {
@@ -20,7 +20,7 @@ const FORBIDDEN_PATTERNS: Array<{ pattern: RegExp; hint: string }> = [
   },
   {
     pattern: /["'](?:\.\.\/)+(?:src\/test-utils\/)[^"']+["']/,
-    hint: "Use test/helpers/extensions/* for repo-only helpers, or openclaw/plugin-sdk/testing for public surfaces.",
+    hint: "Use test/helpers/extensions/* for repo-only helpers, or synthios/plugin-sdk/testing for public surfaces.",
   },
   {
     pattern: /["'](?:\.\.\/)+(?:src\/plugins\/types\.js)["']/,

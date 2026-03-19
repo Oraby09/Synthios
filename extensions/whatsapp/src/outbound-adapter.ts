@@ -1,13 +1,13 @@
-import { sendTextMediaPayload } from "openclaw/plugin-sdk/channel-runtime";
-import type { ChannelOutboundAdapter } from "openclaw/plugin-sdk/channel-runtime";
-import { resolveOutboundSendDep } from "openclaw/plugin-sdk/channel-runtime";
+import { sendTextMediaPayload } from "synthios/plugin-sdk/channel-runtime";
+import type { ChannelOutboundAdapter } from "synthios/plugin-sdk/channel-runtime";
+import { resolveOutboundSendDep } from "synthios/plugin-sdk/channel-runtime";
 import {
   createAttachedChannelResultAdapter,
   createEmptyChannelResult,
-} from "openclaw/plugin-sdk/channel-send-result";
-import { resolveSendableOutboundReplyParts } from "openclaw/plugin-sdk/reply-payload";
-import { chunkText } from "openclaw/plugin-sdk/reply-runtime";
-import { shouldLogVerbose } from "openclaw/plugin-sdk/runtime-env";
+} from "synthios/plugin-sdk/channel-send-result";
+import { resolveSendableOutboundReplyParts } from "synthios/plugin-sdk/reply-payload";
+import { chunkText } from "synthios/plugin-sdk/reply-runtime";
+import { shouldLogVerbose } from "synthios/plugin-sdk/runtime-env";
 import { resolveWhatsAppOutboundTarget } from "./runtime-api.js";
 import { sendMessageWhatsApp, sendPollWhatsApp } from "./send.js";
 

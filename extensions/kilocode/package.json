@@ -1,10 +1,10 @@
 {
-  "name": "@openclaw/kilocode-provider",
+  "name": "@synthios/kilocode-provider",
   "version": "2026.3.14",
   "private": true,
-  "description": "OpenClaw Kilo Gateway provider plugin",
+  "description": "Synthios Kilo Gateway provider plugin",
   "type": "module",
-  "openclaw": {
+  "synthios": {
     "extensions": [
       "./index.ts"
     ]

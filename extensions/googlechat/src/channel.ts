@@ -1,26 +1,26 @@
-import { formatNormalizedAllowFromEntries } from "openclaw/plugin-sdk/allow-from";
+import { formatNormalizedAllowFromEntries } from "synthios/plugin-sdk/allow-from";
 import {
   createScopedChannelConfigAdapter,
   createScopedDmSecurityResolver,
-} from "openclaw/plugin-sdk/channel-config-helpers";
+} from "synthios/plugin-sdk/channel-config-helpers";
 import {
   composeWarningCollectors,
   createAllowlistProviderGroupPolicyWarningCollector,
   createConditionalWarningCollector,
   createAllowlistProviderOpenWarningCollector,
-} from "openclaw/plugin-sdk/channel-policy";
+} from "synthios/plugin-sdk/channel-policy";
 import {
   createAttachedChannelResultAdapter,
   createChannelDirectoryAdapter,
   createTopLevelChannelReplyToModeResolver,
   createTextPairingAdapter,
-} from "openclaw/plugin-sdk/channel-runtime";
+} from "synthios/plugin-sdk/channel-runtime";
 import {
   listResolvedDirectoryGroupEntriesFromMapKeys,
   listResolvedDirectoryUserEntriesFromAllowFrom,
-} from "openclaw/plugin-sdk/directory-runtime";
-import { buildPassiveProbedChannelStatusSummary } from "openclaw/plugin-sdk/extension-shared";
-import { createLazyRuntimeNamedExport } from "openclaw/plugin-sdk/lazy-runtime";
+} from "synthios/plugin-sdk/directory-runtime";
+import { buildPassiveProbedChannelStatusSummary } from "synthios/plugin-sdk/extension-shared";
+import { createLazyRuntimeNamedExport } from "synthios/plugin-sdk/lazy-runtime";
 import {
   buildComputedAccountStatusSnapshot,
   buildChannelConfigSchema,
@@ -34,7 +34,7 @@ import {
   type ChannelMessageActionAdapter,
   type ChannelPlugin,
   type ChannelStatusIssue,
-  type OpenClawConfig,
+  type SynthiosConfig,
 } from "../runtime-api.js";
 import { GoogleChatConfigSchema } from "../runtime-api.js";
 import {
@@ -126,7 +126,7 @@ const collectGoogleChatGroupPolicyWarnings =
   });
 
 const collectGoogleChatSecurityWarnings = composeWarningCollectors<{
-  cfg: OpenClawConfig;
+  cfg: SynthiosConfig;
   account: ResolvedGoogleChatAccount;
 }>(
   collectGoogleChatGroupPolicyWarnings,

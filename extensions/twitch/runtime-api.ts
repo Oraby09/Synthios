@@ -1,1 +1,1 @@
-export * from "openclaw/plugin-sdk/twitch";
+export * from "synthios/plugin-sdk/twitch";

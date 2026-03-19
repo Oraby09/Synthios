@@ -1,10 +1,10 @@
 {
-  "name": "@openclaw/openrouter-provider",
+  "name": "@synthios/openrouter-provider",
   "version": "2026.3.14",
   "private": true,
-  "description": "OpenClaw OpenRouter provider plugin",
+  "description": "Synthios OpenRouter provider plugin",
   "type": "module",
-  "openclaw": {
+  "synthios": {
     "extensions": [
       "./index.ts"
     ]

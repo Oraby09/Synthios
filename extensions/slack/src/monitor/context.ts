@@ -1,17 +1,17 @@
 import type { App } from "@slack/bolt";
-import { formatAllowlistMatchMeta } from "openclaw/plugin-sdk/channel-runtime";
+import { formatAllowlistMatchMeta } from "synthios/plugin-sdk/channel-runtime";
 import type {
-  OpenClawConfig,
+  SynthiosConfig,
   SlackReactionNotificationMode,
-} from "openclaw/plugin-sdk/config-runtime";
-import { resolveSessionKey, type SessionScope } from "openclaw/plugin-sdk/config-runtime";
-import type { DmPolicy, GroupPolicy } from "openclaw/plugin-sdk/config-runtime";
-import { createDedupeCache } from "openclaw/plugin-sdk/infra-runtime";
-import type { HistoryEntry } from "openclaw/plugin-sdk/reply-runtime";
-import { resolveAgentRoute } from "openclaw/plugin-sdk/routing";
-import { logVerbose } from "openclaw/plugin-sdk/runtime-env";
-import { getChildLogger } from "openclaw/plugin-sdk/runtime-env";
-import type { RuntimeEnv } from "openclaw/plugin-sdk/runtime-env";
+} from "synthios/plugin-sdk/config-runtime";
+import { resolveSessionKey, type SessionScope } from "synthios/plugin-sdk/config-runtime";
+import type { DmPolicy, GroupPolicy } from "synthios/plugin-sdk/config-runtime";
+import { createDedupeCache } from "synthios/plugin-sdk/infra-runtime";
+import type { HistoryEntry } from "synthios/plugin-sdk/reply-runtime";
+import { resolveAgentRoute } from "synthios/plugin-sdk/routing";
+import { logVerbose } from "synthios/plugin-sdk/runtime-env";
+import { getChildLogger } from "synthios/plugin-sdk/runtime-env";
+import type { RuntimeEnv } from "synthios/plugin-sdk/runtime-env";
 import type { SlackMessageEvent } from "../types.js";
 import { normalizeAllowList, normalizeAllowListLower, normalizeSlackSlug } from "./allow-list.js";
 import type { SlackChannelConfigEntries } from "./channel-config.js";
@@ -22,7 +22,7 @@ import { isSlackChannelAllowedByPolicy } from "./policy.js";
 export { inferSlackChannelType, normalizeSlackChannelType } from "./channel-type.js";
 
 export type SlackMonitorContext = {
-  cfg: OpenClawConfig;
+  cfg: SynthiosConfig;
   accountId: string;
   botToken: string;
   app: App;
@@ -53,7 +53,7 @@ export type SlackMonitorContext = {
   replyToMode: "off" | "first" | "all";
   threadHistoryScope: "thread" | "channel";
   threadInheritParent: boolean;
-  slashCommand: Required<import("openclaw/plugin-sdk/config-runtime").SlackSlashCommandConfig>;
+  slashCommand: Required<import("synthios/plugin-sdk/config-runtime").SlackSlashCommandConfig>;
   textLimit: number;
   ackReactionScope: string;
   typingReaction: string;
@@ -88,7 +88,7 @@ export type SlackMonitorContext = {
 };
 
 export function createSlackMonitorContext(params: {
-  cfg: OpenClawConfig;
+  cfg: SynthiosConfig;
   accountId: string;
   botToken: string;
   app: App;

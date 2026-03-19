@@ -4,4 +4,4 @@ export {
   normalizeWhatsAppAllowFromEntries,
   normalizeWhatsAppMessagingTarget,
   normalizeWhatsAppTarget,
-} from "openclaw/plugin-sdk/channel-runtime";
+} from "synthios/plugin-sdk/channel-runtime";

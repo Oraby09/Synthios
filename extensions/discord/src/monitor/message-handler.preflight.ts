@@ -1,34 +1,34 @@
 import { ChannelType, MessageType, type Message, type User } from "@buape/carbon";
 import { Routes, type APIMessage } from "discord-api-types/v10";
-import { formatAllowlistMatchMeta } from "openclaw/plugin-sdk/channel-runtime";
-import { resolveControlCommandGate } from "openclaw/plugin-sdk/channel-runtime";
-import { logInboundDrop } from "openclaw/plugin-sdk/channel-runtime";
-import { resolveMentionGatingWithBypass } from "openclaw/plugin-sdk/channel-runtime";
-import { loadConfig } from "openclaw/plugin-sdk/config-runtime";
-import { isDangerousNameMatchingEnabled } from "openclaw/plugin-sdk/config-runtime";
+import { formatAllowlistMatchMeta } from "synthios/plugin-sdk/channel-runtime";
+import { resolveControlCommandGate } from "synthios/plugin-sdk/channel-runtime";
+import { logInboundDrop } from "synthios/plugin-sdk/channel-runtime";
+import { resolveMentionGatingWithBypass } from "synthios/plugin-sdk/channel-runtime";
+import { loadConfig } from "synthios/plugin-sdk/config-runtime";
+import { isDangerousNameMatchingEnabled } from "synthios/plugin-sdk/config-runtime";
 import {
   ensureConfiguredBindingRouteReady,
   resolveConfiguredBindingRoute,
-} from "openclaw/plugin-sdk/conversation-runtime";
+} from "synthios/plugin-sdk/conversation-runtime";
 import {
   getSessionBindingService,
   type SessionBindingRecord,
-} from "openclaw/plugin-sdk/conversation-runtime";
-import { buildPairingReply } from "openclaw/plugin-sdk/conversation-runtime";
-import { isPluginOwnedSessionBindingRecord } from "openclaw/plugin-sdk/conversation-runtime";
-import { recordChannelActivity } from "openclaw/plugin-sdk/infra-runtime";
-import { enqueueSystemEvent } from "openclaw/plugin-sdk/infra-runtime";
-import { hasControlCommand } from "openclaw/plugin-sdk/reply-runtime";
-import { shouldHandleTextCommands } from "openclaw/plugin-sdk/reply-runtime";
+} from "synthios/plugin-sdk/conversation-runtime";
+import { buildPairingReply } from "synthios/plugin-sdk/conversation-runtime";
+import { isPluginOwnedSessionBindingRecord } from "synthios/plugin-sdk/conversation-runtime";
+import { recordChannelActivity } from "synthios/plugin-sdk/infra-runtime";
+import { enqueueSystemEvent } from "synthios/plugin-sdk/infra-runtime";
+import { hasControlCommand } from "synthios/plugin-sdk/reply-runtime";
+import { shouldHandleTextCommands } from "synthios/plugin-sdk/reply-runtime";
 import {
   recordPendingHistoryEntryIfEnabled,
   type HistoryEntry,
-} from "openclaw/plugin-sdk/reply-runtime";
-import { buildMentionRegexes, matchesMentionWithExplicit } from "openclaw/plugin-sdk/reply-runtime";
-import { DEFAULT_ACCOUNT_ID } from "openclaw/plugin-sdk/routing";
-import { logVerbose, shouldLogVerbose } from "openclaw/plugin-sdk/runtime-env";
-import { getChildLogger } from "openclaw/plugin-sdk/runtime-env";
-import { logDebug } from "openclaw/plugin-sdk/text-runtime";
+} from "synthios/plugin-sdk/reply-runtime";
+import { buildMentionRegexes, matchesMentionWithExplicit } from "synthios/plugin-sdk/reply-runtime";
+import { DEFAULT_ACCOUNT_ID } from "synthios/plugin-sdk/routing";
+import { logVerbose, shouldLogVerbose } from "synthios/plugin-sdk/runtime-env";
+import { getChildLogger } from "synthios/plugin-sdk/runtime-env";
+import { logDebug } from "synthios/plugin-sdk/text-runtime";
 import { fetchPluralKitMessageInfo } from "../pluralkit.js";
 import { sendMessageDiscord } from "../send.js";
 import {

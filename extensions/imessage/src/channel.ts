@@ -1,12 +1,12 @@
-import { buildDmGroupAccountAllowlistAdapter } from "openclaw/plugin-sdk/allowlist-config-edit";
+import { buildDmGroupAccountAllowlistAdapter } from "synthios/plugin-sdk/allowlist-config-edit";
 import {
   createAttachedChannelResultAdapter,
   resolveOutboundSendDep,
-} from "openclaw/plugin-sdk/channel-runtime";
-import { buildOutboundBaseSessionKey } from "openclaw/plugin-sdk/core";
-import { buildPassiveProbedChannelStatusSummary } from "openclaw/plugin-sdk/extension-shared";
-import { createLazyRuntimeModule } from "openclaw/plugin-sdk/lazy-runtime";
-import { type RoutePeer } from "openclaw/plugin-sdk/routing";
+} from "synthios/plugin-sdk/channel-runtime";
+import { buildOutboundBaseSessionKey } from "synthios/plugin-sdk/core";
+import { buildPassiveProbedChannelStatusSummary } from "synthios/plugin-sdk/extension-shared";
+import { createLazyRuntimeModule } from "synthios/plugin-sdk/lazy-runtime";
+import { type RoutePeer } from "synthios/plugin-sdk/routing";
 import {
   collectStatusIssuesFromLastError,
   DEFAULT_ACCOUNT_ID,

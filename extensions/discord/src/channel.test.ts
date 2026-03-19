@@ -1,9 +1,9 @@
 import type {
   ChannelAccountSnapshot,
   ChannelGatewayContext,
-  OpenClawConfig,
+  SynthiosConfig,
   PluginRuntime,
-} from "openclaw/plugin-sdk/discord";
+} from "synthios/plugin-sdk/discord";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { createRuntimeEnv } from "../../../test/helpers/extensions/runtime-env.js";
 import type { ResolvedDiscordAccount } from "./accounts.js";
@@ -38,7 +38,7 @@ vi.mock("./audit.js", async (importOriginal) => {
   };
 });
 
-function createCfg(): OpenClawConfig {
+function createCfg(): SynthiosConfig {
   return {
     channels: {
       discord: {
@@ -46,11 +46,11 @@ function createCfg(): OpenClawConfig {
         token: "discord-token",
       },
     },
-  } as OpenClawConfig;
+  } as SynthiosConfig;
 }
 
 function createStartAccountCtx(params: {
-  cfg: OpenClawConfig;
+  cfg: SynthiosConfig;
   accountId: string;
   runtime: ReturnType<typeof createRuntimeEnv>;
 }): ChannelGatewayContext<ResolvedDiscordAccount> {
@@ -94,7 +94,7 @@ describe("discordPlugin outbound", () => {
     } as unknown as PluginRuntime);
 
     const result = await discordPlugin.outbound!.sendMedia!({
-      cfg: {} as OpenClawConfig,
+      cfg: {} as SynthiosConfig,
       to: "channel:123",
       text: "hi",
       mediaUrl: "/tmp/image.png",
@@ -230,7 +230,7 @@ describe("discordPlugin groups", () => {
           },
         },
       },
-    } as OpenClawConfig;
+    } as SynthiosConfig;
 
     expect(
       discordPlugin.groups?.resolveRequireMention?.({

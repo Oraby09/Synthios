@@ -1,14 +1,14 @@
-import type { MarkdownTableMode } from "openclaw/plugin-sdk/config-runtime";
+import type { MarkdownTableMode } from "synthios/plugin-sdk/config-runtime";
 import {
   deliverTextOrMediaReply,
   resolveSendableOutboundReplyParts,
-} from "openclaw/plugin-sdk/reply-payload";
-import type { ChunkMode } from "openclaw/plugin-sdk/reply-runtime";
-import { chunkMarkdownTextWithMode } from "openclaw/plugin-sdk/reply-runtime";
-import { createReplyReferencePlanner } from "openclaw/plugin-sdk/reply-runtime";
-import { isSilentReplyText, SILENT_REPLY_TOKEN } from "openclaw/plugin-sdk/reply-runtime";
-import type { ReplyPayload } from "openclaw/plugin-sdk/reply-runtime";
-import type { RuntimeEnv } from "openclaw/plugin-sdk/runtime-env";
+} from "synthios/plugin-sdk/reply-payload";
+import type { ChunkMode } from "synthios/plugin-sdk/reply-runtime";
+import { chunkMarkdownTextWithMode } from "synthios/plugin-sdk/reply-runtime";
+import { createReplyReferencePlanner } from "synthios/plugin-sdk/reply-runtime";
+import { isSilentReplyText, SILENT_REPLY_TOKEN } from "synthios/plugin-sdk/reply-runtime";
+import type { ReplyPayload } from "synthios/plugin-sdk/reply-runtime";
+import type { RuntimeEnv } from "synthios/plugin-sdk/runtime-env";
 import { parseSlackBlocksInput } from "../blocks-input.js";
 import { markdownToSlackMrkdwnChunks } from "../format.js";
 import { sendMessageSlack, type SlackSendIdentity } from "../send.js";

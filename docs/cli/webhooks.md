@@ -1,12 +1,12 @@
 ---
-summary: "CLI reference for `openclaw webhooks` (webhook helpers + Gmail Pub/Sub)"
+summary: "CLI reference for `synthios webhooks` (webhook helpers + Gmail Pub/Sub)"
 read_when:
-  - You want to wire Gmail Pub/Sub events into OpenClaw
+  - You want to wire Gmail Pub/Sub events into Synthios
   - You want webhook helper commands
 title: "webhooks"
 ---
 
-# `openclaw webhooks`
+# `synthios webhooks`
 
 Webhook helpers and integrations (Gmail Pub/Sub, webhook helpers).
 
@@ -18,8 +18,8 @@ Related:
 ## Gmail
 
 ```bash
-openclaw webhooks gmail setup --account you@example.com
-openclaw webhooks gmail run
+synthios webhooks gmail setup --account you@example.com
+synthios webhooks gmail run
 ```
 
 See [Gmail Pub/Sub documentation](/automation/gmail-pubsub) for details.

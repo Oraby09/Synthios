@@ -1,9 +1,9 @@
-import { installCommonResolveTargetErrorCases } from "openclaw/plugin-sdk/testing";
+import { installCommonResolveTargetErrorCases } from "synthios/plugin-sdk/testing";
 import { describe, expect, it, vi } from "vitest";
 
-vi.mock("openclaw/plugin-sdk/whatsapp", async () => {
-  const actual = await vi.importActual<typeof import("openclaw/plugin-sdk/whatsapp")>(
-    "openclaw/plugin-sdk/whatsapp",
+vi.mock("synthios/plugin-sdk/whatsapp", async () => {
+  const actual = await vi.importActual<typeof import("synthios/plugin-sdk/whatsapp")>(
+    "synthios/plugin-sdk/whatsapp",
   );
   const normalizeWhatsAppTarget = (value: string) => {
     if (value === "invalid-target") return null;

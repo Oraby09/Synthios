@@ -1,10 +1,10 @@
-import { collectTelegramUnmentionedGroupIds } from "openclaw/plugin-sdk/telegram";
-import { telegramMessageActions } from "openclaw/plugin-sdk/telegram";
+import { collectTelegramUnmentionedGroupIds } from "synthios/plugin-sdk/telegram";
+import { telegramMessageActions } from "synthios/plugin-sdk/telegram";
 import {
   setTelegramThreadBindingIdleTimeoutBySessionKey,
   setTelegramThreadBindingMaxAgeBySessionKey,
-} from "openclaw/plugin-sdk/telegram";
-import { resolveTelegramToken } from "openclaw/plugin-sdk/telegram";
+} from "synthios/plugin-sdk/telegram";
+import { resolveTelegramToken } from "synthios/plugin-sdk/telegram";
 import {
   createLazyRuntimeMethodBinder,
   createLazyRuntimeSurface,

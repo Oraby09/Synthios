@@ -2,14 +2,14 @@ import type {
   AnyAgentTool,
   ImageGenerationProviderPlugin,
   MediaUnderstandingProviderPlugin,
-  OpenClawPluginApi,
+  SynthiosPluginApi,
   ProviderPlugin,
   SpeechProviderPlugin,
   WebSearchProviderPlugin,
 } from "./types.js";
 
 export type CapturedPluginRegistration = {
-  api: OpenClawPluginApi;
+  api: SynthiosPluginApi;
   providers: ProviderPlugin[];
   speechProviders: SpeechProviderPlugin[];
   mediaUnderstandingProviders: MediaUnderstandingProviderPlugin[];
@@ -52,12 +52,12 @@ export function createCapturedPluginRegistration(): CapturedPluginRegistration {
       registerTool(tool: AnyAgentTool) {
         tools.push(tool);
       },
-    } as OpenClawPluginApi,
+    } as SynthiosPluginApi,
   };
 }
 
 export function capturePluginRegistration(params: {
-  register(api: OpenClawPluginApi): void;
+  register(api: SynthiosPluginApi): void;
 }): CapturedPluginRegistration {
   const captured = createCapturedPluginRegistration();
   params.register(captured.api);

@@ -1,8 +1,8 @@
-import { inspectSlackAccount as inspectSlackAccountImpl } from "openclaw/plugin-sdk/slack";
+import { inspectSlackAccount as inspectSlackAccountImpl } from "synthios/plugin-sdk/slack";
 
-export type { InspectedSlackAccount } from "openclaw/plugin-sdk/slack";
+export type { InspectedSlackAccount } from "synthios/plugin-sdk/slack";
 
-type InspectSlackAccount = typeof import("openclaw/plugin-sdk/slack").inspectSlackAccount;
+type InspectSlackAccount = typeof import("synthios/plugin-sdk/slack").inspectSlackAccount;
 
 export function inspectSlackAccount(
   ...args: Parameters<InspectSlackAccount>

@@ -1,29 +1,29 @@
 import { describe, expect, it } from "vitest";
-import { isOpenClawManagedMatrixDevice, summarizeMatrixDeviceHealth } from "./device-health.js";
+import { isSynthiosManagedMatrixDevice, summarizeMatrixDeviceHealth } from "./device-health.js";
 
 describe("matrix device health", () => {
-  it("detects OpenClaw-managed device names", () => {
-    expect(isOpenClawManagedMatrixDevice("OpenClaw Gateway")).toBe(true);
-    expect(isOpenClawManagedMatrixDevice("OpenClaw Debug")).toBe(true);
-    expect(isOpenClawManagedMatrixDevice("Element iPhone")).toBe(false);
-    expect(isOpenClawManagedMatrixDevice(null)).toBe(false);
+  it("detects Synthios-managed device names", () => {
+    expect(isSynthiosManagedMatrixDevice("Synthios Gateway")).toBe(true);
+    expect(isSynthiosManagedMatrixDevice("Synthios Debug")).toBe(true);
+    expect(isSynthiosManagedMatrixDevice("Element iPhone")).toBe(false);
+    expect(isSynthiosManagedMatrixDevice(null)).toBe(false);
   });
 
-  it("summarizes stale OpenClaw-managed devices separately from the current device", () => {
+  it("summarizes stale Synthios-managed devices separately from the current device", () => {
     const summary = summarizeMatrixDeviceHealth([
       {
         deviceId: "du314Zpw3A",
-        displayName: "OpenClaw Gateway",
+        displayName: "Synthios Gateway",
         current: true,
       },
       {
         deviceId: "BritdXC6iL",
-        displayName: "OpenClaw Gateway",
+        displayName: "Synthios Gateway",
         current: false,
       },
       {
         deviceId: "G6NJU9cTgs",
-        displayName: "OpenClaw Debug",
+        displayName: "Synthios Debug",
         current: false,
       },
       {
@@ -34,10 +34,10 @@ describe("matrix device health", () => {
     ]);
 
     expect(summary.currentDeviceId).toBe("du314Zpw3A");
-    expect(summary.currentOpenClawDevices).toEqual([
+    expect(summary.currentSynthiosDevices).toEqual([
       expect.objectContaining({ deviceId: "du314Zpw3A" }),
     ]);
-    expect(summary.staleOpenClawDevices).toEqual([
+    expect(summary.staleSynthiosDevices).toEqual([
       expect.objectContaining({ deviceId: "BritdXC6iL" }),
       expect.objectContaining({ deviceId: "G6NJU9cTgs" }),
     ]);

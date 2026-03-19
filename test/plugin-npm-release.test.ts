@@ -79,7 +79,7 @@ describe("collectPublishablePluginPackageErrors", () => {
         packageJson: {
           name: "@openclaw/zalo",
           version: "2026.3.15",
-          openclaw: {
+          synthios: {
             extensions: ["./index.ts"],
             release: {
               publishToNpm: true,
@@ -99,7 +99,7 @@ describe("collectPublishablePluginPackageErrors", () => {
           name: "broken",
           version: "latest",
           private: true,
-          openclaw: {
+          synthios: {
             extensions: [""],
             release: {
               publishToNpm: true,
@@ -111,7 +111,7 @@ describe("collectPublishablePluginPackageErrors", () => {
       'package name must start with "@openclaw/"; found "broken".',
       "package.json private must not be true.",
       'package.json version must match YYYY.M.D or YYYY.M.D-beta.N; found "latest".',
-      "openclaw.extensions must contain only non-empty strings.",
+      "synthios.extensions must contain only non-empty strings.",
     ]);
   });
 });

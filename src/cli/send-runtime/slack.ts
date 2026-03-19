@@ -1,7 +1,7 @@
-import { sendMessageSlack as sendMessageSlackImpl } from "openclaw/plugin-sdk/slack";
+import { sendMessageSlack as sendMessageSlackImpl } from "synthios/plugin-sdk/slack";
 
 type RuntimeSend = {
-  sendMessage: typeof import("openclaw/plugin-sdk/slack").sendMessageSlack;
+  sendMessage: typeof import("synthios/plugin-sdk/slack").sendMessageSlack;
 };
 
 export const runtimeSend = {

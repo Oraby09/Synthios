@@ -1,9 +1,9 @@
-import { formatAllowFromLowercase } from "openclaw/plugin-sdk/allow-from";
-import { createHybridChannelConfigAdapter } from "openclaw/plugin-sdk/channel-config-helpers";
+import { formatAllowFromLowercase } from "synthios/plugin-sdk/allow-from";
+import { createHybridChannelConfigAdapter } from "synthios/plugin-sdk/channel-config-helpers";
 import {
   createAllowlistProviderGroupPolicyWarningCollector,
   projectWarningCollector,
-} from "openclaw/plugin-sdk/channel-policy";
+} from "synthios/plugin-sdk/channel-policy";
 import {
   createChannelDirectoryAdapter,
   createMessageToolCardSchema,
@@ -11,12 +11,12 @@ import {
   createRuntimeDirectoryLiveAdapter,
   createRuntimeOutboundDelegates,
   createTextPairingAdapter,
-} from "openclaw/plugin-sdk/channel-runtime";
+} from "synthios/plugin-sdk/channel-runtime";
 import type {
   ChannelMessageActionAdapter,
   ChannelMessageToolDiscovery,
-} from "openclaw/plugin-sdk/channel-runtime";
-import { createLazyRuntimeNamedExport } from "openclaw/plugin-sdk/lazy-runtime";
+} from "synthios/plugin-sdk/channel-runtime";
+import { createLazyRuntimeNamedExport } from "synthios/plugin-sdk/lazy-runtime";
 import type { ChannelMeta, ChannelPlugin, ClawdbotConfig } from "../runtime-api.js";
 import {
   buildChannelConfigSchema,

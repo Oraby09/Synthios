@@ -1,5 +1,5 @@
 export type {
-  OpenClawPluginApi,
+  SynthiosPluginApi,
   ProviderAuthContext,
   ProviderAuthMethodNonInteractiveContext,
   ProviderAuthResult,

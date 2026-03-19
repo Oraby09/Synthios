@@ -1,1 +1,1 @@
-export * from "openclaw/plugin-sdk/tlon";
+export * from "synthios/plugin-sdk/tlon";

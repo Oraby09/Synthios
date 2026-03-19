@@ -1,9 +1,9 @@
 import { describe, expect, it, vi } from "vitest";
 import { signalOutbound } from "../../../../test/channel-outbounds.js";
-import type { OpenClawConfig } from "../../../config/config.js";
+import type { SynthiosConfig } from "../../../config/config.js";
 
 describe("signalOutbound", () => {
-  const cfg: OpenClawConfig = {
+  const cfg: SynthiosConfig = {
     channels: {
       signal: {
         mediaMaxMb: 8,

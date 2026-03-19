@@ -1,9 +1,9 @@
 import {
   buildDmGroupAccountAllowlistAdapter,
   createNestedAllowlistOverrideResolver,
-} from "openclaw/plugin-sdk/allowlist-config-edit";
-import { createScopedDmSecurityResolver } from "openclaw/plugin-sdk/channel-config-helpers";
-import { createAllowlistProviderRouteAllowlistWarningCollector } from "openclaw/plugin-sdk/channel-policy";
+} from "synthios/plugin-sdk/allowlist-config-edit";
+import { createScopedDmSecurityResolver } from "synthios/plugin-sdk/channel-config-helpers";
+import { createAllowlistProviderRouteAllowlistWarningCollector } from "synthios/plugin-sdk/channel-policy";
 import {
   attachChannelToResult,
   createAttachedChannelResultAdapter,
@@ -14,11 +14,11 @@ import {
   normalizeMessageChannel,
   type OutboundSendDeps,
   resolveOutboundSendDep,
-} from "openclaw/plugin-sdk/channel-runtime";
-import { buildOutboundBaseSessionKey, normalizeOutboundThreadId } from "openclaw/plugin-sdk/core";
-import { resolveExecApprovalCommandDisplay } from "openclaw/plugin-sdk/infra-runtime";
-import { buildExecApprovalPendingReplyPayload } from "openclaw/plugin-sdk/infra-runtime";
-import { resolveThreadSessionKeys, type RoutePeer } from "openclaw/plugin-sdk/routing";
+} from "synthios/plugin-sdk/channel-runtime";
+import { buildOutboundBaseSessionKey, normalizeOutboundThreadId } from "synthios/plugin-sdk/core";
+import { resolveExecApprovalCommandDisplay } from "synthios/plugin-sdk/infra-runtime";
+import { buildExecApprovalPendingReplyPayload } from "synthios/plugin-sdk/infra-runtime";
+import { resolveThreadSessionKeys, type RoutePeer } from "synthios/plugin-sdk/routing";
 import { parseTelegramTopicConversation } from "../runtime-api.js";
 import {
   buildTokenChannelStatusSummary,
@@ -29,7 +29,7 @@ import {
   resolveConfiguredFromCredentialStatuses,
   type ChannelPlugin,
   type ChannelMessageActionAdapter,
-  type OpenClawConfig,
+  type SynthiosConfig,
 } from "../runtime-api.js";
 import {
   listTelegramAccountIds,
@@ -76,7 +76,7 @@ type TelegramSendFn = ReturnType<
 type TelegramSendOptions = NonNullable<Parameters<TelegramSendFn>[2]>;
 
 function buildTelegramSendOptions(params: {
-  cfg: OpenClawConfig;
+  cfg: SynthiosConfig;
   mediaUrl?: string | null;
   mediaLocalRoots?: readonly string[] | null;
   accountId?: string | null;
@@ -99,7 +99,7 @@ function buildTelegramSendOptions(params: {
 }
 
 async function sendTelegramOutbound(params: {
-  cfg: OpenClawConfig;
+  cfg: SynthiosConfig;
   to: string;
   text: string;
   mediaUrl?: string | null;
@@ -191,7 +191,7 @@ function parseTelegramExplicitTarget(raw: string) {
 }
 
 function buildTelegramBaseSessionKey(params: {
-  cfg: OpenClawConfig;
+  cfg: SynthiosConfig;
   agentId: string;
   accountId?: string | null;
   peer: RoutePeer;
@@ -200,7 +200,7 @@ function buildTelegramBaseSessionKey(params: {
 }
 
 function resolveTelegramOutboundSessionRoute(params: {
-  cfg: OpenClawConfig;
+  cfg: SynthiosConfig;
   agentId: string;
   accountId?: string | null;
   target: string;
@@ -250,7 +250,7 @@ function resolveTelegramOutboundSessionRoute(params: {
   };
 }
 
-function hasTelegramExecApprovalDmRoute(cfg: OpenClawConfig): boolean {
+function hasTelegramExecApprovalDmRoute(cfg: SynthiosConfig): boolean {
   return listTelegramAccountIds(cfg).some((accountId) => {
     if (!isTelegramExecApprovalClientEnabled({ cfg, accountId })) {
       return false;
@@ -727,7 +727,7 @@ export const telegramPlugin: ChannelPlugin<ResolvedTelegramAccount, TelegramProb
     },
     logoutAccount: async ({ accountId, cfg }) => {
       const envToken = process.env.TELEGRAM_BOT_TOKEN?.trim() ?? "";
-      const nextCfg = { ...cfg } as OpenClawConfig;
+      const nextCfg = { ...cfg } as SynthiosConfig;
       const nextTelegram = cfg.channels?.telegram ? { ...cfg.channels.telegram } : undefined;
       let cleared = false;
       let changed = false;

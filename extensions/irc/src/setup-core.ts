@@ -1,13 +1,13 @@
-import type { ChannelSetupAdapter } from "openclaw/plugin-sdk/channel-runtime";
-import type { ChannelSetupInput } from "openclaw/plugin-sdk/channel-runtime";
-import type { DmPolicy } from "openclaw/plugin-sdk/config-runtime";
-import { normalizeAccountId } from "openclaw/plugin-sdk/routing";
+import type { ChannelSetupAdapter } from "synthios/plugin-sdk/channel-runtime";
+import type { ChannelSetupInput } from "synthios/plugin-sdk/channel-runtime";
+import type { DmPolicy } from "synthios/plugin-sdk/config-runtime";
+import { normalizeAccountId } from "synthios/plugin-sdk/routing";
 import {
   applyAccountNameToChannelSection,
   createTopLevelChannelAllowFromSetter,
   createTopLevelChannelDmPolicySetter,
   patchScopedAccountConfig,
-} from "openclaw/plugin-sdk/setup";
+} from "synthios/plugin-sdk/setup";
 import type { CoreConfig, IrcAccountConfig, IrcNickServConfig } from "./types.js";
 
 const channel = "irc" as const;

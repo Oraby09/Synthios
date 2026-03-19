@@ -27,8 +27,8 @@ const buildGatewayInstallPlan = vi.fn(
     programArguments: ["/bin/node", "cli", "gateway", "--port", String(params.port)],
     workingDirectory: process.cwd(),
     environment: {
-      OPENCLAW_GATEWAY_PORT: String(params.port),
-      ...(params.token ? { OPENCLAW_GATEWAY_TOKEN: params.token } : {}),
+      SYNTHIOS_GATEWAY_PORT: String(params.port),
+      ...(params.token ? { SYNTHIOS_GATEWAY_TOKEN: params.token } : {}),
     },
   }),
 );
@@ -123,15 +123,15 @@ describe("daemon-cli coverage", () => {
   beforeEach(() => {
     daemonProgram = createDaemonProgram();
     envSnapshot = captureEnv([
-      "OPENCLAW_STATE_DIR",
-      "OPENCLAW_CONFIG_PATH",
-      "OPENCLAW_GATEWAY_PORT",
-      "OPENCLAW_PROFILE",
+      "SYNTHIOS_STATE_DIR",
+      "SYNTHIOS_CONFIG_PATH",
+      "SYNTHIOS_GATEWAY_PORT",
+      "SYNTHIOS_PROFILE",
     ]);
-    process.env.OPENCLAW_STATE_DIR = "/tmp/openclaw-cli-state";
-    process.env.OPENCLAW_CONFIG_PATH = "/tmp/openclaw-cli-state/openclaw.json";
-    delete process.env.OPENCLAW_GATEWAY_PORT;
-    delete process.env.OPENCLAW_PROFILE;
+    process.env.SYNTHIOS_STATE_DIR = "/tmp/synthios-cli-state";
+    process.env.SYNTHIOS_CONFIG_PATH = "/tmp/synthios-cli-state/synthios.json";
+    delete process.env.SYNTHIOS_GATEWAY_PORT;
+    delete process.env.SYNTHIOS_PROFILE;
     serviceReadCommand.mockResolvedValue(null);
     resolveGatewayProbeAuthWithSecretInputs.mockClear();
     buildGatewayInstallPlan.mockClear();
@@ -161,12 +161,12 @@ describe("daemon-cli coverage", () => {
     serviceReadCommand.mockResolvedValueOnce({
       programArguments: ["/bin/node", "cli", "gateway", "--port", "19001"],
       environment: {
-        OPENCLAW_PROFILE: "dev",
-        OPENCLAW_STATE_DIR: "/tmp/openclaw-daemon-state",
-        OPENCLAW_CONFIG_PATH: "/tmp/openclaw-daemon-state/openclaw.json",
-        OPENCLAW_GATEWAY_PORT: "19001",
+        SYNTHIOS_PROFILE: "dev",
+        SYNTHIOS_STATE_DIR: "/tmp/synthios-daemon-state",
+        SYNTHIOS_CONFIG_PATH: "/tmp/synthios-daemon-state/synthios.json",
+        SYNTHIOS_GATEWAY_PORT: "19001",
       },
-      sourcePath: "/tmp/ai.openclaw.gateway.plist",
+      sourcePath: "/tmp/ai.synthios.gateway.plist",
     });
 
     await runDaemonCommand(["daemon", "status", "--json"]);

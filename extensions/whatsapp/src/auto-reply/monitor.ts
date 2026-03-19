@@ -1,18 +1,18 @@
-import { formatCliCommand } from "openclaw/plugin-sdk/cli-runtime";
-import { waitForever } from "openclaw/plugin-sdk/cli-runtime";
-import { loadConfig } from "openclaw/plugin-sdk/config-runtime";
-import { createConnectedChannelStatusPatch } from "openclaw/plugin-sdk/gateway-runtime";
-import { formatDurationPrecise } from "openclaw/plugin-sdk/infra-runtime";
-import { enqueueSystemEvent } from "openclaw/plugin-sdk/infra-runtime";
-import { hasControlCommand } from "openclaw/plugin-sdk/reply-runtime";
-import { resolveInboundDebounceMs } from "openclaw/plugin-sdk/reply-runtime";
-import { getReplyFromConfig } from "openclaw/plugin-sdk/reply-runtime";
-import { DEFAULT_GROUP_HISTORY_LIMIT } from "openclaw/plugin-sdk/reply-runtime";
-import { resolveAgentRoute } from "openclaw/plugin-sdk/routing";
-import { logVerbose } from "openclaw/plugin-sdk/runtime-env";
-import { registerUnhandledRejectionHandler } from "openclaw/plugin-sdk/runtime-env";
-import { getChildLogger } from "openclaw/plugin-sdk/runtime-env";
-import { defaultRuntime, type RuntimeEnv } from "openclaw/plugin-sdk/runtime-env";
+import { formatCliCommand } from "synthios/plugin-sdk/cli-runtime";
+import { waitForever } from "synthios/plugin-sdk/cli-runtime";
+import { loadConfig } from "synthios/plugin-sdk/config-runtime";
+import { createConnectedChannelStatusPatch } from "synthios/plugin-sdk/gateway-runtime";
+import { formatDurationPrecise } from "synthios/plugin-sdk/infra-runtime";
+import { enqueueSystemEvent } from "synthios/plugin-sdk/infra-runtime";
+import { hasControlCommand } from "synthios/plugin-sdk/reply-runtime";
+import { resolveInboundDebounceMs } from "synthios/plugin-sdk/reply-runtime";
+import { getReplyFromConfig } from "synthios/plugin-sdk/reply-runtime";
+import { DEFAULT_GROUP_HISTORY_LIMIT } from "synthios/plugin-sdk/reply-runtime";
+import { resolveAgentRoute } from "synthios/plugin-sdk/routing";
+import { logVerbose } from "synthios/plugin-sdk/runtime-env";
+import { registerUnhandledRejectionHandler } from "synthios/plugin-sdk/runtime-env";
+import { getChildLogger } from "synthios/plugin-sdk/runtime-env";
+import { defaultRuntime, type RuntimeEnv } from "synthios/plugin-sdk/runtime-env";
 import { resolveWhatsAppAccount, resolveWhatsAppMediaMaxBytes } from "../accounts.js";
 import { setActiveWebListener } from "../active-listener.js";
 import { monitorWebInbox } from "../inbound.js";
@@ -396,7 +396,7 @@ export async function monitorWebChannel(
 
     if (loggedOut) {
       runtime.error(
-        `WhatsApp session logged out. Run \`${formatCliCommand("openclaw channels login --channel web")}\` to relink.`,
+        `WhatsApp session logged out. Run \`${formatCliCommand("synthios channels login --channel web")}\` to relink.`,
       );
       await closeListener();
       break;
@@ -412,7 +412,7 @@ export async function monitorWebChannel(
         "web reconnect: non-retryable close status; stopping monitor",
       );
       runtime.error(
-        `WhatsApp Web connection closed (status ${statusCode}: session conflict). Resolve conflicting WhatsApp Web sessions, then relink with \`${formatCliCommand("openclaw channels login --channel web")}\`. Stopping web monitoring.`,
+        `WhatsApp Web connection closed (status ${statusCode}: session conflict). Resolve conflicting WhatsApp Web sessions, then relink with \`${formatCliCommand("synthios channels login --channel web")}\`. Stopping web monitoring.`,
       );
       await closeListener();
       break;

@@ -1,15 +1,15 @@
-import { createAccountStatusSink } from "openclaw/plugin-sdk/channel-lifecycle";
+import { createAccountStatusSink } from "synthios/plugin-sdk/channel-lifecycle";
 import { probeZalo } from "./probe.js";
 import { resolveZaloProxyFetch } from "./proxy.js";
 import {
   PAIRING_APPROVED_MESSAGE,
   type ChannelPlugin,
-  type OpenClawConfig,
+  type SynthiosConfig,
 } from "./runtime-api.js";
 import { normalizeSecretInputString } from "./secret-input.js";
 import { sendMessageZalo } from "./send.js";
 
-export async function notifyZaloPairingApproval(params: { cfg: OpenClawConfig; id: string }) {
+export async function notifyZaloPairingApproval(params: { cfg: SynthiosConfig; id: string }) {
   const { resolveZaloAccount } = await import("./accounts.js");
   const account = resolveZaloAccount({ cfg: params.cfg });
   if (!account.token) {

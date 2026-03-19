@@ -1,1 +1,1 @@
-export * from "openclaw/plugin-sdk/nextcloud-talk";
+export * from "synthios/plugin-sdk/nextcloud-talk";

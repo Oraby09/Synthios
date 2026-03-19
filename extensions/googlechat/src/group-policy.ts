@@ -1,8 +1,8 @@
-import { resolveChannelGroupRequireMention } from "openclaw/plugin-sdk/channel-policy";
-import type { OpenClawConfig } from "openclaw/plugin-sdk/core";
+import { resolveChannelGroupRequireMention } from "synthios/plugin-sdk/channel-policy";
+import type { SynthiosConfig } from "synthios/plugin-sdk/core";
 
 type GoogleChatGroupContext = {
-  cfg: OpenClawConfig;
+  cfg: SynthiosConfig;
   accountId?: string | null;
   groupId?: string | null;
 };

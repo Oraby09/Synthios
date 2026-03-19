@@ -1,32 +1,32 @@
 import type { Bot } from "grammy";
-import { resolveAgentDir } from "openclaw/plugin-sdk/agent-runtime";
+import { resolveAgentDir } from "synthios/plugin-sdk/agent-runtime";
 import {
   findModelInCatalog,
   loadModelCatalog,
   modelSupportsVision,
-} from "openclaw/plugin-sdk/agent-runtime";
-import { resolveDefaultModelForAgent } from "openclaw/plugin-sdk/agent-runtime";
-import { createChannelReplyPipeline } from "openclaw/plugin-sdk/channel-reply-pipeline";
-import { removeAckReactionAfterReply } from "openclaw/plugin-sdk/channel-runtime";
-import { logAckFailure, logTypingFailure } from "openclaw/plugin-sdk/channel-runtime";
-import { resolveMarkdownTableMode } from "openclaw/plugin-sdk/config-runtime";
+} from "synthios/plugin-sdk/agent-runtime";
+import { resolveDefaultModelForAgent } from "synthios/plugin-sdk/agent-runtime";
+import { createChannelReplyPipeline } from "synthios/plugin-sdk/channel-reply-pipeline";
+import { removeAckReactionAfterReply } from "synthios/plugin-sdk/channel-runtime";
+import { logAckFailure, logTypingFailure } from "synthios/plugin-sdk/channel-runtime";
+import { resolveMarkdownTableMode } from "synthios/plugin-sdk/config-runtime";
 import {
   loadSessionStore,
   resolveSessionStoreEntry,
   resolveStorePath,
-} from "openclaw/plugin-sdk/config-runtime";
+} from "synthios/plugin-sdk/config-runtime";
 import type {
-  OpenClawConfig,
+  SynthiosConfig,
   ReplyToMode,
   TelegramAccountConfig,
-} from "openclaw/plugin-sdk/config-runtime";
-import { getAgentScopedMediaLocalRoots } from "openclaw/plugin-sdk/media-runtime";
-import { resolveSendableOutboundReplyParts } from "openclaw/plugin-sdk/reply-payload";
-import { resolveChunkMode } from "openclaw/plugin-sdk/reply-runtime";
-import { clearHistoryEntriesIfEnabled } from "openclaw/plugin-sdk/reply-runtime";
-import type { ReplyPayload } from "openclaw/plugin-sdk/reply-runtime";
-import { danger, logVerbose } from "openclaw/plugin-sdk/runtime-env";
-import type { RuntimeEnv } from "openclaw/plugin-sdk/runtime-env";
+} from "synthios/plugin-sdk/config-runtime";
+import { getAgentScopedMediaLocalRoots } from "synthios/plugin-sdk/media-runtime";
+import { resolveSendableOutboundReplyParts } from "synthios/plugin-sdk/reply-payload";
+import { resolveChunkMode } from "synthios/plugin-sdk/reply-runtime";
+import { clearHistoryEntriesIfEnabled } from "synthios/plugin-sdk/reply-runtime";
+import type { ReplyPayload } from "synthios/plugin-sdk/reply-runtime";
+import { danger, logVerbose } from "synthios/plugin-sdk/runtime-env";
+import type { RuntimeEnv } from "synthios/plugin-sdk/runtime-env";
 import { defaultTelegramBotDeps, type TelegramBotDeps } from "./bot-deps.js";
 import type { TelegramMessageContext } from "./bot-message-context.js";
 import type { TelegramBotOptions } from "./bot.js";
@@ -56,7 +56,7 @@ const EMPTY_RESPONSE_FALLBACK = "No response generated. Please try again.";
 /** Minimum chars before sending first streaming message (improves push notification UX) */
 const DRAFT_MIN_INITIAL_CHARS = 30;
 
-async function resolveStickerVisionSupport(cfg: OpenClawConfig, agentId: string) {
+async function resolveStickerVisionSupport(cfg: SynthiosConfig, agentId: string) {
   try {
     const catalog = await loadModelCatalog({ config: cfg });
     const defaultModel = resolveDefaultModelForAgent({ cfg, agentId });
@@ -104,7 +104,7 @@ export function pruneStickerMediaFromContext(
 type DispatchTelegramMessageParams = {
   context: TelegramMessageContext;
   bot: Bot;
-  cfg: OpenClawConfig;
+  cfg: SynthiosConfig;
   runtime: RuntimeEnv;
   replyToMode: ReplyToMode;
   streamMode: TelegramStreamMode;
@@ -117,7 +117,7 @@ type DispatchTelegramMessageParams = {
 type TelegramReasoningLevel = "off" | "on" | "stream";
 
 function resolveTelegramReasoningLevel(params: {
-  cfg: OpenClawConfig;
+  cfg: SynthiosConfig;
   sessionKey?: string;
   agentId: string;
 }): TelegramReasoningLevel {

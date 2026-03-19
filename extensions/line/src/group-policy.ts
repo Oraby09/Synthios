@@ -1,8 +1,8 @@
-import { resolveChannelGroupRequireMention } from "openclaw/plugin-sdk/channel-policy";
-import { resolveExactLineGroupConfigKey, type OpenClawConfig } from "../runtime-api.js";
+import { resolveChannelGroupRequireMention } from "synthios/plugin-sdk/channel-policy";
+import { resolveExactLineGroupConfigKey, type SynthiosConfig } from "../runtime-api.js";
 
 type LineGroupContext = {
-  cfg: OpenClawConfig;
+  cfg: SynthiosConfig;
   accountId?: string | null;
   groupId?: string | null;
 };

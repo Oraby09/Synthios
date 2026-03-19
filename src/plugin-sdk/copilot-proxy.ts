@@ -3,7 +3,7 @@
 
 export { definePluginEntry } from "./core.js";
 export type {
-  OpenClawPluginApi,
+  SynthiosPluginApi,
   ProviderAuthContext,
   ProviderAuthResult,
 } from "../plugins/types.js";

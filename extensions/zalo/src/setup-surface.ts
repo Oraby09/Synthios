@@ -10,9 +10,9 @@ import {
   runSingleChannelSecretStep,
   type ChannelSetupDmPolicy,
   type ChannelSetupWizard,
-  type OpenClawConfig,
+  type SynthiosConfig,
   type SecretInput,
-} from "openclaw/plugin-sdk/setup";
+} from "synthios/plugin-sdk/setup";
 import { listZaloAccountIds, resolveDefaultZaloAccountId, resolveZaloAccount } from "./accounts.js";
 import { zaloSetupAdapter } from "./setup-core.js";
 
@@ -21,13 +21,13 @@ const channel = "zalo" as const;
 type UpdateMode = "polling" | "webhook";
 
 function setZaloUpdateMode(
-  cfg: OpenClawConfig,
+  cfg: SynthiosConfig,
   accountId: string,
   mode: UpdateMode,
   webhookUrl?: string,
   webhookSecret?: SecretInput,
   webhookPath?: string,
-): OpenClawConfig {
+): SynthiosConfig {
   const isDefault = accountId === DEFAULT_ACCOUNT_ID;
   if (mode === "polling") {
     if (isDefault) {
@@ -43,7 +43,7 @@ function setZaloUpdateMode(
           ...cfg.channels,
           zalo: rest,
         },
-      } as OpenClawConfig;
+      } as SynthiosConfig;
     }
     const accounts = { ...cfg.channels?.zalo?.accounts } as Record<string, Record<string, unknown>>;
     const existing = accounts[accountId] ?? {};
@@ -58,7 +58,7 @@ function setZaloUpdateMode(
           accounts,
         },
       },
-    } as OpenClawConfig;
+    } as SynthiosConfig;
   }
 
   if (isDefault) {
@@ -73,7 +73,7 @@ function setZaloUpdateMode(
           webhookPath,
         },
       },
-    } as OpenClawConfig;
+    } as SynthiosConfig;
   }
 
   const accounts = { ...cfg.channels?.zalo?.accounts } as Record<string, Record<string, unknown>>;
@@ -92,7 +92,7 @@ function setZaloUpdateMode(
         accounts,
       },
     },
-  } as OpenClawConfig;
+  } as SynthiosConfig;
 }
 
 async function noteZaloTokenHelp(
@@ -111,10 +111,10 @@ async function noteZaloTokenHelp(
 }
 
 async function promptZaloAllowFrom(params: {
-  cfg: OpenClawConfig;
+  cfg: SynthiosConfig;
   prompter: Parameters<NonNullable<ChannelSetupDmPolicy["promptAllowFrom"]>>[0]["prompter"];
   accountId: string;
-}): Promise<OpenClawConfig> {
+}): Promise<SynthiosConfig> {
   const { cfg, prompter, accountId } = params;
   const resolved = resolveZaloAccount({ cfg, accountId });
   const existingAllowFrom = resolved.config.allowFrom ?? [];
@@ -148,7 +148,7 @@ async function promptZaloAllowFrom(params: {
           allowFrom: unique,
         },
       },
-    } as OpenClawConfig;
+    } as SynthiosConfig;
   }
 
   return {
@@ -169,7 +169,7 @@ async function promptZaloAllowFrom(params: {
         },
       },
     },
-  } as OpenClawConfig;
+  } as SynthiosConfig;
 }
 
 const zaloDmPolicy: ChannelSetupDmPolicy = createTopLevelChannelDmPolicy({
@@ -182,9 +182,9 @@ const zaloDmPolicy: ChannelSetupDmPolicy = createTopLevelChannelDmPolicy({
     const id =
       accountId && normalizeAccountId(accountId)
         ? (normalizeAccountId(accountId) ?? DEFAULT_ACCOUNT_ID)
-        : resolveDefaultZaloAccountId(cfg as OpenClawConfig);
+        : resolveDefaultZaloAccountId(cfg as SynthiosConfig);
     return await promptZaloAllowFrom({
-      cfg: cfg as OpenClawConfig,
+      cfg: cfg as SynthiosConfig,
       prompter,
       accountId: id,
     });
@@ -259,7 +259,7 @@ export const zaloSetupWizard: ChannelSetupWizard = {
                   enabled: true,
                 },
               },
-            } as OpenClawConfig)
+            } as SynthiosConfig)
           : currentCfg,
       applySet: async (currentCfg, value) =>
         accountId === DEFAULT_ACCOUNT_ID
@@ -273,7 +273,7 @@ export const zaloSetupWizard: ChannelSetupWizard = {
                   botToken: value,
                 },
               },
-            } as OpenClawConfig)
+            } as SynthiosConfig)
           : ({
               ...currentCfg,
               channels: {
@@ -291,7 +291,7 @@ export const zaloSetupWizard: ChannelSetupWizard = {
                   },
                 },
               },
-            } as OpenClawConfig),
+            } as SynthiosConfig),
     });
     next = tokenStep.cfg;
 

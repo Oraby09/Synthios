@@ -2,9 +2,9 @@ import {
   createScopedChannelConfigAdapter,
   createScopedDmSecurityResolver,
   formatTrimmedAllowFromEntries,
-} from "openclaw/plugin-sdk/channel-config-helpers";
-import { createAllowlistProviderRestrictSendersWarningCollector } from "openclaw/plugin-sdk/channel-policy";
-import { createChannelPluginBase } from "openclaw/plugin-sdk/core";
+} from "synthios/plugin-sdk/channel-config-helpers";
+import { createAllowlistProviderRestrictSendersWarningCollector } from "synthios/plugin-sdk/channel-policy";
+import { createChannelPluginBase } from "synthios/plugin-sdk/core";
 import {
   buildChannelConfigSchema,
   getChatChannelMeta,

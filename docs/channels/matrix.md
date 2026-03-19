@@ -1,30 +1,30 @@
 ---
 summary: "Matrix support status, setup, and configuration examples"
 read_when:
-  - Setting up Matrix in OpenClaw
+  - Setting up Matrix in Synthios
   - Configuring Matrix E2EE and verification
 title: "Matrix"
 ---
 
 # Matrix (plugin)
 
-Matrix is the Matrix channel plugin for OpenClaw.
+Matrix is the Matrix channel plugin for Synthios.
 It uses the official `matrix-js-sdk` and supports DMs, rooms, threads, media, reactions, polls, location, and E2EE.
 
 ## Plugin required
 
-Matrix is a plugin and is not bundled with core OpenClaw.
+Matrix is a plugin and is not bundled with core Synthios.
 
 Install from npm:
 
 ```bash
-openclaw plugins install @openclaw/matrix
+synthios plugins install @synthios/matrix
 ```
 
 Install from a local checkout:
 
 ```bash
-openclaw plugins install ./extensions/matrix
+synthios plugins install ./extensions/matrix
 ```
 
 See [Plugins](/tools/plugin) for plugin behavior and install rules.
@@ -42,8 +42,8 @@ See [Plugins](/tools/plugin) for plugin behavior and install rules.
 Interactive setup paths:
 
 ```bash
-openclaw channels add
-openclaw configure --section channels
+synthios channels add
+synthios configure --section channels
 ```
 
 What the Matrix wizard actually asks for:
@@ -62,7 +62,7 @@ Wizard behavior that matters:
 - DM allowlist prompts accept full `@user:server` values immediately. Display names only work when live directory lookup finds one exact match; otherwise the wizard asks you to retry with a full Matrix ID.
 - Room allowlist prompts accept room IDs and aliases directly. They can also resolve joined-room names live, but unresolved names are only kept as typed during setup and are ignored later by runtime allowlist resolution. Prefer `!room:server` or `#alias:server`.
 - Runtime room/session identity uses the stable Matrix room ID. Room-declared aliases are only used as lookup inputs, not as the long-term session key or stable group identity.
-- To resolve room names before saving them, use `openclaw channels resolve --channel matrix "Project Room"`.
+- To resolve room names before saving them, use `synthios channels resolve --channel matrix "Project Room"`.
 
 Minimal token-based setup:
 
@@ -89,13 +89,13 @@ Password-based setup (token is cached after login):
       homeserver: "https://matrix.example.org",
       userId: "@bot:example.org",
       password: "replace-me", // pragma: allowlist secret
-      deviceName: "OpenClaw Gateway",
+      deviceName: "Synthios Gateway",
     },
   },
 }
 ```
 
-Matrix stores cached credentials in `~/.openclaw/credentials/matrix/`.
+Matrix stores cached credentials in `~/.synthios/credentials/matrix/`.
 The default account uses `credentials.json`; named accounts use `credentials-<account>.json`.
 
 Environment variable equivalents (used when the config key is not set):
@@ -183,25 +183,25 @@ Enable encryption:
 Check verification status:
 
 ```bash
-openclaw matrix verify status
+synthios matrix verify status
 ```
 
 Verbose status (full diagnostics):
 
 ```bash
-openclaw matrix verify status --verbose
+synthios matrix verify status --verbose
 ```
 
 Include the stored recovery key in machine-readable output:
 
 ```bash
-openclaw matrix verify status --include-recovery-key --json
+synthios matrix verify status --include-recovery-key --json
 ```
 
 Bootstrap cross-signing and verification state:
 
 ```bash
-openclaw matrix verify bootstrap
+synthios matrix verify bootstrap
 ```
 
 Multi-account support: use `channels.matrix.accounts` with per-account credentials and optional `name`. See [Configuration reference](/gateway/configuration-reference#multi-account-all-channels) for the shared pattern.
@@ -209,55 +209,55 @@ Multi-account support: use `channels.matrix.accounts` with per-account credentia
 Verbose bootstrap diagnostics:
 
 ```bash
-openclaw matrix verify bootstrap --verbose
+synthios matrix verify bootstrap --verbose
 ```
 
 Force a fresh cross-signing identity reset before bootstrapping:
 
 ```bash
-openclaw matrix verify bootstrap --force-reset-cross-signing
+synthios matrix verify bootstrap --force-reset-cross-signing
 ```
 
 Verify this device with a recovery key:
 
 ```bash
-openclaw matrix verify device "<your-recovery-key>"
+synthios matrix verify device "<your-recovery-key>"
 ```
 
 Verbose device verification details:
 
 ```bash
-openclaw matrix verify device "<your-recovery-key>" --verbose
+synthios matrix verify device "<your-recovery-key>" --verbose
 ```
 
 Check room-key backup health:
 
 ```bash
-openclaw matrix verify backup status
+synthios matrix verify backup status
 ```
 
 Verbose backup health diagnostics:
 
 ```bash
-openclaw matrix verify backup status --verbose
+synthios matrix verify backup status --verbose
 ```
 
 Restore room keys from server backup:
 
 ```bash
-openclaw matrix verify backup restore
+synthios matrix verify backup restore
 ```
 
 Verbose restore diagnostics:
 
 ```bash
-openclaw matrix verify backup restore --verbose
+synthios matrix verify backup restore --verbose
 ```
 
 Delete the current server backup and create a fresh backup baseline:
 
 ```bash
-openclaw matrix verify backup reset --yes
+synthios matrix verify backup reset --yes
 ```
 
 All `verify` commands are concise by default (including quiet internal SDK logging) and show detailed diagnostics only with `--verbose`.
@@ -268,28 +268,28 @@ If you configure multiple named accounts, set `channels.matrix.defaultAccount` f
 Use `--account` whenever you want verification or device operations to target a named account explicitly:
 
 ```bash
-openclaw matrix verify status --account assistant
-openclaw matrix verify backup restore --account assistant
-openclaw matrix devices list --account assistant
+synthios matrix verify status --account assistant
+synthios matrix verify backup restore --account assistant
+synthios matrix devices list --account assistant
 ```
 
 When encryption is disabled or unavailable for a named account, Matrix warnings and verification errors point at that account's config key, for example `channels.matrix.accounts.assistant.encryption`.
 
 ### What "verified" means
 
-OpenClaw treats this Matrix device as verified only when it is verified by your own cross-signing identity.
-In practice, `openclaw matrix verify status --verbose` exposes three trust signals:
+Synthios treats this Matrix device as verified only when it is verified by your own cross-signing identity.
+In practice, `synthios matrix verify status --verbose` exposes three trust signals:
 
 - `Locally trusted`: this device is trusted by the current client only
 - `Cross-signing verified`: the SDK reports the device as verified through cross-signing
 - `Signed by owner`: the device is signed by your own self-signing key
 
 `Verified by owner` becomes `yes` only when cross-signing verification or owner-signing is present.
-Local trust by itself is not enough for OpenClaw to treat the device as fully verified.
+Local trust by itself is not enough for Synthios to treat the device as fully verified.
 
 ### What bootstrap does
 
-`openclaw matrix verify bootstrap` is the repair and setup command for encrypted Matrix accounts.
+`synthios matrix verify bootstrap` is the repair and setup command for encrypted Matrix accounts.
 It does all of the following in order:
 
 - bootstraps secret storage, reusing an existing recovery key when possible
@@ -297,11 +297,11 @@ It does all of the following in order:
 - attempts to mark and cross-sign the current device
 - creates a new server-side room-key backup if one does not already exist
 
-If the homeserver requires interactive auth to upload cross-signing keys, OpenClaw tries the upload without auth first, then with `m.login.dummy`, then with `m.login.password` when `channels.matrix.password` is configured.
+If the homeserver requires interactive auth to upload cross-signing keys, Synthios tries the upload without auth first, then with `m.login.dummy`, then with `m.login.password` when `channels.matrix.password` is configured.
 
 Use `--force-reset-cross-signing` only when you intentionally want to discard the current cross-signing identity and create a new one.
 
-If you intentionally want to discard the current room-key backup and start a new backup baseline for future messages, use `openclaw matrix verify backup reset --yes`.
+If you intentionally want to discard the current room-key backup and start a new backup baseline for future messages, use `synthios matrix verify backup reset --yes`.
 Do this only when you accept that unrecoverable old encrypted history will stay unavailable.
 
 ### Fresh backup baseline
@@ -309,9 +309,9 @@ Do this only when you accept that unrecoverable old encrypted history will stay 
 If you want to keep future encrypted messages working and accept losing unrecoverable old history, run these commands in order:
 
 ```bash
-openclaw matrix verify backup reset --yes
-openclaw matrix verify backup status --verbose
-openclaw matrix verify status
+synthios matrix verify backup reset --yes
+synthios matrix verify backup status --verbose
+synthios matrix verify status
 ```
 
 Add `--account <id>` to each command when you want to target a named Matrix account explicitly.
@@ -328,28 +328,28 @@ if you want a shorter or longer retry window.
 Startup also performs a conservative crypto bootstrap pass automatically.
 That pass tries to reuse the current secret storage and cross-signing identity first, and avoids resetting cross-signing unless you run an explicit bootstrap repair flow.
 
-If startup finds broken bootstrap state and `channels.matrix.password` is configured, OpenClaw can attempt a stricter repair path.
-If the current device is already owner-signed, OpenClaw preserves that identity instead of resetting it automatically.
+If startup finds broken bootstrap state and `channels.matrix.password` is configured, Synthios can attempt a stricter repair path.
+If the current device is already owner-signed, Synthios preserves that identity instead of resetting it automatically.
 
 Upgrading from the previous public Matrix plugin:
 
-- OpenClaw automatically reuses the same Matrix account, access token, and device identity when possible.
-- Before any actionable Matrix migration changes run, OpenClaw creates or reuses a recovery snapshot under `~/Backups/openclaw-migrations/`.
-- If you use multiple Matrix accounts, set `channels.matrix.defaultAccount` before upgrading from the old flat-store layout so OpenClaw knows which account should receive that shared legacy state.
-- If the previous plugin stored a Matrix room-key backup decryption key locally, startup or `openclaw doctor --fix` will import it into the new recovery-key flow automatically.
+- Synthios automatically reuses the same Matrix account, access token, and device identity when possible.
+- Before any actionable Matrix migration changes run, Synthios creates or reuses a recovery snapshot under `~/Backups/synthios-migrations/`.
+- If you use multiple Matrix accounts, set `channels.matrix.defaultAccount` before upgrading from the old flat-store layout so Synthios knows which account should receive that shared legacy state.
+- If the previous plugin stored a Matrix room-key backup decryption key locally, startup or `synthios doctor --fix` will import it into the new recovery-key flow automatically.
 - If the Matrix access token changed after migration was prepared, startup now scans sibling token-hash storage roots for pending legacy restore state before giving up on the automatic backup restore.
-- If the Matrix access token changes later for the same account, homeserver, and user, OpenClaw now prefers reusing the most complete existing token-hash storage root instead of starting from an empty Matrix state directory.
+- If the Matrix access token changes later for the same account, homeserver, and user, Synthios now prefers reusing the most complete existing token-hash storage root instead of starting from an empty Matrix state directory.
 - On the next gateway start, backed-up room keys are restored automatically into the new crypto store.
-- If the old plugin had local-only room keys that were never backed up, OpenClaw will warn clearly. Those keys cannot be exported automatically from the previous rust crypto store, so some old encrypted history may remain unavailable until recovered manually.
+- If the old plugin had local-only room keys that were never backed up, Synthios will warn clearly. Those keys cannot be exported automatically from the previous rust crypto store, so some old encrypted history may remain unavailable until recovered manually.
 - See [Matrix migration](/install/migrating-matrix) for the full upgrade flow, limits, recovery commands, and common migration messages.
 
 Encrypted runtime state is organized under per-account, per-user token-hash roots in
-`~/.openclaw/matrix/accounts/<account>/<homeserver>__<user>/<token-hash>/`.
+`~/.synthios/matrix/accounts/<account>/<homeserver>__<user>/<token-hash>/`.
 That directory contains the sync store (`bot-storage.json`), crypto store (`crypto/`),
 recovery key file (`recovery-key.json`), IndexedDB snapshot (`crypto-idb-snapshot.json`),
 thread bindings (`thread-bindings.json`), and startup verification state (`startup-verification.json`)
 when those features are in use.
-When the token changes but the account identity stays the same, OpenClaw reuses the best existing
+When the token changes but the account identity stays the same, Synthios reuses the best existing
 root for that account/homeserver/user tuple so prior sync state, crypto state, thread bindings,
 and startup verification state remain visible.
 
@@ -358,7 +358,7 @@ and startup verification state remain visible.
 Matrix E2EE in this plugin uses the official `matrix-js-sdk` Rust crypto path in Node.
 That path expects IndexedDB-backed persistence when you want crypto state to survive restarts.
 
-OpenClaw currently provides that in Node by:
+Synthios currently provides that in Node by:
 
 - using `fake-indexeddb` as the IndexedDB API shim expected by the SDK
 - restoring the Rust crypto IndexedDB contents from `crypto-idb-snapshot.json` before `initRustCrypto`
@@ -366,11 +366,11 @@ OpenClaw currently provides that in Node by:
 
 This is compatibility/storage plumbing, not a custom crypto implementation.
 The snapshot file is sensitive runtime state and is stored with restrictive file permissions.
-Under OpenClaw's security model, the gateway host and local OpenClaw state directory are already inside the trusted operator boundary, so this is primarily an operational durability concern rather than a separate remote trust boundary.
+Under Synthios's security model, the gateway host and local Synthios state directory are already inside the trusted operator boundary, so this is primarily an operational durability concern rather than a separate remote trust boundary.
 
 Planned improvement:
 
-- add SecretRef support for persistent Matrix key material so recovery keys and related store-encryption secrets can be sourced from OpenClaw secrets providers instead of only local files
+- add SecretRef support for persistent Matrix key material so recovery keys and related store-encryption secrets can be sourced from Synthios secrets providers instead of only local files
 
 ## Automatic verification notices
 
@@ -382,42 +382,42 @@ That includes:
 - verification start and completion notices
 - SAS details (emoji and decimal) when available
 
-Incoming verification requests from another Matrix client are tracked and auto-accepted by OpenClaw.
-For self-verification flows, OpenClaw also starts the SAS flow automatically when emoji verification becomes available and confirms its own side.
-For verification requests from another Matrix user/device, OpenClaw auto-accepts the request and then waits for the SAS flow to proceed normally.
+Incoming verification requests from another Matrix client are tracked and auto-accepted by Synthios.
+For self-verification flows, Synthios also starts the SAS flow automatically when emoji verification becomes available and confirms its own side.
+For verification requests from another Matrix user/device, Synthios auto-accepts the request and then waits for the SAS flow to proceed normally.
 You still need to compare the emoji or decimal SAS in your Matrix client and confirm "They match" there to complete the verification.
 
-OpenClaw does not auto-accept self-initiated duplicate flows blindly. Startup skips creating a new request when a self-verification request is already pending.
+Synthios does not auto-accept self-initiated duplicate flows blindly. Startup skips creating a new request when a self-verification request is already pending.
 
 Verification protocol/system notices are not forwarded to the agent chat pipeline, so they do not produce `NO_REPLY`.
 
 ### Device hygiene
 
-Old OpenClaw-managed Matrix devices can accumulate on the account and make encrypted-room trust harder to reason about.
+Old Synthios-managed Matrix devices can accumulate on the account and make encrypted-room trust harder to reason about.
 List them with:
 
 ```bash
-openclaw matrix devices list
+synthios matrix devices list
 ```
 
-Remove stale OpenClaw-managed devices with:
+Remove stale Synthios-managed devices with:
 
 ```bash
-openclaw matrix devices prune-stale
+synthios matrix devices prune-stale
 ```
 
 ### Direct Room Repair
 
-If direct-message state gets out of sync, OpenClaw can end up with stale `m.direct` mappings that point at old solo rooms instead of the live DM. Inspect the current mapping for a peer with:
+If direct-message state gets out of sync, Synthios can end up with stale `m.direct` mappings that point at old solo rooms instead of the live DM. Inspect the current mapping for a peer with:
 
 ```bash
-openclaw matrix direct inspect --user-id @alice:example.org
+synthios matrix direct inspect --user-id @alice:example.org
 ```
 
 Repair it with:
 
 ```bash
-openclaw matrix direct repair --user-id @alice:example.org
+synthios matrix direct repair --user-id @alice:example.org
 ```
 
 Repair keeps the Matrix-specific logic inside the plugin:
@@ -466,7 +466,7 @@ Matrix supports outbound reaction actions, inbound reaction notifications, and i
 - `emoji=""` removes the bot account's own reactions on that event.
 - `remove: true` removes only the specified emoji reaction from the bot account.
 
-Ack reactions use the standard OpenClaw resolution order:
+Ack reactions use the standard Synthios resolution order:
 
 - `channels["matrix"].accounts.<accountId>.ackReaction`
 - `channels["matrix"].ackReaction`
@@ -518,11 +518,11 @@ See [Groups](/channels/groups) for mention-gating and allowlist behavior.
 Pairing example for Matrix DMs:
 
 ```bash
-openclaw pairing list matrix
-openclaw pairing approve matrix <CODE>
+synthios pairing list matrix
+synthios pairing approve matrix <CODE>
 ```
 
-If an unapproved Matrix user keeps messaging you before approval, OpenClaw reuses the same pending pairing code and may send a reminder reply again after a short cooldown instead of minting a new code.
+If an unapproved Matrix user keeps messaging you before approval, Synthios reuses the same pending pairing code and may send a reminder reply again after a short cooldown instead of minting a new code.
 
 See [Pairing](/channels/pairing) for the shared DM pairing flow and storage layout.
 
@@ -556,13 +556,13 @@ See [Pairing](/channels/pairing) for the shared DM pairing flow and storage layo
 ```
 
 Top-level `channels.matrix` values act as defaults for named accounts unless an account overrides them.
-Set `defaultAccount` when you want OpenClaw to prefer one named Matrix account for implicit routing, probing, and CLI operations.
+Set `defaultAccount` when you want Synthios to prefer one named Matrix account for implicit routing, probing, and CLI operations.
 If you configure multiple named accounts, set `defaultAccount` or pass `--account <id>` for CLI commands that rely on implicit account selection.
-Pass `--account <id>` to `openclaw matrix verify ...` and `openclaw matrix devices ...` when you want to override that implicit selection for one command.
+Pass `--account <id>` to `synthios matrix verify ...` and `synthios matrix devices ...` when you want to override that implicit selection for one command.
 
 ## Target resolution
 
-Matrix accepts these target forms anywhere OpenClaw asks you for a room or user target:
+Matrix accepts these target forms anywhere Synthios asks you for a room or user target:
 
 - Users: `@user:server`, `user:@user:server`, or `matrix:user:@user:server`
 - Rooms: `!room:server`, `room:!room:server`, or `matrix:room:!room:server`
@@ -605,7 +605,7 @@ Live directory lookup uses the logged-in Matrix account:
 - `reactionNotifications`: inbound reaction notification mode (`own`, `off`).
 - `mediaMaxMb`: outbound media size cap in MB.
 - `autoJoin`: invite auto-join policy (`always`, `allowlist`, `off`). Default: `off`.
-- `autoJoinAllowlist`: rooms/aliases allowed when `autoJoin` is `allowlist`. Alias entries are resolved to room IDs during invite handling; OpenClaw does not trust alias state claimed by the invited room.
+- `autoJoinAllowlist`: rooms/aliases allowed when `autoJoin` is `allowlist`. Alias entries are resolved to room IDs during invite handling; Synthios does not trust alias state claimed by the invited room.
 - `dm`: DM policy block (`enabled`, `policy`, `allowFrom`).
 - `dm.allowFrom` entries should be full Matrix user IDs unless you already resolved them through live directory lookup.
 - `accounts`: named per-account overrides. Top-level `channels.matrix` values act as defaults for these entries.

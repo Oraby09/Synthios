@@ -1,14 +1,14 @@
-import { loadConfig, type OpenClawConfig } from "openclaw/plugin-sdk/config-runtime";
-import { resolveMarkdownTableMode } from "openclaw/plugin-sdk/config-runtime";
-import { kindFromMime } from "openclaw/plugin-sdk/media-runtime";
-import { resolveOutboundAttachmentFromUrl } from "openclaw/plugin-sdk/media-runtime";
+import { loadConfig, type SynthiosConfig } from "synthios/plugin-sdk/config-runtime";
+import { resolveMarkdownTableMode } from "synthios/plugin-sdk/config-runtime";
+import { kindFromMime } from "synthios/plugin-sdk/media-runtime";
+import { resolveOutboundAttachmentFromUrl } from "synthios/plugin-sdk/media-runtime";
 import { resolveSignalAccount } from "./accounts.js";
 import { signalRpcRequest } from "./client.js";
 import { markdownToSignalText, type SignalTextStyleRange } from "./format.js";
 import { resolveSignalRpcContext } from "./rpc-context.js";
 
 export type SignalSendOpts = {
-  cfg?: OpenClawConfig;
+  cfg?: SynthiosConfig;
   baseUrl?: string;
   account?: string;
   accountId?: string;

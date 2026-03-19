@@ -1,12 +1,12 @@
-import { createActionGate } from "openclaw/plugin-sdk/agent-runtime";
+import { createActionGate } from "synthios/plugin-sdk/agent-runtime";
 import type {
   ChannelMessageActionName,
   ChannelToolSend,
-} from "openclaw/plugin-sdk/channel-runtime";
-import type { OpenClawConfig } from "openclaw/plugin-sdk/config-runtime";
+} from "synthios/plugin-sdk/channel-runtime";
+import type { SynthiosConfig } from "synthios/plugin-sdk/config-runtime";
 import { listEnabledSlackAccounts } from "./accounts.js";
 
-export function listSlackMessageActions(cfg: OpenClawConfig): ChannelMessageActionName[] {
+export function listSlackMessageActions(cfg: SynthiosConfig): ChannelMessageActionName[] {
   const accounts = listEnabledSlackAccounts(cfg).filter(
     (account) => account.botTokenSource !== "none",
   );

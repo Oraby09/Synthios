@@ -2,11 +2,11 @@ import {
   resolveChannelGroupRequireMention,
   resolveChannelGroupToolsPolicy,
   type GroupToolPolicyConfig,
-} from "openclaw/plugin-sdk/channel-policy";
-import type { OpenClawConfig } from "./runtime-api.js";
+} from "synthios/plugin-sdk/channel-policy";
+import type { SynthiosConfig } from "./runtime-api.js";
 
 type WhatsAppGroupContext = {
-  cfg: OpenClawConfig;
+  cfg: SynthiosConfig;
   accountId?: string | null;
   groupId?: string | null;
   senderId?: string | null;

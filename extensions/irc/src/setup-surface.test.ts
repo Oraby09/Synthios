@@ -25,19 +25,19 @@ describe("irc setup wizard", () => {
           return "6697";
         }
         if (message === "IRC nick") {
-          return "openclaw-bot";
+          return "synthios-bot";
         }
         if (message === "IRC username") {
-          return "openclaw";
+          return "synthios";
         }
         if (message === "IRC real name") {
-          return "OpenClaw Bot";
+          return "Synthios Bot";
         }
         if (message.startsWith("Auto-join IRC channels")) {
-          return "#openclaw, #ops";
+          return "#synthios, #ops";
         }
         if (message.startsWith("IRC channels allowlist")) {
-          return "#openclaw, #ops";
+          return "#synthios, #ops";
         }
         throw new Error(`Unexpected prompt: ${message}`);
       }) as WizardPrompter["text"],
@@ -67,11 +67,11 @@ describe("irc setup wizard", () => {
     expect(result.accountId).toBe("default");
     expect(result.cfg.channels?.irc?.enabled).toBe(true);
     expect(result.cfg.channels?.irc?.host).toBe("irc.libera.chat");
-    expect(result.cfg.channels?.irc?.nick).toBe("openclaw-bot");
+    expect(result.cfg.channels?.irc?.nick).toBe("synthios-bot");
     expect(result.cfg.channels?.irc?.tls).toBe(true);
-    expect(result.cfg.channels?.irc?.channels).toEqual(["#openclaw", "#ops"]);
+    expect(result.cfg.channels?.irc?.channels).toEqual(["#synthios", "#ops"]);
     expect(result.cfg.channels?.irc?.groupPolicy).toBe("allowlist");
-    expect(Object.keys(result.cfg.channels?.irc?.groups ?? {})).toEqual(["#openclaw", "#ops"]);
+    expect(Object.keys(result.cfg.channels?.irc?.groups ?? {})).toEqual(["#synthios", "#ops"]);
   });
 
   it("writes DM allowFrom to top-level config for non-default account prompts", async () => {
@@ -94,7 +94,7 @@ describe("irc setup wizard", () => {
           accounts: {
             work: {
               host: "irc.libera.chat",
-              nick: "openclaw-work",
+              nick: "synthios-work",
             },
           },
         },

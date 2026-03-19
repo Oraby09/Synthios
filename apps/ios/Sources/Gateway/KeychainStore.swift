@@ -1,5 +1,5 @@
 import Foundation
-import OpenClawKit
+import SynthiosKit
 
 enum KeychainStore {
     static func loadString(service: String, account: String) -> String? {

@@ -1,6 +1,6 @@
-import { definePluginEntry } from "openclaw/plugin-sdk/core";
-import { buildFalImageGenerationProvider } from "openclaw/plugin-sdk/image-generation";
-import { createProviderApiKeyAuthMethod } from "openclaw/plugin-sdk/provider-auth";
+import { definePluginEntry } from "synthios/plugin-sdk/core";
+import { buildFalImageGenerationProvider } from "synthios/plugin-sdk/image-generation";
+import { createProviderApiKeyAuthMethod } from "synthios/plugin-sdk/provider-auth";
 import { applyFalConfig, FAL_DEFAULT_IMAGE_MODEL_REF } from "./onboard.js";
 
 const PROVIDER_ID = "fal";

@@ -1,5 +1,5 @@
-import type { CommandArgs } from "openclaw/plugin-sdk/reply-runtime";
-import { finalizeInboundContext } from "openclaw/plugin-sdk/reply-runtime";
+import type { CommandArgs } from "synthios/plugin-sdk/reply-runtime";
+import { finalizeInboundContext } from "synthios/plugin-sdk/reply-runtime";
 import { type DiscordChannelConfigResolved, type DiscordGuildEntryResolved } from "./allow-list.js";
 import { buildDiscordInboundAccessContext } from "./inbound-context.js";
 

@@ -1,6 +1,6 @@
 import { format } from "node:util";
-import { redactSensitiveText } from "openclaw/plugin-sdk/diagnostics-otel";
-import type { RuntimeLogger } from "openclaw/plugin-sdk/plugin-runtime";
+import { redactSensitiveText } from "synthios/plugin-sdk/diagnostics-otel";
+import type { RuntimeLogger } from "synthios/plugin-sdk/plugin-runtime";
 import { getMatrixRuntime } from "../../runtime.js";
 
 export type Logger = {

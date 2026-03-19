@@ -1,5 +1,5 @@
 import Foundation
-import OpenClawKit
+import SynthiosKit
 
 struct TalkModeGatewayConfigState {
     let activeProvider: String

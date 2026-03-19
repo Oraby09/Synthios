@@ -1,4 +1,4 @@
-import { runPassiveAccountLifecycle } from "openclaw/plugin-sdk/channel-runtime";
+import { runPassiveAccountLifecycle } from "synthios/plugin-sdk/channel-runtime";
 
 type StoppableMonitor = {
   stop: () => void;

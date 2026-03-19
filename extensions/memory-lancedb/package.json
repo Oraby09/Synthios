@@ -1,14 +1,14 @@
 {
-  "name": "@openclaw/memory-lancedb",
+  "name": "@synthios/memory-lancedb",
   "version": "2026.3.14",
-  "description": "OpenClaw LanceDB-backed long-term memory plugin with auto-recall/capture",
+  "description": "Synthios LanceDB-backed long-term memory plugin with auto-recall/capture",
   "type": "module",
   "dependencies": {
     "@lancedb/lancedb": "^0.27.0",
     "@sinclair/typebox": "0.34.48",
     "openai": "^6.32.0"
   },
-  "openclaw": {
+  "synthios": {
     "extensions": [
       "./index.ts"
     ],

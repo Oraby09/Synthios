@@ -1,11 +1,11 @@
 import { describe, expect, it, vi } from "vitest";
-import type { OpenClawConfig, PluginRuntime, RuntimeEnv } from "../../runtime-api.js";
+import type { SynthiosConfig, PluginRuntime, RuntimeEnv } from "../../runtime-api.js";
 import type { MSTeamsMessageHandlerDeps } from "../monitor-handler.js";
 import { setMSTeamsRuntime } from "../runtime.js";
 import { createMSTeamsMessageHandler } from "./message-handler.js";
 
 describe("msteams monitor handler authz", () => {
-  function createDeps(cfg: OpenClawConfig) {
+  function createDeps(cfg: SynthiosConfig) {
     const readAllowFromStore = vi.fn(async () => ["attacker-aad"]);
     setMSTeamsRuntime({
       logging: { shouldLogVerbose: () => false },
@@ -69,7 +69,7 @@ describe("msteams monitor handler authz", () => {
           groupAllowFrom: [],
         },
       },
-    } as OpenClawConfig);
+    } as SynthiosConfig);
 
     const handler = createMSTeamsMessageHandler(deps);
     await handler({
@@ -120,7 +120,7 @@ describe("msteams monitor handler authz", () => {
           },
         },
       },
-    } as OpenClawConfig);
+    } as SynthiosConfig);
 
     const handler = createMSTeamsMessageHandler(deps);
     await handler({

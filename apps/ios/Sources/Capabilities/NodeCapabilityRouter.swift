@@ -1,5 +1,5 @@
 import Foundation
-import OpenClawKit
+import SynthiosKit
 
 @MainActor
 final class NodeCapabilityRouter {

@@ -2,9 +2,9 @@ import {
   firstDefined,
   isSenderIdAllowed,
   mergeDmAllowFromSources,
-} from "openclaw/plugin-sdk/channel-runtime";
-import type { AllowlistMatch } from "openclaw/plugin-sdk/channel-runtime";
-import { createSubsystemLogger } from "openclaw/plugin-sdk/runtime-env";
+} from "synthios/plugin-sdk/channel-runtime";
+import type { AllowlistMatch } from "synthios/plugin-sdk/channel-runtime";
+import { createSubsystemLogger } from "synthios/plugin-sdk/runtime-env";
 
 export type NormalizedAllowFrom = {
   entries: string[];

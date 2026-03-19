@@ -1,8 +1,8 @@
 {
-  "name": "@openclaw/googlechat",
+  "name": "@synthios/googlechat",
   "version": "2026.3.14",
   "private": true,
-  "description": "OpenClaw Google Chat channel plugin",
+  "description": "Synthios Google Chat channel plugin",
   "type": "module",
   "dependencies": {
     "google-auth-library": "^10.6.2"
@@ -15,7 +15,7 @@
       "optional": true
     }
   },
-  "openclaw": {
+  "synthios": {
     "extensions": [
       "./index.ts"
     ],

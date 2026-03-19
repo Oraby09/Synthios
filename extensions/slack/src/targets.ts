@@ -6,7 +6,7 @@ import {
   type MessagingTarget,
   type MessagingTargetKind,
   type MessagingTargetParseOptions,
-} from "openclaw/plugin-sdk/channel-runtime";
+} from "synthios/plugin-sdk/channel-runtime";
 
 export type SlackTargetKind = MessagingTargetKind;
 

@@ -1,1 +1,1 @@
-export * from "openclaw/plugin-sdk/nostr";
+export * from "synthios/plugin-sdk/nostr";

@@ -1,10 +1,10 @@
 import {
   createScopedChannelConfigAdapter,
   createScopedDmSecurityResolver,
-} from "openclaw/plugin-sdk/channel-config-helpers";
-import { createAllowlistProviderRouteAllowlistWarningCollector } from "openclaw/plugin-sdk/channel-policy";
-import { createChannelPluginBase } from "openclaw/plugin-sdk/core";
-import { createDelegatedSetupWizardProxy } from "openclaw/plugin-sdk/setup";
+} from "synthios/plugin-sdk/channel-config-helpers";
+import { createAllowlistProviderRouteAllowlistWarningCollector } from "synthios/plugin-sdk/channel-policy";
+import { createChannelPluginBase } from "synthios/plugin-sdk/core";
+import { createDelegatedSetupWizardProxy } from "synthios/plugin-sdk/setup";
 import {
   buildChannelConfigSchema,
   formatWhatsAppConfigAllowFromEntries,
@@ -15,7 +15,7 @@ import {
   resolveWhatsAppGroupToolPolicy,
   WhatsAppConfigSchema,
   type ChannelPlugin,
-} from "openclaw/plugin-sdk/whatsapp-core";
+} from "synthios/plugin-sdk/whatsapp-core";
 import {
   listWhatsAppAccountIds,
   resolveDefaultWhatsAppAccountId,

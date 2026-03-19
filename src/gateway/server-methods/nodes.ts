@@ -420,8 +420,8 @@ export async function maybeSendNodeWakeNudge(nodeId: string): Promise<NodeWakeNu
       result = await sendApnsAlert({
         registration,
         nodeId,
-        title: "OpenClaw needs a quick reopen",
-        body: "Tap to reopen OpenClaw and restore the node connection.",
+        title: "Synthios needs a quick reopen",
+        body: "Tap to reopen Synthios and restore the node connection.",
         relayConfig: relay.relayConfig,
       });
     } else {
@@ -437,8 +437,8 @@ export async function maybeSendNodeWakeNudge(nodeId: string): Promise<NodeWakeNu
       result = await sendApnsAlert({
         registration,
         nodeId,
-        title: "OpenClaw needs a quick reopen",
-        body: "Tap to reopen OpenClaw and restore the node connection.",
+        title: "Synthios needs a quick reopen",
+        body: "Tap to reopen Synthios and restore the node connection.",
         auth: auth.auth,
       });
     }

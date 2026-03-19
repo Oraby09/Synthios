@@ -1,9 +1,9 @@
-import { OPENCODE_GO_DEFAULT_MODEL_REF } from "openclaw/plugin-sdk/provider-models";
+import { OPENCODE_GO_DEFAULT_MODEL_REF } from "synthios/plugin-sdk/provider-models";
 import {
   applyAgentDefaultModelPrimary,
   withAgentModelAliases,
-  type OpenClawConfig,
-} from "openclaw/plugin-sdk/provider-onboard";
+  type SynthiosConfig,
+} from "synthios/plugin-sdk/provider-onboard";
 
 export { OPENCODE_GO_DEFAULT_MODEL_REF };
 
@@ -13,7 +13,7 @@ const OPENCODE_GO_ALIAS_DEFAULTS: Record<string, string> = {
   "opencode-go/minimax-m2.5": "MiniMax",
 };
 
-export function applyOpencodeGoProviderConfig(cfg: OpenClawConfig): OpenClawConfig {
+export function applyOpencodeGoProviderConfig(cfg: SynthiosConfig): SynthiosConfig {
   return {
     ...cfg,
     agents: {
@@ -32,7 +32,7 @@ export function applyOpencodeGoProviderConfig(cfg: OpenClawConfig): OpenClawConf
   };
 }
 
-export function applyOpencodeGoConfig(cfg: OpenClawConfig): OpenClawConfig {
+export function applyOpencodeGoConfig(cfg: SynthiosConfig): SynthiosConfig {
   return applyAgentDefaultModelPrimary(
     applyOpencodeGoProviderConfig(cfg),
     OPENCODE_GO_DEFAULT_MODEL_REF,

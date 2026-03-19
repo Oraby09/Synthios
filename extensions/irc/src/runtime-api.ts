@@ -1,1 +1,1 @@
-export * from "openclaw/plugin-sdk/irc";
+export * from "synthios/plugin-sdk/irc";

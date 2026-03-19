@@ -1,1 +1,1 @@
-export * from "openclaw/plugin-sdk/zalo";
+export * from "synthios/plugin-sdk/zalo";

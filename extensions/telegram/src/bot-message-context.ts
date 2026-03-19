@@ -1,17 +1,17 @@
-import { resolveAckReaction } from "openclaw/plugin-sdk/agent-runtime";
-import { shouldAckReaction as shouldAckReactionGate } from "openclaw/plugin-sdk/channel-runtime";
-import { logInboundDrop } from "openclaw/plugin-sdk/channel-runtime";
+import { resolveAckReaction } from "synthios/plugin-sdk/agent-runtime";
+import { shouldAckReaction as shouldAckReactionGate } from "synthios/plugin-sdk/channel-runtime";
+import { logInboundDrop } from "synthios/plugin-sdk/channel-runtime";
 import {
   createStatusReactionController,
   type StatusReactionController,
-} from "openclaw/plugin-sdk/channel-runtime";
-import { loadConfig } from "openclaw/plugin-sdk/config-runtime";
-import type { TelegramDirectConfig, TelegramGroupConfig } from "openclaw/plugin-sdk/config-runtime";
-import { ensureConfiguredBindingRouteReady } from "openclaw/plugin-sdk/conversation-runtime";
-import { recordChannelActivity } from "openclaw/plugin-sdk/infra-runtime";
-import { deriveLastRoutePolicy } from "openclaw/plugin-sdk/routing";
-import { DEFAULT_ACCOUNT_ID, resolveThreadSessionKeys } from "openclaw/plugin-sdk/routing";
-import { logVerbose } from "openclaw/plugin-sdk/runtime-env";
+} from "synthios/plugin-sdk/channel-runtime";
+import { loadConfig } from "synthios/plugin-sdk/config-runtime";
+import type { TelegramDirectConfig, TelegramGroupConfig } from "synthios/plugin-sdk/config-runtime";
+import { ensureConfiguredBindingRouteReady } from "synthios/plugin-sdk/conversation-runtime";
+import { recordChannelActivity } from "synthios/plugin-sdk/infra-runtime";
+import { deriveLastRoutePolicy } from "synthios/plugin-sdk/routing";
+import { DEFAULT_ACCOUNT_ID, resolveThreadSessionKeys } from "synthios/plugin-sdk/routing";
+import { logVerbose } from "synthios/plugin-sdk/runtime-env";
 import { withTelegramApiErrorLogging } from "./api-logging.js";
 import { firstDefined, normalizeAllowFrom, normalizeDmAllowFromWithStore } from "./bot-access.js";
 import { resolveTelegramInboundBody } from "./bot-message-context.body.js";

@@ -1,4 +1,4 @@
-import { requireChannelOpenAllowFrom } from "openclaw/plugin-sdk/extension-shared";
+import { requireChannelOpenAllowFrom } from "synthios/plugin-sdk/extension-shared";
 import { z } from "zod";
 import {
   BlockStreamingCoalesceSchema,

@@ -1,8 +1,8 @@
-import { definePluginEntry } from "openclaw/plugin-sdk/plugin-entry";
-import { createProviderApiKeyAuthMethod } from "openclaw/plugin-sdk/provider-auth-api-key";
-import { buildSingleProviderApiKeyCatalog } from "openclaw/plugin-sdk/provider-catalog";
-import { applyXaiModelCompat } from "openclaw/plugin-sdk/provider-models";
-import { createToolStreamWrapper } from "openclaw/plugin-sdk/provider-stream";
+import { definePluginEntry } from "synthios/plugin-sdk/plugin-entry";
+import { createProviderApiKeyAuthMethod } from "synthios/plugin-sdk/provider-auth-api-key";
+import { buildSingleProviderApiKeyCatalog } from "synthios/plugin-sdk/provider-catalog";
+import { applyXaiModelCompat } from "synthios/plugin-sdk/provider-models";
+import { createToolStreamWrapper } from "synthios/plugin-sdk/provider-stream";
 import { applyXaiConfig, XAI_DEFAULT_MODEL_REF } from "./onboard.js";
 import { buildXaiProvider } from "./provider-catalog.js";
 import { isModernXaiModel, resolveXaiForwardCompatModel } from "./provider-models.js";

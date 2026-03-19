@@ -1,17 +1,17 @@
 import {
   applyProviderConfigWithDefaultModelsPreset,
-  type OpenClawConfig,
-} from "openclaw/plugin-sdk/provider-onboard";
+  type SynthiosConfig,
+} from "synthios/plugin-sdk/provider-onboard";
 import { XAI_BASE_URL, XAI_DEFAULT_MODEL_ID } from "./model-definitions.js";
 import { buildXaiCatalogModels } from "./model-definitions.js";
 
 export const XAI_DEFAULT_MODEL_REF = `xai/${XAI_DEFAULT_MODEL_ID}`;
 
 function applyXaiProviderConfigWithApi(
-  cfg: OpenClawConfig,
+  cfg: SynthiosConfig,
   api: "openai-completions" | "openai-responses",
   primaryModelRef?: string,
-): OpenClawConfig {
+): SynthiosConfig {
   return applyProviderConfigWithDefaultModelsPreset(cfg, {
     providerId: "xai",
     api,
@@ -23,14 +23,14 @@ function applyXaiProviderConfigWithApi(
   });
 }
 
-export function applyXaiProviderConfig(cfg: OpenClawConfig): OpenClawConfig {
+export function applyXaiProviderConfig(cfg: SynthiosConfig): SynthiosConfig {
   return applyXaiProviderConfigWithApi(cfg, "openai-completions");
 }
 
-export function applyXaiResponsesApiConfig(cfg: OpenClawConfig): OpenClawConfig {
+export function applyXaiResponsesApiConfig(cfg: SynthiosConfig): SynthiosConfig {
   return applyXaiProviderConfigWithApi(cfg, "openai-responses");
 }
 
-export function applyXaiConfig(cfg: OpenClawConfig): OpenClawConfig {
+export function applyXaiConfig(cfg: SynthiosConfig): SynthiosConfig {
   return applyXaiProviderConfigWithApi(cfg, "openai-completions", XAI_DEFAULT_MODEL_REF);
 }

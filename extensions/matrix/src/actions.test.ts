@@ -1,4 +1,4 @@
-import type { PluginRuntime } from "openclaw/plugin-sdk/matrix";
+import type { PluginRuntime } from "synthios/plugin-sdk/matrix";
 import { beforeEach, describe, expect, it } from "vitest";
 import { matrixMessageActions } from "./actions.js";
 import { setMatrixRuntime } from "./runtime.js";
@@ -20,7 +20,7 @@ const runtimeStub = {
     resizeToJpeg: async () => Buffer.from(""),
   },
   state: {
-    resolveStateDir: () => "/tmp/openclaw-matrix-test",
+    resolveStateDir: () => "/tmp/synthios-matrix-test",
   },
   channel: {
     text: {

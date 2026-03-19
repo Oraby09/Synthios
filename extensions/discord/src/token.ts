@@ -1,7 +1,7 @@
-import type { BaseTokenResolution } from "openclaw/plugin-sdk/channel-runtime";
-import type { OpenClawConfig } from "openclaw/plugin-sdk/config-runtime";
-import { normalizeResolvedSecretInputString } from "openclaw/plugin-sdk/config-runtime";
-import { DEFAULT_ACCOUNT_ID, normalizeAccountId } from "openclaw/plugin-sdk/routing";
+import type { BaseTokenResolution } from "synthios/plugin-sdk/channel-runtime";
+import type { SynthiosConfig } from "synthios/plugin-sdk/config-runtime";
+import { normalizeResolvedSecretInputString } from "synthios/plugin-sdk/config-runtime";
+import { DEFAULT_ACCOUNT_ID, normalizeAccountId } from "synthios/plugin-sdk/routing";
 
 export type DiscordTokenSource = "env" | "config" | "none";
 
@@ -18,7 +18,7 @@ export function normalizeDiscordToken(raw: unknown, path: string): string | unde
 }
 
 export function resolveDiscordToken(
-  cfg?: OpenClawConfig,
+  cfg?: SynthiosConfig,
   opts: { accountId?: string | null; envToken?: string | null } = {},
 ): DiscordTokenResolution {
   const accountId = normalizeAccountId(opts.accountId);

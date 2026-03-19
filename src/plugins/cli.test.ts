@@ -1,15 +1,15 @@
 import { Command } from "commander";
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import type { OpenClawConfig } from "../config/config.js";
+import type { SynthiosConfig } from "../config/config.js";
 
 const mocks = vi.hoisted(() => ({
   memoryRegister: vi.fn(),
   otherRegister: vi.fn(),
-  loadOpenClawPlugins: vi.fn(),
+  loadSynthiosPlugins: vi.fn(),
 }));
 
 vi.mock("./loader.js", () => ({
-  loadOpenClawPlugins: (...args: unknown[]) => mocks.loadOpenClawPlugins(...args),
+  loadSynthiosPlugins: (...args: unknown[]) => mocks.loadSynthiosPlugins(...args),
 }));
 
 import { registerPluginCliCommands } from "./cli.js";
@@ -18,8 +18,8 @@ describe("registerPluginCliCommands", () => {
   beforeEach(() => {
     mocks.memoryRegister.mockClear();
     mocks.otherRegister.mockClear();
-    mocks.loadOpenClawPlugins.mockReset();
-    mocks.loadOpenClawPlugins.mockReturnValue({
+    mocks.loadSynthiosPlugins.mockReset();
+    mocks.loadSynthiosPlugins.mockReturnValue({
       cliRegistrars: [
         {
           pluginId: "memory-core",
@@ -50,11 +50,11 @@ describe("registerPluginCliCommands", () => {
 
   it("forwards an explicit env to plugin loading", () => {
     const program = new Command();
-    const env = { OPENCLAW_HOME: "/srv/openclaw-home" } as NodeJS.ProcessEnv;
+    const env = { SYNTHIOS_HOME: "/srv/synthios-home" } as NodeJS.ProcessEnv;
 
-    registerPluginCliCommands(program, {} as OpenClawConfig, env);
+    registerPluginCliCommands(program, {} as SynthiosConfig, env);
 
-    expect(mocks.loadOpenClawPlugins).toHaveBeenCalledWith(
+    expect(mocks.loadSynthiosPlugins).toHaveBeenCalledWith(
       expect.objectContaining({
         env,
       }),

@@ -1,9 +1,9 @@
-import { formatNormalizedAllowFromEntries } from "openclaw/plugin-sdk/allow-from";
+import { formatNormalizedAllowFromEntries } from "synthios/plugin-sdk/allow-from";
 import {
   createScopedChannelConfigAdapter,
   createScopedDmSecurityResolver,
-} from "openclaw/plugin-sdk/channel-config-helpers";
-import { createAllowlistProviderRestrictSendersWarningCollector } from "openclaw/plugin-sdk/channel-policy";
+} from "synthios/plugin-sdk/channel-config-helpers";
+import { createAllowlistProviderRestrictSendersWarningCollector } from "synthios/plugin-sdk/channel-policy";
 import {
   createAttachedChannelResultAdapter,
   createChannelDirectoryAdapter,
@@ -11,8 +11,8 @@ import {
   createMessageToolButtonsSchema,
   createScopedAccountReplyToModeResolver,
   type ChannelMessageToolDiscovery,
-} from "openclaw/plugin-sdk/channel-runtime";
-import { buildPassiveProbedChannelStatusSummary } from "openclaw/plugin-sdk/extension-shared";
+} from "synthios/plugin-sdk/channel-runtime";
+import { buildPassiveProbedChannelStatusSummary } from "synthios/plugin-sdk/extension-shared";
 import { MattermostConfigSchema } from "./config-schema.js";
 import { resolveMattermostGroupRequireMention } from "./group-mentions.js";
 import {

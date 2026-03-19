@@ -1,10 +1,10 @@
 {
-  "name": "@openclaw/byteplus-provider",
+  "name": "@synthios/byteplus-provider",
   "version": "2026.3.14",
   "private": true,
-  "description": "OpenClaw BytePlus provider plugin",
+  "description": "Synthios BytePlus provider plugin",
   "type": "module",
-  "openclaw": {
+  "synthios": {
     "extensions": [
       "./index.ts"
     ]

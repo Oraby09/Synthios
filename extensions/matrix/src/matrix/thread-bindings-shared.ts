@@ -1,7 +1,7 @@
 import type {
   BindingTargetKind,
   SessionBindingRecord,
-} from "openclaw/plugin-sdk/conversation-runtime";
+} from "synthios/plugin-sdk/conversation-runtime";
 
 export type MatrixThreadBindingTargetKind = "subagent" | "acp";
 

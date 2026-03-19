@@ -1,11 +1,11 @@
 import type { RunOptions } from "@grammyjs/runner";
-import { resolveAgentMaxConcurrent } from "openclaw/plugin-sdk/config-runtime";
-import type { OpenClawConfig } from "openclaw/plugin-sdk/config-runtime";
-import { loadConfig } from "openclaw/plugin-sdk/config-runtime";
-import { formatErrorMessage } from "openclaw/plugin-sdk/infra-runtime";
-import { waitForAbortSignal } from "openclaw/plugin-sdk/runtime-env";
-import { registerUnhandledRejectionHandler } from "openclaw/plugin-sdk/runtime-env";
-import type { RuntimeEnv } from "openclaw/plugin-sdk/runtime-env";
+import { resolveAgentMaxConcurrent } from "synthios/plugin-sdk/config-runtime";
+import type { SynthiosConfig } from "synthios/plugin-sdk/config-runtime";
+import { loadConfig } from "synthios/plugin-sdk/config-runtime";
+import { formatErrorMessage } from "synthios/plugin-sdk/infra-runtime";
+import { waitForAbortSignal } from "synthios/plugin-sdk/runtime-env";
+import { registerUnhandledRejectionHandler } from "synthios/plugin-sdk/runtime-env";
+import type { RuntimeEnv } from "synthios/plugin-sdk/runtime-env";
 import { resolveTelegramAccount } from "./accounts.js";
 import { resolveTelegramAllowedUpdates } from "./allowed-updates.js";
 import { TelegramExecApprovalHandler } from "./exec-approvals-handler.js";
@@ -22,7 +22,7 @@ import { startTelegramWebhook } from "./webhook.js";
 export type MonitorTelegramOpts = {
   token?: string;
   accountId?: string;
-  config?: OpenClawConfig;
+  config?: SynthiosConfig;
   runtime?: RuntimeEnv;
   abortSignal?: AbortSignal;
   useWebhook?: boolean;
@@ -35,7 +35,7 @@ export type MonitorTelegramOpts = {
   webhookCertPath?: string;
 };
 
-export function createTelegramRunnerOptions(cfg: OpenClawConfig): RunOptions<unknown> {
+export function createTelegramRunnerOptions(cfg: SynthiosConfig): RunOptions<unknown> {
   return {
     sink: {
       concurrency: resolveAgentMaxConcurrent(cfg),

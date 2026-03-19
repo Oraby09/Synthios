@@ -1,11 +1,11 @@
 import os from "node:os";
 import path from "node:path";
-import { normalizeAccountId as normalizeSharedAccountId } from "openclaw/plugin-sdk/account-id";
-import { normalizeProviderId } from "openclaw/plugin-sdk/agent-runtime";
-import { withFileLock } from "openclaw/plugin-sdk/infra-runtime";
-import { resolveRequiredHomeDir } from "openclaw/plugin-sdk/infra-runtime";
-import { readJsonFileWithFallback, writeJsonFileAtomically } from "openclaw/plugin-sdk/json-store";
-import { resolveStateDir } from "openclaw/plugin-sdk/state-paths";
+import { normalizeAccountId as normalizeSharedAccountId } from "synthios/plugin-sdk/account-id";
+import { normalizeProviderId } from "synthios/plugin-sdk/agent-runtime";
+import { withFileLock } from "synthios/plugin-sdk/infra-runtime";
+import { resolveRequiredHomeDir } from "synthios/plugin-sdk/infra-runtime";
+import { readJsonFileWithFallback, writeJsonFileAtomically } from "synthios/plugin-sdk/json-store";
+import { resolveStateDir } from "synthios/plugin-sdk/state-paths";
 
 const MODEL_PICKER_PREFERENCES_LOCK_OPTIONS = {
   retries: {

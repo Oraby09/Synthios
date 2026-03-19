@@ -1,44 +1,44 @@
-import * as bluebubblesSdk from "openclaw/plugin-sdk/bluebubbles";
-import * as channelPairingSdk from "openclaw/plugin-sdk/channel-pairing";
-import * as channelReplyPipelineSdk from "openclaw/plugin-sdk/channel-reply-pipeline";
-import * as channelRuntimeSdk from "openclaw/plugin-sdk/channel-runtime";
-import * as channelSendResultSdk from "openclaw/plugin-sdk/channel-send-result";
-import * as channelSetupSdk from "openclaw/plugin-sdk/channel-setup";
-import * as coreSdk from "openclaw/plugin-sdk/core";
+import * as bluebubblesSdk from "synthios/plugin-sdk/bluebubbles";
+import * as channelPairingSdk from "synthios/plugin-sdk/channel-pairing";
+import * as channelReplyPipelineSdk from "synthios/plugin-sdk/channel-reply-pipeline";
+import * as channelRuntimeSdk from "synthios/plugin-sdk/channel-runtime";
+import * as channelSendResultSdk from "synthios/plugin-sdk/channel-send-result";
+import * as channelSetupSdk from "synthios/plugin-sdk/channel-setup";
+import * as coreSdk from "synthios/plugin-sdk/core";
 import type {
   ChannelMessageActionContext as CoreChannelMessageActionContext,
-  OpenClawPluginApi as CoreOpenClawPluginApi,
+  SynthiosPluginApi as CoreSynthiosPluginApi,
   PluginRuntime as CorePluginRuntime,
-} from "openclaw/plugin-sdk/core";
-import * as directoryRuntimeSdk from "openclaw/plugin-sdk/directory-runtime";
-import * as discordSdk from "openclaw/plugin-sdk/discord";
-import * as imessageSdk from "openclaw/plugin-sdk/imessage";
-import * as imessageCoreSdk from "openclaw/plugin-sdk/imessage-core";
-import * as lazyRuntimeSdk from "openclaw/plugin-sdk/lazy-runtime";
-import * as ollamaSetupSdk from "openclaw/plugin-sdk/ollama-setup";
-import * as providerModelsSdk from "openclaw/plugin-sdk/provider-models";
-import * as providerSetupSdk from "openclaw/plugin-sdk/provider-setup";
-import * as replyPayloadSdk from "openclaw/plugin-sdk/reply-payload";
-import * as routingSdk from "openclaw/plugin-sdk/routing";
-import * as runtimeSdk from "openclaw/plugin-sdk/runtime";
-import * as sandboxSdk from "openclaw/plugin-sdk/sandbox";
-import * as secretInputSdk from "openclaw/plugin-sdk/secret-input";
-import * as selfHostedProviderSetupSdk from "openclaw/plugin-sdk/self-hosted-provider-setup";
-import * as setupSdk from "openclaw/plugin-sdk/setup";
-import * as slackSdk from "openclaw/plugin-sdk/slack";
-import * as telegramSdk from "openclaw/plugin-sdk/telegram";
-import * as testingSdk from "openclaw/plugin-sdk/testing";
-import * as webhookIngressSdk from "openclaw/plugin-sdk/webhook-ingress";
-import * as whatsappSdk from "openclaw/plugin-sdk/whatsapp";
-import * as whatsappActionRuntimeSdk from "openclaw/plugin-sdk/whatsapp-action-runtime";
-import * as whatsappLoginQrSdk from "openclaw/plugin-sdk/whatsapp-login-qr";
+} from "synthios/plugin-sdk/core";
+import * as directoryRuntimeSdk from "synthios/plugin-sdk/directory-runtime";
+import * as discordSdk from "synthios/plugin-sdk/discord";
+import * as imessageSdk from "synthios/plugin-sdk/imessage";
+import * as imessageCoreSdk from "synthios/plugin-sdk/imessage-core";
+import * as lazyRuntimeSdk from "synthios/plugin-sdk/lazy-runtime";
+import * as ollamaSetupSdk from "synthios/plugin-sdk/ollama-setup";
+import * as providerModelsSdk from "synthios/plugin-sdk/provider-models";
+import * as providerSetupSdk from "synthios/plugin-sdk/provider-setup";
+import * as replyPayloadSdk from "synthios/plugin-sdk/reply-payload";
+import * as routingSdk from "synthios/plugin-sdk/routing";
+import * as runtimeSdk from "synthios/plugin-sdk/runtime";
+import * as sandboxSdk from "synthios/plugin-sdk/sandbox";
+import * as secretInputSdk from "synthios/plugin-sdk/secret-input";
+import * as selfHostedProviderSetupSdk from "synthios/plugin-sdk/self-hosted-provider-setup";
+import * as setupSdk from "synthios/plugin-sdk/setup";
+import * as slackSdk from "synthios/plugin-sdk/slack";
+import * as telegramSdk from "synthios/plugin-sdk/telegram";
+import * as testingSdk from "synthios/plugin-sdk/testing";
+import * as webhookIngressSdk from "synthios/plugin-sdk/webhook-ingress";
+import * as whatsappSdk from "synthios/plugin-sdk/whatsapp";
+import * as whatsappActionRuntimeSdk from "synthios/plugin-sdk/whatsapp-action-runtime";
+import * as whatsappLoginQrSdk from "synthios/plugin-sdk/whatsapp-login-qr";
 import { describe, expect, expectTypeOf, it } from "vitest";
 import type { ChannelMessageActionContext } from "../channels/plugins/types.js";
 import type { PluginRuntime } from "../plugins/runtime/types.js";
-import type { OpenClawPluginApi } from "../plugins/types.js";
+import type { SynthiosPluginApi } from "../plugins/types.js";
 import type {
   ChannelMessageActionContext as SharedChannelMessageActionContext,
-  OpenClawPluginApi as SharedOpenClawPluginApi,
+  SynthiosPluginApi as SharedSynthiosPluginApi,
   PluginRuntime as SharedPluginRuntime,
 } from "./channel-plugin-common.js";
 import { pluginSdkSubpaths } from "./entrypoints.js";
@@ -47,12 +47,12 @@ const importPluginSdkSubpath = (specifier: string) => import(/* @vite-ignore */ 
 
 const bundledExtensionSubpathLoaders = pluginSdkSubpaths.map((id: string) => ({
   id,
-  load: () => importPluginSdkSubpath(`openclaw/plugin-sdk/${id}`),
+  load: () => importPluginSdkSubpath(`synthios/plugin-sdk/${id}`),
 }));
 
 const asExports = (mod: object) => mod as Record<string, unknown>;
-const accountHelpersSdk = await import("openclaw/plugin-sdk/account-helpers");
-const allowlistEditSdk = await import("openclaw/plugin-sdk/allowlist-config-edit");
+const accountHelpersSdk = await import("synthios/plugin-sdk/account-helpers");
+const allowlistEditSdk = await import("synthios/plugin-sdk/allowlist-config-edit");
 
 describe("plugin-sdk subpath exports", () => {
   it("keeps the curated public list free of internal implementation subpaths", () => {
@@ -193,7 +193,7 @@ describe("plugin-sdk subpath exports", () => {
   });
 
   it("exports shared core types used by bundled channels", () => {
-    expectTypeOf<CoreOpenClawPluginApi>().toMatchTypeOf<OpenClawPluginApi>();
+    expectTypeOf<CoreSynthiosPluginApi>().toMatchTypeOf<SynthiosPluginApi>();
     expectTypeOf<CorePluginRuntime>().toMatchTypeOf<PluginRuntime>();
     expectTypeOf<CoreChannelMessageActionContext>().toMatchTypeOf<ChannelMessageActionContext>();
   });
@@ -204,7 +204,7 @@ describe("plugin-sdk subpath exports", () => {
   });
 
   it("keeps core shared types aligned with the channel prelude", () => {
-    expectTypeOf<CoreOpenClawPluginApi>().toMatchTypeOf<SharedOpenClawPluginApi>();
+    expectTypeOf<CoreSynthiosPluginApi>().toMatchTypeOf<SharedSynthiosPluginApi>();
     expectTypeOf<CorePluginRuntime>().toMatchTypeOf<SharedPluginRuntime>();
     expectTypeOf<CoreChannelMessageActionContext>().toMatchTypeOf<SharedChannelMessageActionContext>();
   });

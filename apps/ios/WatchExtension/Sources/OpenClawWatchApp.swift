@@ -1,7 +1,7 @@
 import SwiftUI
 
 @main
-struct OpenClawWatchApp: App {
+struct SynthiosWatchApp: App {
     @State private var inboxStore = WatchInboxStore()
     @State private var receiver: WatchConnectivityReceiver?
 

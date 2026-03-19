@@ -7,12 +7,12 @@ import {
   makeWASocket,
   useMultiFileAuthState,
 } from "@whiskeysockets/baileys";
-import { formatCliCommand } from "openclaw/plugin-sdk/cli-runtime";
-import { VERSION } from "openclaw/plugin-sdk/cli-runtime";
-import { danger, success } from "openclaw/plugin-sdk/runtime-env";
-import { getChildLogger, toPinoLikeLogger } from "openclaw/plugin-sdk/runtime-env";
-import { ensureDir, resolveUserPath } from "openclaw/plugin-sdk/text-runtime";
 import qrcode from "qrcode-terminal";
+import { formatCliCommand } from "synthios/plugin-sdk/cli-runtime";
+import { VERSION } from "synthios/plugin-sdk/cli-runtime";
+import { danger, success } from "synthios/plugin-sdk/runtime-env";
+import { getChildLogger, toPinoLikeLogger } from "synthios/plugin-sdk/runtime-env";
+import { ensureDir, resolveUserPath } from "synthios/plugin-sdk/text-runtime";
 import {
   maybeRestoreCredsFromBackup,
   readCredsJsonRaw,
@@ -122,7 +122,7 @@ export async function createWaSocket(
     version,
     logger,
     printQRInTerminal: false,
-    browser: ["openclaw", "cli", VERSION],
+    browser: ["synthios", "cli", VERSION],
     syncFullHistory: false,
     markOnlineOnConnect: false,
   });
@@ -145,7 +145,7 @@ export async function createWaSocket(
           if (status === DisconnectReason.loggedOut) {
             console.error(
               danger(
-                `WhatsApp session logged out. Run: ${formatCliCommand("openclaw channels login")}`,
+                `WhatsApp session logged out. Run: ${formatCliCommand("synthios channels login")}`,
               ),
             );
           }

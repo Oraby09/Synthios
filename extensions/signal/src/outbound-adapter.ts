@@ -1,13 +1,13 @@
-import { createScopedChannelMediaMaxBytesResolver } from "openclaw/plugin-sdk/channel-runtime";
-import type { ChannelOutboundAdapter } from "openclaw/plugin-sdk/channel-runtime";
-import { resolveOutboundSendDep, type OutboundSendDeps } from "openclaw/plugin-sdk/channel-runtime";
+import { createScopedChannelMediaMaxBytesResolver } from "synthios/plugin-sdk/channel-runtime";
+import type { ChannelOutboundAdapter } from "synthios/plugin-sdk/channel-runtime";
+import { resolveOutboundSendDep, type OutboundSendDeps } from "synthios/plugin-sdk/channel-runtime";
 import {
   attachChannelToResult,
   attachChannelToResults,
   createAttachedChannelResultAdapter,
-} from "openclaw/plugin-sdk/channel-send-result";
-import { resolveMarkdownTableMode } from "openclaw/plugin-sdk/config-runtime";
-import { resolveTextChunkLimit } from "openclaw/plugin-sdk/reply-runtime";
+} from "synthios/plugin-sdk/channel-send-result";
+import { resolveMarkdownTableMode } from "synthios/plugin-sdk/config-runtime";
+import { resolveTextChunkLimit } from "synthios/plugin-sdk/reply-runtime";
 import { markdownToSignalTextChunks } from "./format.js";
 import { sendMessageSignal } from "./send.js";
 

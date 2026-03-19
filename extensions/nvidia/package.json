@@ -1,10 +1,10 @@
 {
-  "name": "@openclaw/nvidia-provider",
+  "name": "@synthios/nvidia-provider",
   "version": "2026.3.14",
   "private": true,
-  "description": "OpenClaw NVIDIA provider plugin",
+  "description": "Synthios NVIDIA provider plugin",
   "type": "module",
-  "openclaw": {
+  "synthios": {
     "extensions": [
       "./index.ts"
     ]

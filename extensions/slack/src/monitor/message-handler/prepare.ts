@@ -1,32 +1,32 @@
-import { resolveAckReaction } from "openclaw/plugin-sdk/agent-runtime";
+import { resolveAckReaction } from "synthios/plugin-sdk/agent-runtime";
 import {
   shouldAckReaction as shouldAckReactionGate,
   type AckReactionScope,
-} from "openclaw/plugin-sdk/channel-runtime";
-import { resolveControlCommandGate } from "openclaw/plugin-sdk/channel-runtime";
-import { resolveConversationLabel } from "openclaw/plugin-sdk/channel-runtime";
-import { logInboundDrop } from "openclaw/plugin-sdk/channel-runtime";
-import { resolveMentionGatingWithBypass } from "openclaw/plugin-sdk/channel-runtime";
-import { recordInboundSession } from "openclaw/plugin-sdk/channel-runtime";
-import { readSessionUpdatedAt, resolveStorePath } from "openclaw/plugin-sdk/config-runtime";
-import { enqueueSystemEvent } from "openclaw/plugin-sdk/infra-runtime";
-import { hasControlCommand } from "openclaw/plugin-sdk/reply-runtime";
-import { shouldHandleTextCommands } from "openclaw/plugin-sdk/reply-runtime";
+} from "synthios/plugin-sdk/channel-runtime";
+import { resolveControlCommandGate } from "synthios/plugin-sdk/channel-runtime";
+import { resolveConversationLabel } from "synthios/plugin-sdk/channel-runtime";
+import { logInboundDrop } from "synthios/plugin-sdk/channel-runtime";
+import { resolveMentionGatingWithBypass } from "synthios/plugin-sdk/channel-runtime";
+import { recordInboundSession } from "synthios/plugin-sdk/channel-runtime";
+import { readSessionUpdatedAt, resolveStorePath } from "synthios/plugin-sdk/config-runtime";
+import { enqueueSystemEvent } from "synthios/plugin-sdk/infra-runtime";
+import { hasControlCommand } from "synthios/plugin-sdk/reply-runtime";
+import { shouldHandleTextCommands } from "synthios/plugin-sdk/reply-runtime";
 import {
   formatInboundEnvelope,
   resolveEnvelopeFormatOptions,
-} from "openclaw/plugin-sdk/reply-runtime";
+} from "synthios/plugin-sdk/reply-runtime";
 import {
   buildPendingHistoryContextFromMap,
   recordPendingHistoryEntryIfEnabled,
-} from "openclaw/plugin-sdk/reply-runtime";
-import { finalizeInboundContext } from "openclaw/plugin-sdk/reply-runtime";
-import { buildMentionRegexes, matchesMentionWithExplicit } from "openclaw/plugin-sdk/reply-runtime";
-import type { FinalizedMsgContext } from "openclaw/plugin-sdk/reply-runtime";
-import { resolveAgentRoute } from "openclaw/plugin-sdk/routing";
-import { resolveThreadSessionKeys } from "openclaw/plugin-sdk/routing";
-import { logVerbose, shouldLogVerbose } from "openclaw/plugin-sdk/runtime-env";
-import { resolvePinnedMainDmOwnerFromAllowlist } from "openclaw/plugin-sdk/security-runtime";
+} from "synthios/plugin-sdk/reply-runtime";
+import { finalizeInboundContext } from "synthios/plugin-sdk/reply-runtime";
+import { buildMentionRegexes, matchesMentionWithExplicit } from "synthios/plugin-sdk/reply-runtime";
+import type { FinalizedMsgContext } from "synthios/plugin-sdk/reply-runtime";
+import { resolveAgentRoute } from "synthios/plugin-sdk/routing";
+import { resolveThreadSessionKeys } from "synthios/plugin-sdk/routing";
+import { logVerbose, shouldLogVerbose } from "synthios/plugin-sdk/runtime-env";
+import { resolvePinnedMainDmOwnerFromAllowlist } from "synthios/plugin-sdk/security-runtime";
 import { resolveSlackReplyToMode, type ResolvedSlackAccount } from "../../accounts.js";
 import { reactSlackMessage } from "../../actions.js";
 import { sendMessageSlack } from "../../send.js";

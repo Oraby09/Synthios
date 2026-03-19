@@ -1,13 +1,13 @@
-import { ensureAuthProfileStore, listProfilesForProvider } from "openclaw/plugin-sdk/agent-runtime";
+import { ensureAuthProfileStore, listProfilesForProvider } from "synthios/plugin-sdk/agent-runtime";
 import {
   definePluginEntry,
   type ProviderAuthContext,
   type ProviderResolveDynamicModelContext,
   type ProviderRuntimeModel,
-} from "openclaw/plugin-sdk/core";
-import { coerceSecretRef } from "openclaw/plugin-sdk/provider-auth";
-import { githubCopilotLoginCommand } from "openclaw/plugin-sdk/provider-auth-login";
-import { normalizeModelCompat } from "openclaw/plugin-sdk/provider-models";
+} from "synthios/plugin-sdk/core";
+import { coerceSecretRef } from "synthios/plugin-sdk/provider-auth";
+import { githubCopilotLoginCommand } from "synthios/plugin-sdk/provider-auth-login";
+import { normalizeModelCompat } from "synthios/plugin-sdk/provider-models";
 import { DEFAULT_COPILOT_API_BASE_URL, resolveCopilotApiToken } from "./token.js";
 import { fetchCopilotUsage } from "./usage.js";
 

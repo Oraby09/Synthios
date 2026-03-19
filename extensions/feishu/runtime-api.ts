@@ -1,1 +1,1 @@
-export * from "openclaw/plugin-sdk/feishu";
+export * from "synthios/plugin-sdk/feishu";

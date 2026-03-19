@@ -1,20 +1,20 @@
-import { formatNormalizedAllowFromEntries } from "openclaw/plugin-sdk/allow-from";
+import { formatNormalizedAllowFromEntries } from "synthios/plugin-sdk/allow-from";
 import {
   createScopedChannelConfigAdapter,
   createScopedDmSecurityResolver,
-} from "openclaw/plugin-sdk/channel-config-helpers";
+} from "synthios/plugin-sdk/channel-config-helpers";
 import {
   composeWarningCollectors,
   createAllowlistProviderOpenWarningCollector,
   createConditionalWarningCollector,
-} from "openclaw/plugin-sdk/channel-policy";
+} from "synthios/plugin-sdk/channel-policy";
 import {
   createAttachedChannelResultAdapter,
   createChannelDirectoryAdapter,
   createTextPairingAdapter,
   listResolvedDirectoryEntriesFromSources,
-} from "openclaw/plugin-sdk/channel-runtime";
-import { runStoppablePassiveMonitor } from "openclaw/plugin-sdk/extension-shared";
+} from "synthios/plugin-sdk/channel-runtime";
+import { runStoppablePassiveMonitor } from "synthios/plugin-sdk/extension-shared";
 import {
   listIrcAccountIds,
   resolveDefaultIrcAccountId,

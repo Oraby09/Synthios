@@ -1,14 +1,14 @@
-import type { MarkdownTableMode } from "openclaw/plugin-sdk/config-runtime";
+import type { MarkdownTableMode } from "synthios/plugin-sdk/config-runtime";
 import {
   resolveOutboundMediaUrls,
   sendMediaWithLeadingCaption,
-} from "openclaw/plugin-sdk/reply-payload";
-import { chunkMarkdownTextWithMode, type ChunkMode } from "openclaw/plugin-sdk/reply-runtime";
-import type { ReplyPayload } from "openclaw/plugin-sdk/reply-runtime";
-import { logVerbose, shouldLogVerbose } from "openclaw/plugin-sdk/runtime-env";
-import { convertMarkdownTables } from "openclaw/plugin-sdk/text-runtime";
-import { markdownToWhatsApp } from "openclaw/plugin-sdk/text-runtime";
-import { sleep } from "openclaw/plugin-sdk/text-runtime";
+} from "synthios/plugin-sdk/reply-payload";
+import { chunkMarkdownTextWithMode, type ChunkMode } from "synthios/plugin-sdk/reply-runtime";
+import type { ReplyPayload } from "synthios/plugin-sdk/reply-runtime";
+import { logVerbose, shouldLogVerbose } from "synthios/plugin-sdk/runtime-env";
+import { convertMarkdownTables } from "synthios/plugin-sdk/text-runtime";
+import { markdownToWhatsApp } from "synthios/plugin-sdk/text-runtime";
+import { sleep } from "synthios/plugin-sdk/text-runtime";
 import { loadWebMedia } from "../media.js";
 import { newConnectionId } from "../reconnect.js";
 import { formatError } from "../session.js";

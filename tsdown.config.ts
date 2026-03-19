@@ -26,7 +26,7 @@ const env = {
 };
 
 function buildInputOptions(options: InputOptionsArg): InputOptionsReturn {
-  if (process.env.OPENCLAW_BUILD_VERBOSE === "1") {
+  if (process.env.SYNTHIOS_BUILD_VERBOSE === "1") {
     return undefined;
   }
 
@@ -87,7 +87,7 @@ function listBundledPluginBuildEntries(): Record<string, string> {
     }
 
     const pluginDir = path.join(extensionsRoot, dirent.name);
-    const manifestPath = path.join(pluginDir, "openclaw.plugin.json");
+    const manifestPath = path.join(pluginDir, "synthios.plugin.json");
     if (!fs.existsSync(manifestPath)) {
       continue;
     }
@@ -97,17 +97,17 @@ function listBundledPluginBuildEntries(): Record<string, string> {
     if (fs.existsSync(packageJsonPath)) {
       try {
         const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, "utf8")) as {
-          openclaw?: { extensions?: unknown; setupEntry?: unknown };
+          synthios?: { extensions?: unknown; setupEntry?: unknown };
         };
-        packageEntries = Array.isArray(packageJson.openclaw?.extensions)
-          ? packageJson.openclaw.extensions.filter(
+        packageEntries = Array.isArray(packageJson.synthios?.extensions)
+          ? packageJson.synthios.extensions.filter(
               (entry): entry is string => typeof entry === "string" && entry.trim().length > 0,
             )
           : [];
         const setupEntry =
-          typeof packageJson.openclaw?.setupEntry === "string" &&
-          packageJson.openclaw.setupEntry.trim().length > 0
-            ? packageJson.openclaw.setupEntry
+          typeof packageJson.synthios?.setupEntry === "string" &&
+          packageJson.synthios.setupEntry.trim().length > 0
+            ? packageJson.synthios.setupEntry
             : undefined;
         if (setupEntry) {
           packageEntries = Array.from(new Set([...packageEntries, setupEntry]));

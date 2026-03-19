@@ -1234,8 +1234,8 @@ describe("applyExtraParamsToAgent", () => {
 
     expect(calls).toHaveLength(1);
     expect(calls[0]?.headers).toEqual({
-      "HTTP-Referer": "https://openclaw.ai",
-      "X-OpenRouter-Title": "OpenClaw",
+      "HTTP-Referer": "https://synthios.ai",
+      "X-OpenRouter-Title": "Synthios",
       "X-OpenRouter-Categories": "cli-agent",
       "X-Custom": "1",
     });

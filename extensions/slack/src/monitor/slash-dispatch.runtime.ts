@@ -1,28 +1,28 @@
 import {
   recordInboundSessionMetaSafe as recordInboundSessionMetaSafeImpl,
   resolveConversationLabel as resolveConversationLabelImpl,
-} from "openclaw/plugin-sdk/channel-runtime";
-import { resolveMarkdownTableMode as resolveMarkdownTableModeImpl } from "openclaw/plugin-sdk/config-runtime";
+} from "synthios/plugin-sdk/channel-runtime";
+import { resolveMarkdownTableMode as resolveMarkdownTableModeImpl } from "synthios/plugin-sdk/config-runtime";
 import {
   dispatchReplyWithDispatcher as dispatchReplyWithDispatcherImpl,
   finalizeInboundContext as finalizeInboundContextImpl,
   resolveChunkMode as resolveChunkModeImpl,
-} from "openclaw/plugin-sdk/reply-runtime";
-import { resolveAgentRoute as resolveAgentRouteImpl } from "openclaw/plugin-sdk/routing";
+} from "synthios/plugin-sdk/reply-runtime";
+import { resolveAgentRoute as resolveAgentRouteImpl } from "synthios/plugin-sdk/routing";
 import { deliverSlackSlashReplies as deliverSlackSlashRepliesImpl } from "./replies.js";
 
-type ResolveChunkMode = typeof import("openclaw/plugin-sdk/reply-runtime").resolveChunkMode;
+type ResolveChunkMode = typeof import("synthios/plugin-sdk/reply-runtime").resolveChunkMode;
 type FinalizeInboundContext =
-  typeof import("openclaw/plugin-sdk/reply-runtime").finalizeInboundContext;
+  typeof import("synthios/plugin-sdk/reply-runtime").finalizeInboundContext;
 type DispatchReplyWithDispatcher =
-  typeof import("openclaw/plugin-sdk/reply-runtime").dispatchReplyWithDispatcher;
+  typeof import("synthios/plugin-sdk/reply-runtime").dispatchReplyWithDispatcher;
 type ResolveConversationLabel =
-  typeof import("openclaw/plugin-sdk/channel-runtime").resolveConversationLabel;
+  typeof import("synthios/plugin-sdk/channel-runtime").resolveConversationLabel;
 type RecordInboundSessionMetaSafe =
-  typeof import("openclaw/plugin-sdk/channel-runtime").recordInboundSessionMetaSafe;
+  typeof import("synthios/plugin-sdk/channel-runtime").recordInboundSessionMetaSafe;
 type ResolveMarkdownTableMode =
-  typeof import("openclaw/plugin-sdk/config-runtime").resolveMarkdownTableMode;
-type ResolveAgentRoute = typeof import("openclaw/plugin-sdk/routing").resolveAgentRoute;
+  typeof import("synthios/plugin-sdk/config-runtime").resolveMarkdownTableMode;
+type ResolveAgentRoute = typeof import("synthios/plugin-sdk/routing").resolveAgentRoute;
 type DeliverSlackSlashReplies = typeof import("./replies.js").deliverSlackSlashReplies;
 
 export function resolveChunkMode(

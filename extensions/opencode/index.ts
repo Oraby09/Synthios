@@ -1,6 +1,6 @@
-import { definePluginEntry } from "openclaw/plugin-sdk/core";
-import { createProviderApiKeyAuthMethod } from "openclaw/plugin-sdk/provider-auth";
-import { OPENCODE_ZEN_DEFAULT_MODEL } from "openclaw/plugin-sdk/provider-models";
+import { definePluginEntry } from "synthios/plugin-sdk/core";
+import { createProviderApiKeyAuthMethod } from "synthios/plugin-sdk/provider-auth";
+import { OPENCODE_ZEN_DEFAULT_MODEL } from "synthios/plugin-sdk/provider-models";
 import { applyOpencodeZenConfig } from "./onboard.js";
 
 const PROVIDER_ID = "opencode";

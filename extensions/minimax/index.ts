@@ -4,14 +4,14 @@ import {
   type ProviderAuthContext,
   type ProviderAuthResult,
   type ProviderCatalogContext,
-} from "openclaw/plugin-sdk/minimax-portal-auth";
+} from "synthios/plugin-sdk/minimax-portal-auth";
 import {
   MINIMAX_OAUTH_MARKER,
   createProviderApiKeyAuthMethod,
   ensureAuthProfileStore,
   listProfilesForProvider,
-} from "openclaw/plugin-sdk/provider-auth";
-import { fetchMinimaxUsage } from "openclaw/plugin-sdk/provider-usage";
+} from "synthios/plugin-sdk/provider-auth";
+import { fetchMinimaxUsage } from "synthios/plugin-sdk/provider-usage";
 import {
   minimaxMediaUnderstandingProvider,
   minimaxPortalMediaUnderstandingProvider,

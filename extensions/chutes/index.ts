@@ -1,12 +1,12 @@
-import { definePluginEntry } from "openclaw/plugin-sdk/core";
+import { definePluginEntry } from "synthios/plugin-sdk/core";
 import {
   buildOauthProviderAuthResult,
   createProviderApiKeyAuthMethod,
   resolveOAuthApiKeyMarker,
   type ProviderAuthContext,
   type ProviderAuthResult,
-} from "openclaw/plugin-sdk/provider-auth";
-import { loginChutes } from "openclaw/plugin-sdk/provider-auth-login";
+} from "synthios/plugin-sdk/provider-auth";
+import { loginChutes } from "synthios/plugin-sdk/provider-auth-login";
 import {
   CHUTES_DEFAULT_MODEL_REF,
   applyChutesApiKeyConfig,

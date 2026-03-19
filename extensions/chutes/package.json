@@ -1,10 +1,10 @@
 {
-  "name": "@openclaw/chutes-provider",
+  "name": "@synthios/chutes-provider",
   "version": "2026.3.14",
   "private": true,
-  "description": "OpenClaw Chutes.ai provider plugin",
+  "description": "Synthios Chutes.ai provider plugin",
   "type": "module",
-  "openclaw": {
+  "synthios": {
     "extensions": [
       "./index.ts"
     ]

@@ -9,16 +9,16 @@ import {
   setAccountAllowFromForChannel,
   setChannelDmPolicyWithAllowFrom,
   setSetupChannelEnabled,
-  type OpenClawConfig,
+  type SynthiosConfig,
   type WizardPrompter,
-} from "openclaw/plugin-sdk/setup";
+} from "synthios/plugin-sdk/setup";
 import type {
   ChannelSetupAdapter,
   ChannelSetupDmPolicy,
   ChannelSetupWizard,
   ChannelSetupWizardTextInput,
-} from "openclaw/plugin-sdk/setup";
-import { formatCliCommand, formatDocsLink } from "openclaw/plugin-sdk/setup-tools";
+} from "synthios/plugin-sdk/setup";
+import { formatCliCommand, formatDocsLink } from "synthios/plugin-sdk/setup-tools";
 import {
   listSignalAccountIds,
   resolveDefaultSignalAccountId,
@@ -89,10 +89,10 @@ function buildSignalSetupPatch(input: {
 }
 
 export async function promptSignalAllowFrom(params: {
-  cfg: OpenClawConfig;
+  cfg: SynthiosConfig;
   prompter: WizardPrompter;
   accountId?: string;
-}): Promise<OpenClawConfig> {
+}): Promise<SynthiosConfig> {
   return promptParsedAllowFromForAccount({
     cfg: params.cfg,
     accountId: params.accountId,
@@ -127,8 +127,8 @@ export const signalDmPolicy: ChannelSetupDmPolicy = {
   channel,
   policyKey: "channels.signal.dmPolicy",
   allowFromKey: "channels.signal.allowFrom",
-  getCurrent: (cfg: OpenClawConfig) => cfg.channels?.signal?.dmPolicy ?? "pairing",
-  setPolicy: (cfg: OpenClawConfig, policy) =>
+  getCurrent: (cfg: SynthiosConfig) => cfg.channels?.signal?.dmPolicy ?? "pairing",
+  setPolicy: (cfg: SynthiosConfig, policy) =>
     setChannelDmPolicyWithAllowFrom({
       cfg,
       channel,
@@ -138,7 +138,7 @@ export const signalDmPolicy: ChannelSetupDmPolicy = {
 };
 
 function resolveSignalCliPath(params: {
-  cfg: OpenClawConfig;
+  cfg: SynthiosConfig;
   accountId: string;
   credentialValues: Record<string, unknown>;
 }) {
@@ -182,9 +182,9 @@ export const signalNumberTextInput: ChannelSetupWizardTextInput = {
 export const signalCompletionNote = {
   title: "Signal next steps",
   lines: [
-    'Link device with: signal-cli link -n "OpenClaw"',
+    'Link device with: signal-cli link -n "Synthios"',
     "Scan QR in Signal -> Linked Devices",
-    `Then run: ${formatCliCommand("openclaw gateway call channels.status --params '{\"probe\":true}'")}`,
+    `Then run: ${formatCliCommand("synthios gateway call channels.status --params '{\"probe\":true}'")}`,
     `Docs: ${formatDocsLink("/signal", "signal")}`,
   ],
 };
@@ -231,6 +231,6 @@ export function createSignalSetupWizardProxy(loadWizard: () => Promise<ChannelSe
     ],
     completionNote: signalCompletionNote,
     dmPolicy: signalDmPolicy,
-    disable: (cfg: OpenClawConfig) => setSetupChannelEnabled(cfg, channel, false),
+    disable: (cfg: SynthiosConfig) => setSetupChannelEnabled(cfg, channel, false),
   });
 }

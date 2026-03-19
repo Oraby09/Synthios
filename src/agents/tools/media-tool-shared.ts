@@ -1,5 +1,5 @@
 import { type Api, type Model } from "@mariozechner/pi-ai";
-import type { OpenClawConfig } from "../../config/config.js";
+import type { SynthiosConfig } from "../../config/config.js";
 import { getDefaultLocalRoots } from "../../media/web-media.js";
 import type { ImageModelConfig } from "./image-tool.helpers.js";
 import type { ToolModelConfig } from "./model-config.helpers.js";
@@ -19,24 +19,24 @@ type TextToolResult = {
 };
 
 export function applyImageModelConfigDefaults(
-  cfg: OpenClawConfig | undefined,
+  cfg: SynthiosConfig | undefined,
   imageModelConfig: ImageModelConfig,
-): OpenClawConfig | undefined {
+): SynthiosConfig | undefined {
   return applyAgentDefaultModelConfig(cfg, "imageModel", imageModelConfig);
 }
 
 export function applyImageGenerationModelConfigDefaults(
-  cfg: OpenClawConfig | undefined,
+  cfg: SynthiosConfig | undefined,
   imageGenerationModelConfig: ToolModelConfig,
-): OpenClawConfig | undefined {
+): SynthiosConfig | undefined {
   return applyAgentDefaultModelConfig(cfg, "imageGenerationModel", imageGenerationModelConfig);
 }
 
 function applyAgentDefaultModelConfig(
-  cfg: OpenClawConfig | undefined,
+  cfg: SynthiosConfig | undefined,
   key: "imageModel" | "imageGenerationModel",
   modelConfig: ToolModelConfig,
-): OpenClawConfig | undefined {
+): SynthiosConfig | undefined {
   if (!cfg) {
     return undefined;
   }
@@ -112,7 +112,7 @@ export function resolveModelFromRegistry(params: {
 
 export async function resolveModelRuntimeApiKey(params: {
   model: Model<Api>;
-  cfg: OpenClawConfig | undefined;
+  cfg: SynthiosConfig | undefined;
   agentDir: string;
   authStorage: {
     setRuntimeApiKey: (provider: string, apiKey: string) => void;

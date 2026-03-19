@@ -1,8 +1,8 @@
-import { createAccountListHelpers } from "openclaw/plugin-sdk/account-helpers";
-import { DEFAULT_ACCOUNT_ID, normalizeAccountId } from "openclaw/plugin-sdk/account-id";
-import { normalizeResolvedSecretInputString } from "openclaw/plugin-sdk/config-runtime";
-import { parseOptionalDelimitedEntries } from "openclaw/plugin-sdk/core";
-import { tryReadSecretFileSync } from "openclaw/plugin-sdk/infra-runtime";
+import { createAccountListHelpers } from "synthios/plugin-sdk/account-helpers";
+import { DEFAULT_ACCOUNT_ID, normalizeAccountId } from "synthios/plugin-sdk/account-id";
+import { normalizeResolvedSecretInputString } from "synthios/plugin-sdk/config-runtime";
+import { parseOptionalDelimitedEntries } from "synthios/plugin-sdk/core";
+import { tryReadSecretFileSync } from "synthios/plugin-sdk/infra-runtime";
 import type { CoreConfig, IrcAccountConfig, IrcNickServConfig } from "./types.js";
 
 const TRUTHY_ENV = new Set(["true", "1", "yes", "on"]);
@@ -180,12 +180,12 @@ export function resolveIrcAccount(params: {
       merged.username?.trim() ||
       (accountId === DEFAULT_ACCOUNT_ID ? process.env.IRC_USERNAME?.trim() : "") ||
       nick ||
-      "openclaw"
+      "synthios"
     ).trim();
     const realname = (
       merged.realname?.trim() ||
       (accountId === DEFAULT_ACCOUNT_ID ? process.env.IRC_REALNAME?.trim() : "") ||
-      "OpenClaw"
+      "Synthios"
     ).trim();
 
     const passwordResolution = resolvePassword(accountId, merged);

@@ -1,4 +1,4 @@
-import { definePluginEntry } from "openclaw/plugin-sdk/core";
+import { definePluginEntry } from "synthios/plugin-sdk/core";
 import {
   applyAuthProfileConfig,
   buildApiKeyCredential,
@@ -12,11 +12,11 @@ import {
   type SecretInput,
   upsertAuthProfile,
   validateApiKeyInput,
-} from "openclaw/plugin-sdk/provider-auth";
+} from "synthios/plugin-sdk/provider-auth";
 import {
   buildCloudflareAiGatewayModelDefinition,
   resolveCloudflareAiGatewayBaseUrl,
-} from "openclaw/plugin-sdk/provider-models";
+} from "synthios/plugin-sdk/provider-models";
 import {
   applyCloudflareAiGatewayConfig,
   buildCloudflareAiGatewayConfigPatch,

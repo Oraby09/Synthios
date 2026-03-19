@@ -1,10 +1,10 @@
 {
-  "name": "@openclaw/imessage",
+  "name": "@synthios/imessage",
   "version": "2026.3.14",
   "private": true,
-  "description": "OpenClaw iMessage channel plugin",
+  "description": "Synthios iMessage channel plugin",
   "type": "module",
-  "openclaw": {
+  "synthios": {
     "extensions": [
       "./index.ts"
     ],

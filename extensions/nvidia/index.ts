@@ -1,5 +1,5 @@
-import { definePluginEntry } from "openclaw/plugin-sdk/core";
-import { buildSingleProviderApiKeyCatalog } from "openclaw/plugin-sdk/provider-catalog";
+import { definePluginEntry } from "synthios/plugin-sdk/core";
+import { buildSingleProviderApiKeyCatalog } from "synthios/plugin-sdk/provider-catalog";
 import { buildNvidiaProvider } from "./provider-catalog.js";
 
 const PROVIDER_ID = "nvidia";

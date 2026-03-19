@@ -1,4 +1,4 @@
-# OpenClaw docs i18n assets
+# Synthios docs i18n assets
 
 This folder stores **generated** and **config** files for documentation translations.
 

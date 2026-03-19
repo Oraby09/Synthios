@@ -1,12 +1,12 @@
 import {
   createScopedDmSecurityResolver,
   createTopLevelChannelConfigAdapter,
-} from "openclaw/plugin-sdk/channel-config-helpers";
-import { attachChannelToResult } from "openclaw/plugin-sdk/channel-send-result";
+} from "synthios/plugin-sdk/channel-config-helpers";
+import { attachChannelToResult } from "synthios/plugin-sdk/channel-send-result";
 import {
   buildPassiveChannelStatusSummary,
   buildTrafficStatusSummary,
-} from "openclaw/plugin-sdk/extension-shared";
+} from "synthios/plugin-sdk/extension-shared";
 import {
   buildChannelConfigSchema,
   collectStatusIssuesFromLastError,
@@ -235,7 +235,7 @@ export const nostrPlugin: ChannelPlugin<ResolvedNostrAccount> = {
             `[${account.accountId}] DM from ${senderPubkey}: ${text.slice(0, 50)}...`,
           );
 
-          // Forward to OpenClaw's message pipeline
+          // Forward to Synthios's message pipeline
           await (
             runtime.channel.reply as { handleInboundMessage?: (params: unknown) => Promise<void> }
           ).handleInboundMessage?.({

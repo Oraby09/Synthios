@@ -1,4 +1,4 @@
-import type { OpenClawConfig } from "../config/config.js";
+import type { SynthiosConfig } from "../config/config.js";
 import { createSubsystemLogger } from "../logging/subsystem.js";
 import type { ResolvedQmdConfig } from "./backend-config.js";
 import { resolveMemoryBackendConfig } from "./backend-config.js";
@@ -8,7 +8,7 @@ import type {
   MemorySyncProgressUpdate,
 } from "./types.js";
 
-const MEMORY_SEARCH_MANAGER_CACHE_KEY = "__openclawMemorySearchManagerCache";
+const MEMORY_SEARCH_MANAGER_CACHE_KEY = "__synthiosMemorySearchManagerCache";
 type MemorySearchManagerCacheStore = {
   qmdManagerCache: Map<string, MemorySearchManager>;
 };
@@ -39,7 +39,7 @@ export type MemorySearchManagerResult = {
 };
 
 export async function getMemorySearchManager(params: {
-  cfg: OpenClawConfig;
+  cfg: SynthiosConfig;
   agentId: string;
   purpose?: "default" | "status";
 }): Promise<MemorySearchManagerResult> {

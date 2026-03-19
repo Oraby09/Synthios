@@ -1,38 +1,38 @@
 import type { Message, ReactionTypeEmoji } from "@grammyjs/types";
-import { resolveAgentDir, resolveDefaultAgentId } from "openclaw/plugin-sdk/agent-runtime";
-import { resolveDefaultModelForAgent } from "openclaw/plugin-sdk/agent-runtime";
-import { shouldDebounceTextInbound } from "openclaw/plugin-sdk/channel-runtime";
-import { resolveChannelConfigWrites } from "openclaw/plugin-sdk/channel-runtime";
-import { writeConfigFile } from "openclaw/plugin-sdk/config-runtime";
+import { resolveAgentDir, resolveDefaultAgentId } from "synthios/plugin-sdk/agent-runtime";
+import { resolveDefaultModelForAgent } from "synthios/plugin-sdk/agent-runtime";
+import { shouldDebounceTextInbound } from "synthios/plugin-sdk/channel-runtime";
+import { resolveChannelConfigWrites } from "synthios/plugin-sdk/channel-runtime";
+import { writeConfigFile } from "synthios/plugin-sdk/config-runtime";
 import {
   loadSessionStore,
   resolveSessionStoreEntry,
   updateSessionStore,
-} from "openclaw/plugin-sdk/config-runtime";
-import type { DmPolicy } from "openclaw/plugin-sdk/config-runtime";
+} from "synthios/plugin-sdk/config-runtime";
+import type { DmPolicy } from "synthios/plugin-sdk/config-runtime";
 import type {
   TelegramDirectConfig,
   TelegramGroupConfig,
   TelegramTopicConfig,
-} from "openclaw/plugin-sdk/config-runtime";
-import { applyModelOverrideToSessionEntry } from "openclaw/plugin-sdk/config-runtime";
+} from "synthios/plugin-sdk/config-runtime";
+import { applyModelOverrideToSessionEntry } from "synthios/plugin-sdk/config-runtime";
 import {
   buildPluginBindingResolvedText,
   parsePluginBindingApprovalCustomId,
   resolvePluginConversationBindingApproval,
-} from "openclaw/plugin-sdk/conversation-runtime";
-import { dispatchPluginInteractiveHandler } from "openclaw/plugin-sdk/plugin-runtime";
+} from "synthios/plugin-sdk/conversation-runtime";
+import { dispatchPluginInteractiveHandler } from "synthios/plugin-sdk/plugin-runtime";
 import {
   createInboundDebouncer,
   resolveInboundDebounceMs,
-} from "openclaw/plugin-sdk/reply-runtime";
-import { buildCommandsPaginationKeyboard } from "openclaw/plugin-sdk/reply-runtime";
-import { formatModelsAvailableHeader } from "openclaw/plugin-sdk/reply-runtime";
-import { resolveStoredModelOverride } from "openclaw/plugin-sdk/reply-runtime";
-import { buildCommandsMessagePaginated } from "openclaw/plugin-sdk/reply-runtime";
-import { resolveAgentRoute } from "openclaw/plugin-sdk/routing";
-import { resolveThreadSessionKeys } from "openclaw/plugin-sdk/routing";
-import { danger, logVerbose, warn } from "openclaw/plugin-sdk/runtime-env";
+} from "synthios/plugin-sdk/reply-runtime";
+import { buildCommandsPaginationKeyboard } from "synthios/plugin-sdk/reply-runtime";
+import { formatModelsAvailableHeader } from "synthios/plugin-sdk/reply-runtime";
+import { resolveStoredModelOverride } from "synthios/plugin-sdk/reply-runtime";
+import { buildCommandsMessagePaginated } from "synthios/plugin-sdk/reply-runtime";
+import { resolveAgentRoute } from "synthios/plugin-sdk/routing";
+import { resolveThreadSessionKeys } from "synthios/plugin-sdk/routing";
+import { danger, logVerbose, warn } from "synthios/plugin-sdk/runtime-env";
 import { withTelegramApiErrorLogging } from "./api-logging.js";
 import {
   isSenderAllowed,

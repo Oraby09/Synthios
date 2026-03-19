@@ -1,10 +1,10 @@
 {
-  "name": "@openclaw/qianfan-provider",
+  "name": "@synthios/qianfan-provider",
   "version": "2026.3.14",
   "private": true,
-  "description": "OpenClaw Qianfan provider plugin",
+  "description": "Synthios Qianfan provider plugin",
   "type": "module",
-  "openclaw": {
+  "synthios": {
     "extensions": [
       "./index.ts"
     ]

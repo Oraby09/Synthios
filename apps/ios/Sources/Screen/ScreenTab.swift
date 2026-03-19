@@ -1,4 +1,4 @@
-import OpenClawKit
+import SynthiosKit
 import SwiftUI
 
 struct ScreenTab: View {

@@ -1,26 +1,26 @@
-import { toLocationContext } from "openclaw/plugin-sdk/channel-runtime";
-import { recordInboundSession } from "openclaw/plugin-sdk/channel-runtime";
-import type { OpenClawConfig } from "openclaw/plugin-sdk/config-runtime";
-import { readSessionUpdatedAt, resolveStorePath } from "openclaw/plugin-sdk/config-runtime";
+import { toLocationContext } from "synthios/plugin-sdk/channel-runtime";
+import { recordInboundSession } from "synthios/plugin-sdk/channel-runtime";
+import type { SynthiosConfig } from "synthios/plugin-sdk/config-runtime";
+import { readSessionUpdatedAt, resolveStorePath } from "synthios/plugin-sdk/config-runtime";
 import type {
   TelegramDirectConfig,
   TelegramGroupConfig,
   TelegramTopicConfig,
-} from "openclaw/plugin-sdk/config-runtime";
-import { normalizeCommandBody } from "openclaw/plugin-sdk/reply-runtime";
+} from "synthios/plugin-sdk/config-runtime";
+import { normalizeCommandBody } from "synthios/plugin-sdk/reply-runtime";
 import {
   formatInboundEnvelope,
   resolveEnvelopeFormatOptions,
-} from "openclaw/plugin-sdk/reply-runtime";
+} from "synthios/plugin-sdk/reply-runtime";
 import {
   buildPendingHistoryContextFromMap,
   type HistoryEntry,
-} from "openclaw/plugin-sdk/reply-runtime";
-import { finalizeInboundContext } from "openclaw/plugin-sdk/reply-runtime";
-import type { ResolvedAgentRoute } from "openclaw/plugin-sdk/routing";
-import { resolveInboundLastRouteSessionKey } from "openclaw/plugin-sdk/routing";
-import { logVerbose, shouldLogVerbose } from "openclaw/plugin-sdk/runtime-env";
-import { resolvePinnedMainDmOwnerFromAllowlist } from "openclaw/plugin-sdk/security-runtime";
+} from "synthios/plugin-sdk/reply-runtime";
+import { finalizeInboundContext } from "synthios/plugin-sdk/reply-runtime";
+import type { ResolvedAgentRoute } from "synthios/plugin-sdk/routing";
+import { resolveInboundLastRouteSessionKey } from "synthios/plugin-sdk/routing";
+import { logVerbose, shouldLogVerbose } from "synthios/plugin-sdk/runtime-env";
+import { resolvePinnedMainDmOwnerFromAllowlist } from "synthios/plugin-sdk/security-runtime";
 import { normalizeAllowFrom } from "./bot-access.js";
 import type {
   TelegramMediaRef,
@@ -39,7 +39,7 @@ import type { TelegramContext } from "./bot/types.js";
 import { resolveTelegramGroupPromptSettings } from "./group-config-helpers.js";
 
 export async function buildTelegramInboundContextPayload(params: {
-  cfg: OpenClawConfig;
+  cfg: SynthiosConfig;
   primaryCtx: TelegramContext;
   msg: TelegramContext["message"];
   allMedia: TelegramMediaRef[];
@@ -63,7 +63,7 @@ export async function buildTelegramInboundContextPayload(params: {
   stickerCacheHit: boolean;
   effectiveWasMentioned: boolean;
   commandAuthorized: boolean;
-  locationData?: import("openclaw/plugin-sdk/channel-runtime").NormalizedLocation;
+  locationData?: import("synthios/plugin-sdk/channel-runtime").NormalizedLocation;
   options?: TelegramMessageContextOptions;
   dmAllowFrom?: Array<string | number>;
 }): Promise<{

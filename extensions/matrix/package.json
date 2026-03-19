@@ -1,7 +1,7 @@
 {
-  "name": "@openclaw/matrix",
+  "name": "@synthios/matrix",
   "version": "2026.3.11",
-  "description": "OpenClaw Matrix channel plugin",
+  "description": "Synthios Matrix channel plugin",
   "type": "module",
   "dependencies": {
     "@matrix-org/matrix-sdk-crypto-nodejs": "^0.4.0",
@@ -12,9 +12,9 @@
     "zod": "^4.3.6"
   },
   "devDependencies": {
-    "openclaw": "workspace:*"
+    "synthios": "workspace:*"
   },
-  "openclaw": {
+  "synthios": {
     "extensions": [
       "./index.ts"
     ],

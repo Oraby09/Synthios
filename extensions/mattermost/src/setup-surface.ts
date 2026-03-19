@@ -1,11 +1,11 @@
-import { type ChannelSetupWizard } from "openclaw/plugin-sdk/setup";
-import { formatDocsLink } from "openclaw/plugin-sdk/setup";
+import { type ChannelSetupWizard } from "synthios/plugin-sdk/setup";
+import { formatDocsLink } from "synthios/plugin-sdk/setup";
 import { listMattermostAccountIds } from "./mattermost/accounts.js";
 import { normalizeMattermostBaseUrl } from "./mattermost/client.js";
 import {
   applySetupAccountConfigPatch,
   DEFAULT_ACCOUNT_ID,
-  type OpenClawConfig,
+  type SynthiosConfig,
 } from "./runtime-api.js";
 import { hasConfiguredSecretInput } from "./secret-input.js";
 import {
@@ -111,7 +111,7 @@ export const mattermostSetupWizard: ChannelSetupWizard = {
       normalizeValue: ({ value }) => normalizeMattermostBaseUrl(value) ?? value.trim(),
     },
   ],
-  disable: (cfg: OpenClawConfig) => ({
+  disable: (cfg: SynthiosConfig) => ({
     ...cfg,
     channels: {
       ...cfg.channels,

@@ -1,3 +1,3 @@
-import { buildChannelConfigSchema, IMessageConfigSchema } from "openclaw/plugin-sdk/imessage-core";
+import { buildChannelConfigSchema, IMessageConfigSchema } from "synthios/plugin-sdk/imessage-core";
 
 export const IMessageChannelConfigSchema = buildChannelConfigSchema(IMessageConfigSchema);

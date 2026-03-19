@@ -1,1 +1,1 @@
-export * from "openclaw/plugin-sdk/lobster";
+export * from "synthios/plugin-sdk/lobster";

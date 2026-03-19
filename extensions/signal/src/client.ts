@@ -1,6 +1,6 @@
-import { resolveFetch } from "openclaw/plugin-sdk/infra-runtime";
-import { generateSecureUuid } from "openclaw/plugin-sdk/infra-runtime";
-import { fetchWithTimeout } from "openclaw/plugin-sdk/text-runtime";
+import { resolveFetch } from "synthios/plugin-sdk/infra-runtime";
+import { generateSecureUuid } from "synthios/plugin-sdk/infra-runtime";
+import { fetchWithTimeout } from "synthios/plugin-sdk/text-runtime";
 
 export type SignalRpcOptions = {
   baseUrl: string;

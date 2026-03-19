@@ -1,7 +1,7 @@
-export { definePluginEntry } from "openclaw/plugin-sdk/plugin-entry";
+export { definePluginEntry } from "synthios/plugin-sdk/plugin-entry";
 export type {
-  OpenClawPluginApi,
-  OpenClawPluginCommandDefinition,
-  OpenClawPluginService,
+  SynthiosPluginApi,
+  SynthiosPluginCommandDefinition,
+  SynthiosPluginService,
   PluginCommandContext,
-} from "openclaw/plugin-sdk/core";
+} from "synthios/plugin-sdk/core";

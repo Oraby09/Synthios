@@ -1,16 +1,16 @@
-import { formatAllowFromLowercase } from "openclaw/plugin-sdk/allow-from";
+import { formatAllowFromLowercase } from "synthios/plugin-sdk/allow-from";
 import {
   createScopedChannelConfigAdapter,
   createScopedDmSecurityResolver,
-} from "openclaw/plugin-sdk/channel-config-helpers";
-import { createAccountStatusSink } from "openclaw/plugin-sdk/channel-lifecycle";
-import { createAllowlistProviderRouteAllowlistWarningCollector } from "openclaw/plugin-sdk/channel-policy";
+} from "synthios/plugin-sdk/channel-config-helpers";
+import { createAccountStatusSink } from "synthios/plugin-sdk/channel-lifecycle";
+import { createAllowlistProviderRouteAllowlistWarningCollector } from "synthios/plugin-sdk/channel-policy";
 import {
   createAttachedChannelResultAdapter,
   createLoggedPairingApprovalNotifier,
   createPairingPrefixStripper,
-} from "openclaw/plugin-sdk/channel-runtime";
-import { runStoppablePassiveMonitor } from "openclaw/plugin-sdk/extension-shared";
+} from "synthios/plugin-sdk/channel-runtime";
+import { runStoppablePassiveMonitor } from "synthios/plugin-sdk/extension-shared";
 import {
   buildBaseChannelStatusSummary,
   buildChannelConfigSchema,
@@ -18,7 +18,7 @@ import {
   clearAccountEntryFields,
   DEFAULT_ACCOUNT_ID,
   type ChannelPlugin,
-  type OpenClawConfig,
+  type SynthiosConfig,
 } from "../runtime-api.js";
 import {
   listNextcloudTalkAccountIds,
@@ -260,7 +260,7 @@ export const nextcloudTalkPlugin: ChannelPlugin<ResolvedNextcloudTalkAccount> = 
       });
     },
     logoutAccount: async ({ accountId, cfg }) => {
-      const nextCfg = { ...cfg } as OpenClawConfig;
+      const nextCfg = { ...cfg } as SynthiosConfig;
       const nextSection = cfg.channels?.["nextcloud-talk"]
         ? { ...cfg.channels["nextcloud-talk"] }
         : undefined;
@@ -298,7 +298,7 @@ export const nextcloudTalkPlugin: ChannelPlugin<ResolvedNextcloudTalkAccount> = 
           const nextChannels = { ...nextCfg.channels } as Record<string, unknown>;
           delete nextChannels["nextcloud-talk"];
           if (Object.keys(nextChannels).length > 0) {
-            nextCfg.channels = nextChannels as OpenClawConfig["channels"];
+            nextCfg.channels = nextChannels as SynthiosConfig["channels"];
           } else {
             delete nextCfg.channels;
           }

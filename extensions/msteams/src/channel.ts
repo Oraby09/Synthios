@@ -1,9 +1,9 @@
-import { formatAllowFromLowercase } from "openclaw/plugin-sdk/allow-from";
-import { createTopLevelChannelConfigAdapter } from "openclaw/plugin-sdk/channel-config-helpers";
+import { formatAllowFromLowercase } from "synthios/plugin-sdk/allow-from";
+import { createTopLevelChannelConfigAdapter } from "synthios/plugin-sdk/channel-config-helpers";
 import {
   createAllowlistProviderGroupPolicyWarningCollector,
   projectWarningCollector,
-} from "openclaw/plugin-sdk/channel-policy";
+} from "synthios/plugin-sdk/channel-policy";
 import {
   createChannelDirectoryAdapter,
   createMessageToolCardSchema,
@@ -11,14 +11,14 @@ import {
   createRuntimeDirectoryLiveAdapter,
   createRuntimeOutboundDelegates,
   createTextPairingAdapter,
-} from "openclaw/plugin-sdk/channel-runtime";
+} from "synthios/plugin-sdk/channel-runtime";
 import type {
   ChannelMessageActionAdapter,
   ChannelMessageToolDiscovery,
-} from "openclaw/plugin-sdk/channel-runtime";
-import { listDirectoryEntriesFromSources } from "openclaw/plugin-sdk/directory-runtime";
-import { createLazyRuntimeNamedExport } from "openclaw/plugin-sdk/lazy-runtime";
-import type { ChannelMessageActionName, ChannelPlugin, OpenClawConfig } from "../runtime-api.js";
+} from "synthios/plugin-sdk/channel-runtime";
+import { listDirectoryEntriesFromSources } from "synthios/plugin-sdk/directory-runtime";
+import { createLazyRuntimeNamedExport } from "synthios/plugin-sdk/lazy-runtime";
+import type { ChannelMessageActionName, ChannelPlugin, SynthiosConfig } from "../runtime-api.js";
 import {
   buildProbeChannelStatusSummary,
   buildRuntimeAccountStatusSnapshot,
@@ -72,7 +72,7 @@ const TEAMS_GRAPH_PERMISSION_HINTS: Record<string, string> = {
 };
 
 const collectMSTeamsSecurityWarnings = createAllowlistProviderGroupPolicyWarningCollector<{
-  cfg: OpenClawConfig;
+  cfg: SynthiosConfig;
 }>({
   providerConfigPresent: (cfg) => cfg.channels?.msteams !== undefined,
   resolveGroupPolicy: ({ cfg }) => cfg.channels?.msteams?.groupPolicy,
@@ -89,7 +89,7 @@ const loadMSTeamsChannelRuntime = createLazyRuntimeNamedExport(
   "msTeamsChannelRuntime",
 );
 
-const resolveMSTeamsChannelConfig = (cfg: OpenClawConfig) => ({
+const resolveMSTeamsChannelConfig = (cfg: SynthiosConfig) => ({
   allowFrom: cfg.channels?.msteams?.allowFrom,
   defaultTo: cfg.channels?.msteams?.defaultTo,
 });
@@ -189,7 +189,7 @@ export const msteamsPlugin: ChannelPlugin<ResolvedMSTeamsAccount> = {
   },
   security: {
     collectWarnings: projectWarningCollector(
-      ({ cfg }: { cfg: OpenClawConfig }) => ({ cfg }),
+      ({ cfg }: { cfg: SynthiosConfig }) => ({ cfg }),
       collectMSTeamsSecurityWarnings,
     ),
   },

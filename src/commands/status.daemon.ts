@@ -6,7 +6,7 @@ import { readServiceStatusSummary } from "./status.service-summary.js";
 type DaemonStatusSummary = {
   label: string;
   installed: boolean | null;
-  managedByOpenClaw: boolean;
+  managedBySynthios: boolean;
   externallyManaged: boolean;
   loadedText: string;
   runtimeShort: string | null;
@@ -21,7 +21,7 @@ async function buildDaemonStatusSummary(
   return {
     label: summary.label,
     installed: summary.installed,
-    managedByOpenClaw: summary.managedByOpenClaw,
+    managedBySynthios: summary.managedBySynthios,
     externallyManaged: summary.externallyManaged,
     loadedText: summary.loadedText,
     runtimeShort: formatDaemonRuntimeShort(summary.runtime),

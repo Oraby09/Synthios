@@ -1,19 +1,19 @@
 import { timingSafeEqual } from "node:crypto";
 import { createServer } from "node:http";
 import { InputFile, webhookCallback } from "grammy";
-import type { OpenClawConfig } from "openclaw/plugin-sdk/config-runtime";
-import { isDiagnosticsEnabled } from "openclaw/plugin-sdk/infra-runtime";
-import { formatErrorMessage } from "openclaw/plugin-sdk/infra-runtime";
-import { readJsonBodyWithLimit } from "openclaw/plugin-sdk/infra-runtime";
-import type { RuntimeEnv } from "openclaw/plugin-sdk/runtime-env";
-import { defaultRuntime } from "openclaw/plugin-sdk/runtime-env";
+import type { SynthiosConfig } from "synthios/plugin-sdk/config-runtime";
+import { isDiagnosticsEnabled } from "synthios/plugin-sdk/infra-runtime";
+import { formatErrorMessage } from "synthios/plugin-sdk/infra-runtime";
+import { readJsonBodyWithLimit } from "synthios/plugin-sdk/infra-runtime";
+import type { RuntimeEnv } from "synthios/plugin-sdk/runtime-env";
+import { defaultRuntime } from "synthios/plugin-sdk/runtime-env";
 import {
   logWebhookError,
   logWebhookProcessed,
   logWebhookReceived,
   startDiagnosticHeartbeat,
   stopDiagnosticHeartbeat,
-} from "openclaw/plugin-sdk/text-runtime";
+} from "synthios/plugin-sdk/text-runtime";
 import { resolveTelegramAllowedUpdates } from "./allowed-updates.js";
 import { withTelegramApiErrorLogging } from "./api-logging.js";
 import { createTelegramBot } from "./bot.js";
@@ -100,7 +100,7 @@ function hasValidTelegramWebhookSecret(
 export async function startTelegramWebhook(opts: {
   token: string;
   accountId?: string;
-  config?: OpenClawConfig;
+  config?: SynthiosConfig;
   path?: string;
   port?: number;
   host?: string;

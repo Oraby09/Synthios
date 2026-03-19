@@ -1,16 +1,16 @@
-import { buildDmGroupAccountAllowlistAdapter } from "openclaw/plugin-sdk/allowlist-config-edit";
+import { buildDmGroupAccountAllowlistAdapter } from "synthios/plugin-sdk/allowlist-config-edit";
 import {
   attachChannelToResult,
   createAttachedChannelResultAdapter,
   createPairingPrefixStripper,
   createTextPairingAdapter,
   resolveOutboundSendDep,
-} from "openclaw/plugin-sdk/channel-runtime";
-import { attachChannelToResults } from "openclaw/plugin-sdk/channel-send-result";
-import { resolveMarkdownTableMode } from "openclaw/plugin-sdk/config-runtime";
-import { buildOutboundBaseSessionKey } from "openclaw/plugin-sdk/core";
-import { resolveTextChunkLimit } from "openclaw/plugin-sdk/reply-runtime";
-import { type RoutePeer } from "openclaw/plugin-sdk/routing";
+} from "synthios/plugin-sdk/channel-runtime";
+import { attachChannelToResults } from "synthios/plugin-sdk/channel-send-result";
+import { resolveMarkdownTableMode } from "synthios/plugin-sdk/config-runtime";
+import { buildOutboundBaseSessionKey } from "synthios/plugin-sdk/core";
+import { resolveTextChunkLimit } from "synthios/plugin-sdk/reply-runtime";
+import { type RoutePeer } from "synthios/plugin-sdk/routing";
 import { resolveSignalAccount, type ResolvedSignalAccount } from "./accounts.js";
 import { markdownToSignalTextChunks } from "./format.js";
 import {

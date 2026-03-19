@@ -1,4 +1,4 @@
-import type { OpenClawPluginApi } from "openclaw/plugin-sdk/discord";
+import type { SynthiosPluginApi } from "synthios/plugin-sdk/discord";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import {
   getRequiredHookHandler,
@@ -59,7 +59,7 @@ function registerHandlersForTest(
     },
   },
 ) {
-  return registerHookHandlersForTest<OpenClawPluginApi>({
+  return registerHookHandlersForTest<SynthiosPluginApi>({
     config,
     register: registerDiscordSubagentHooks,
   });

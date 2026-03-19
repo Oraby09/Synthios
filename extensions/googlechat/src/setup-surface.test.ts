@@ -5,7 +5,7 @@ import {
   createTestWizardPrompter,
   type WizardPrompter,
 } from "../../../test/helpers/extensions/setup-wizard.js";
-import type { OpenClawConfig } from "../runtime-api.js";
+import type { SynthiosConfig } from "../runtime-api.js";
 import { googlechatPlugin } from "./channel.js";
 
 const googlechatConfigureAdapter = buildChannelSetupWizardAdapterFromSetupWizard({
@@ -30,7 +30,7 @@ describe("googlechat setup wizard", () => {
     const runtime = createRuntimeEnv();
 
     const result = await googlechatConfigureAdapter.configure({
-      cfg: {} as OpenClawConfig,
+      cfg: {} as SynthiosConfig,
       runtime,
       prompter,
       options: {},

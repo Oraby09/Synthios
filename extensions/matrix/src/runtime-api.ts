@@ -1,2 +1,2 @@
-export * from "openclaw/plugin-sdk/matrix";
+export * from "synthios/plugin-sdk/matrix";
 export * from "../runtime-api.js";

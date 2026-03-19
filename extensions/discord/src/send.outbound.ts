@@ -3,18 +3,18 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { serializePayload, type MessagePayloadObject, type RequestClient } from "@buape/carbon";
 import { ChannelType, Routes } from "discord-api-types/v10";
-import { loadConfig, type OpenClawConfig } from "openclaw/plugin-sdk/config-runtime";
-import { resolveMarkdownTableMode } from "openclaw/plugin-sdk/config-runtime";
-import { recordChannelActivity } from "openclaw/plugin-sdk/infra-runtime";
-import type { RetryConfig } from "openclaw/plugin-sdk/infra-runtime";
-import { resolvePreferredOpenClawTmpDir } from "openclaw/plugin-sdk/infra-runtime";
-import { maxBytesForKind } from "openclaw/plugin-sdk/media-runtime";
-import { extensionForMime } from "openclaw/plugin-sdk/media-runtime";
-import { unlinkIfExists } from "openclaw/plugin-sdk/media-runtime";
-import type { PollInput } from "openclaw/plugin-sdk/media-runtime";
-import { resolveChunkMode } from "openclaw/plugin-sdk/reply-runtime";
-import { convertMarkdownTables } from "openclaw/plugin-sdk/text-runtime";
-import { loadWebMediaRaw } from "openclaw/plugin-sdk/web-media";
+import { loadConfig, type SynthiosConfig } from "synthios/plugin-sdk/config-runtime";
+import { resolveMarkdownTableMode } from "synthios/plugin-sdk/config-runtime";
+import { recordChannelActivity } from "synthios/plugin-sdk/infra-runtime";
+import type { RetryConfig } from "synthios/plugin-sdk/infra-runtime";
+import { resolvePreferredSynthiosTmpDir } from "synthios/plugin-sdk/infra-runtime";
+import { maxBytesForKind } from "synthios/plugin-sdk/media-runtime";
+import { extensionForMime } from "synthios/plugin-sdk/media-runtime";
+import { unlinkIfExists } from "synthios/plugin-sdk/media-runtime";
+import type { PollInput } from "synthios/plugin-sdk/media-runtime";
+import { resolveChunkMode } from "synthios/plugin-sdk/reply-runtime";
+import { convertMarkdownTables } from "synthios/plugin-sdk/text-runtime";
+import { loadWebMediaRaw } from "synthios/plugin-sdk/web-media";
 import { resolveDiscordAccount } from "./accounts.js";
 import { rewriteDiscordKnownMentions } from "./mentions.js";
 import {
@@ -44,7 +44,7 @@ import {
 } from "./voice-message.js";
 
 type DiscordSendOpts = {
-  cfg?: OpenClawConfig;
+  cfg?: SynthiosConfig;
   token?: string;
   accountId?: string;
   mediaUrl?: string;
@@ -317,7 +317,7 @@ export async function sendMessageDiscord(
 }
 
 type DiscordWebhookSendOpts = {
-  cfg?: OpenClawConfig;
+  cfg?: SynthiosConfig;
   webhookId: string;
   webhookToken: string;
   accountId?: string;
@@ -472,7 +472,7 @@ export async function sendPollDiscord(
 }
 
 type VoiceMessageOpts = {
-  cfg?: OpenClawConfig;
+  cfg?: SynthiosConfig;
   token?: string;
   accountId?: string;
   verbose?: boolean;
@@ -489,7 +489,7 @@ async function materializeVoiceMessageInput(mediaUrl: string): Promise<{ filePat
   const extFromName = media.fileName ? path.extname(media.fileName) : "";
   const extFromMime = media.contentType ? extensionForMime(media.contentType) : "";
   const ext = extFromName || extFromMime || ".bin";
-  const tempDir = resolvePreferredOpenClawTmpDir();
+  const tempDir = resolvePreferredSynthiosTmpDir();
   const filePath = path.join(tempDir, `voice-src-${crypto.randomUUID()}${ext}`);
   await fs.writeFile(filePath, media.buffer, { mode: 0o600 });
   return { filePath };

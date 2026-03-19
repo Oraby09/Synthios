@@ -1,8 +1,8 @@
-import type { OpenClawConfig } from "../config/config.js";
+import type { SynthiosConfig } from "../config/config.js";
 import type { MemoryIndexManager } from "./index.js";
 
 export async function getRequiredMemoryIndexManager(params: {
-  cfg: OpenClawConfig;
+  cfg: SynthiosConfig;
   agentId?: string;
 }): Promise<MemoryIndexManager> {
   await import("./embedding.test-mocks.js");

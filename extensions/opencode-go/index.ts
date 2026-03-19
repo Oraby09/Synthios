@@ -1,6 +1,6 @@
-import { definePluginEntry } from "openclaw/plugin-sdk/core";
-import { createProviderApiKeyAuthMethod } from "openclaw/plugin-sdk/provider-auth";
-import { OPENCODE_GO_DEFAULT_MODEL_REF } from "openclaw/plugin-sdk/provider-models";
+import { definePluginEntry } from "synthios/plugin-sdk/core";
+import { createProviderApiKeyAuthMethod } from "synthios/plugin-sdk/provider-auth";
+import { OPENCODE_GO_DEFAULT_MODEL_REF } from "synthios/plugin-sdk/provider-models";
 import { applyOpencodeGoConfig } from "./onboard.js";
 
 const PROVIDER_ID = "opencode-go";

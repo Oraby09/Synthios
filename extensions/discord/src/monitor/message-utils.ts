@@ -1,10 +1,10 @@
 import type { ChannelType, Client, Message } from "@buape/carbon";
 import { StickerFormatType, type APIAttachment, type APIStickerItem } from "discord-api-types/v10";
-import { buildMediaPayload } from "openclaw/plugin-sdk/channel-runtime";
-import type { SsrFPolicy } from "openclaw/plugin-sdk/infra-runtime";
-import { fetchRemoteMedia, type FetchLike } from "openclaw/plugin-sdk/media-runtime";
-import { saveMediaBuffer } from "openclaw/plugin-sdk/media-runtime";
-import { logVerbose } from "openclaw/plugin-sdk/runtime-env";
+import { buildMediaPayload } from "synthios/plugin-sdk/channel-runtime";
+import type { SsrFPolicy } from "synthios/plugin-sdk/infra-runtime";
+import { fetchRemoteMedia, type FetchLike } from "synthios/plugin-sdk/media-runtime";
+import { saveMediaBuffer } from "synthios/plugin-sdk/media-runtime";
+import { logVerbose } from "synthios/plugin-sdk/runtime-env";
 
 const DISCORD_CDN_HOSTNAMES = [
   "cdn.discordapp.com",

@@ -14,28 +14,28 @@ Use this page for scheduler and delivery issues (`cron` + `heartbeat`).
 ## Command ladder
 
 ```bash
-openclaw status
-openclaw gateway status
-openclaw logs --follow
-openclaw doctor
-openclaw channels status --probe
+synthios status
+synthios gateway status
+synthios logs --follow
+synthios doctor
+synthios channels status --probe
 ```
 
 Then run automation checks:
 
 ```bash
-openclaw cron status
-openclaw cron list
-openclaw system heartbeat last
+synthios cron status
+synthios cron list
+synthios system heartbeat last
 ```
 
 ## Cron not firing
 
 ```bash
-openclaw cron status
-openclaw cron list
-openclaw cron runs --id <jobId> --limit 20
-openclaw logs --follow
+synthios cron status
+synthios cron list
+synthios cron runs --id <jobId> --limit 20
+synthios logs --follow
 ```
 
 Good output looks like:
@@ -53,10 +53,10 @@ Common signatures:
 ## Cron fired but no delivery
 
 ```bash
-openclaw cron runs --id <jobId> --limit 20
-openclaw cron list
-openclaw channels status --probe
-openclaw logs --follow
+synthios cron runs --id <jobId> --limit 20
+synthios cron list
+synthios channels status --probe
+synthios logs --follow
 ```
 
 Good output looks like:
@@ -74,10 +74,10 @@ Common signatures:
 ## Heartbeat suppressed or skipped
 
 ```bash
-openclaw system heartbeat last
-openclaw logs --follow
-openclaw config get agents.defaults.heartbeat
-openclaw channels status --probe
+synthios system heartbeat last
+synthios logs --follow
+synthios config get agents.defaults.heartbeat
+synthios channels status --probe
 ```
 
 Good output looks like:
@@ -95,11 +95,11 @@ Common signatures:
 ## Timezone and activeHours gotchas
 
 ```bash
-openclaw config get agents.defaults.heartbeat.activeHours
-openclaw config get agents.defaults.heartbeat.activeHours.timezone
-openclaw config get agents.defaults.userTimezone || echo "agents.defaults.userTimezone not set"
-openclaw cron list
-openclaw logs --follow
+synthios config get agents.defaults.heartbeat.activeHours
+synthios config get agents.defaults.heartbeat.activeHours.timezone
+synthios config get agents.defaults.userTimezone || echo "agents.defaults.userTimezone not set"
+synthios cron list
+synthios logs --follow
 ```
 
 Quick rules:

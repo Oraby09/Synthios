@@ -1,5 +1,5 @@
 import Testing
-@testable import OpenClaw
+@testable import Synthios
 
 @Suite struct RootCanvasPresentationTests {
     @Test func quickSetupDoesNotPresentWhenGatewayAlreadyConfigured() {

@@ -2,15 +2,15 @@ import {
   buildTogetherModelDefinition,
   TOGETHER_BASE_URL,
   TOGETHER_MODEL_CATALOG,
-} from "openclaw/plugin-sdk/provider-models";
+} from "synthios/plugin-sdk/provider-models";
 import {
   applyProviderConfigWithModelCatalogPreset,
-  type OpenClawConfig,
-} from "openclaw/plugin-sdk/provider-onboard";
+  type SynthiosConfig,
+} from "synthios/plugin-sdk/provider-onboard";
 
 export const TOGETHER_DEFAULT_MODEL_REF = "together/moonshotai/Kimi-K2.5";
 
-function applyTogetherPreset(cfg: OpenClawConfig, primaryModelRef?: string): OpenClawConfig {
+function applyTogetherPreset(cfg: SynthiosConfig, primaryModelRef?: string): SynthiosConfig {
   return applyProviderConfigWithModelCatalogPreset(cfg, {
     providerId: "together",
     api: "openai-completions",
@@ -21,10 +21,10 @@ function applyTogetherPreset(cfg: OpenClawConfig, primaryModelRef?: string): Ope
   });
 }
 
-export function applyTogetherProviderConfig(cfg: OpenClawConfig): OpenClawConfig {
+export function applyTogetherProviderConfig(cfg: SynthiosConfig): SynthiosConfig {
   return applyTogetherPreset(cfg);
 }
 
-export function applyTogetherConfig(cfg: OpenClawConfig): OpenClawConfig {
+export function applyTogetherConfig(cfg: SynthiosConfig): SynthiosConfig {
   return applyTogetherPreset(cfg, TOGETHER_DEFAULT_MODEL_REF);
 }

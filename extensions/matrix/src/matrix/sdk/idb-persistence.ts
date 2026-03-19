@@ -190,9 +190,9 @@ async function restoreIndexedDatabases(snapshot: IdbDatabaseSnapshot[]): Promise
 
 function resolveDefaultIdbSnapshotPath(): string {
   const stateDir =
-    process.env.OPENCLAW_STATE_DIR ||
+    process.env.SYNTHIOS_STATE_DIR ||
     process.env.MOLTBOT_STATE_DIR ||
-    path.join(process.env.HOME || "/tmp", ".openclaw");
+    path.join(process.env.HOME || "/tmp", ".synthios");
   return path.join(stateDir, "matrix", "crypto-idb-snapshot.json");
 }
 

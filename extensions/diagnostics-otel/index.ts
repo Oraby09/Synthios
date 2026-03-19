@@ -1,4 +1,4 @@
-import { definePluginEntry } from "openclaw/plugin-sdk/core";
+import { definePluginEntry } from "synthios/plugin-sdk/core";
 import { createDiagnosticsOtelService } from "./src/service.js";
 
 export default definePluginEntry({

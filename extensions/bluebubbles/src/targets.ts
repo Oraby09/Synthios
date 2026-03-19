@@ -1,11 +1,11 @@
-import { isAllowedParsedChatSender } from "openclaw/plugin-sdk/allow-from";
+import { isAllowedParsedChatSender } from "synthios/plugin-sdk/allow-from";
 import {
   parseChatAllowTargetPrefixes,
   parseChatTargetPrefixesOrThrow,
   type ParsedChatTarget,
   resolveServicePrefixedAllowTarget,
   resolveServicePrefixedTarget,
-} from "openclaw/plugin-sdk/imessage-core";
+} from "synthios/plugin-sdk/imessage-core";
 
 export type BlueBubblesService = "imessage" | "sms" | "auto";
 

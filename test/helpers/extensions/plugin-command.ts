@@ -1,1 +1,1 @@
-export type { OpenClawPluginCommandDefinition } from "openclaw/plugin-sdk/core";
+export type { SynthiosPluginCommandDefinition } from "synthios/plugin-sdk/core";

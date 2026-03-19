@@ -1,5 +1,5 @@
-import type { DirectoryConfigParams } from "openclaw/plugin-sdk/channel-runtime";
-import type { ChannelDirectoryEntry } from "openclaw/plugin-sdk/channel-runtime";
+import type { DirectoryConfigParams } from "synthios/plugin-sdk/channel-runtime";
+import type { ChannelDirectoryEntry } from "synthios/plugin-sdk/channel-runtime";
 import { resolveSlackAccount } from "./accounts.js";
 import { createSlackWebClient } from "./client.js";
 

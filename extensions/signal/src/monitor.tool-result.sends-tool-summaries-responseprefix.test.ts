@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import type { OpenClawConfig } from "../../../src/config/config.js";
+import type { SynthiosConfig } from "../../../src/config/config.js";
 import { resolveAgentRoute } from "../../../src/routing/resolve-route.js";
 import { normalizeE164 } from "../../../src/utils.js";
 import type { SignalDaemonExitEvent } from "./daemon.js";
@@ -17,7 +17,7 @@ installSignalToolResultTestHooks();
 // Import after the harness registers `vi.mock(...)` for Signal internals.
 vi.resetModules();
 const [{ peekSystemEvents }, { monitorSignalProvider }] = await Promise.all([
-  import("openclaw/plugin-sdk/infra-runtime"),
+  import("synthios/plugin-sdk/infra-runtime"),
   import("./monitor.js"),
 ]);
 
@@ -49,7 +49,7 @@ function setSignalAutoStartConfig(overrides: Record<string, unknown> = {}) {
 }
 
 function createSignalConfig(overrides: Record<string, unknown> = {}): Record<string, unknown> {
-  const base = config as OpenClawConfig;
+  const base = config as SynthiosConfig;
   const channels = (base.channels ?? {}) as Record<string, unknown>;
   const signal = (channels.signal ?? {}) as Record<string, unknown>;
   return {
@@ -78,7 +78,7 @@ function createAutoAbortController() {
 
 async function runMonitorWithMocks(opts: MonitorSignalProviderOptions) {
   return monitorSignalProvider({
-    config: config as OpenClawConfig,
+    config: config as SynthiosConfig,
     waitForTransportReady: waitForTransportReadyMock as any,
     ...opts,
   });
@@ -111,7 +111,7 @@ async function receiveSignalPayloads(params: {
 
 function getDirectSignalEventsFor(sender: string) {
   const route = resolveAgentRoute({
-    cfg: config as OpenClawConfig,
+    cfg: config as SynthiosConfig,
     channel: "signal",
     accountId: "default",
     peer: { kind: "direct", id: normalizeE164(sender) },

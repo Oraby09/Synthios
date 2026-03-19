@@ -1,5 +1,5 @@
 ---
-summary: "Install OpenClaw — installer script, npm/pnpm, from source, Docker, and more"
+summary: "Install Synthios — installer script, npm/pnpm, from source, Docker, and more"
 read_when:
   - You need an install method other than the Getting Started quickstart
   - You want to deploy to a cloud platform
@@ -11,17 +11,17 @@ title: "Install"
 
 ## Recommended: installer script
 
-The fastest way to install. It detects your OS, installs Node if needed, installs OpenClaw, and launches onboarding.
+The fastest way to install. It detects your OS, installs Node if needed, installs Synthios, and launches onboarding.
 
 <Tabs>
   <Tab title="macOS / Linux / WSL2">
     ```bash
-    curl -fsSL https://openclaw.ai/install.sh | bash
+    curl -fsSL https://synthios.ai/install.sh | bash
     ```
   </Tab>
   <Tab title="Windows (PowerShell)">
     ```powershell
-    iwr -useb https://openclaw.ai/install.ps1 | iex
+    iwr -useb https://synthios.ai/install.ps1 | iex
     ```
   </Tab>
 </Tabs>
@@ -31,12 +31,12 @@ To install without running onboarding:
 <Tabs>
   <Tab title="macOS / Linux / WSL2">
     ```bash
-    curl -fsSL https://openclaw.ai/install.sh | bash -s -- --no-onboard
+    curl -fsSL https://synthios.ai/install.sh | bash -s -- --no-onboard
     ```
   </Tab>
   <Tab title="Windows (PowerShell)">
     ```powershell
-    & ([scriptblock]::Create((iwr -useb https://openclaw.ai/install.ps1))) -NoOnboard
+    & ([scriptblock]::Create((iwr -useb https://synthios.ai/install.ps1))) -NoOnboard
     ```
   </Tab>
 </Tabs>
@@ -58,15 +58,15 @@ If you already manage Node yourself:
 <Tabs>
   <Tab title="npm">
     ```bash
-    npm install -g openclaw@latest
-    openclaw onboard --install-daemon
+    npm install -g synthios@latest
+    synthios onboard --install-daemon
     ```
   </Tab>
   <Tab title="pnpm">
     ```bash
-    pnpm add -g openclaw@latest
+    pnpm add -g synthios@latest
     pnpm approve-builds -g
-    openclaw onboard --install-daemon
+    synthios onboard --install-daemon
     ```
 
     <Note>
@@ -80,7 +80,7 @@ If you already manage Node yourself:
   If `sharp` fails due to a globally installed libvips:
 
 ```bash
-SHARP_IGNORE_GLOBAL_LIBVIPS=1 npm install -g openclaw@latest
+SHARP_IGNORE_GLOBAL_LIBVIPS=1 npm install -g synthios@latest
 ```
 
 </Accordion>
@@ -90,19 +90,19 @@ SHARP_IGNORE_GLOBAL_LIBVIPS=1 npm install -g openclaw@latest
 For contributors or anyone who wants to run from a local checkout:
 
 ```bash
-git clone https://github.com/openclaw/openclaw.git
-cd openclaw
+git clone https://github.com/synthios/synthios.git
+cd synthios
 pnpm install && pnpm ui:build && pnpm build
 pnpm link --global
-openclaw onboard --install-daemon
+synthios onboard --install-daemon
 ```
 
-Or skip the link and use `pnpm openclaw ...` from inside the repo. See [Setup](/start/setup) for full development workflows.
+Or skip the link and use `pnpm synthios ...` from inside the repo. See [Setup](/start/setup) for full development workflows.
 
 ### Install from GitHub main
 
 ```bash
-npm install -g github:openclaw/openclaw#main
+npm install -g github:synthios/synthios#main
 ```
 
 ### Containers and package managers
@@ -128,14 +128,14 @@ npm install -g github:openclaw/openclaw#main
 ## Verify the install
 
 ```bash
-openclaw --version      # confirm the CLI is available
-openclaw doctor         # check for config issues
-openclaw gateway status # verify the Gateway is running
+synthios --version      # confirm the CLI is available
+synthios doctor         # check for config issues
+synthios gateway status # verify the Gateway is running
 ```
 
 ## Hosting and deployment
 
-Deploy OpenClaw on a cloud server or VPS:
+Deploy Synthios on a cloud server or VPS:
 
 <CardGroup cols={3}>
   <Card title="VPS" href="/vps">Any Linux VPS</Card>
@@ -154,19 +154,19 @@ Deploy OpenClaw on a cloud server or VPS:
 
 <CardGroup cols={3}>
   <Card title="Updating" href="/install/updating" icon="refresh-cw">
-    Keep OpenClaw up to date.
+    Keep Synthios up to date.
   </Card>
   <Card title="Migrating" href="/install/migrating" icon="arrow-right">
     Move to a new machine.
   </Card>
   <Card title="Uninstall" href="/install/uninstall" icon="trash-2">
-    Remove OpenClaw completely.
+    Remove Synthios completely.
   </Card>
 </CardGroup>
 
-## Troubleshooting: `openclaw` not found
+## Troubleshooting: `synthios` not found
 
-If the install succeeded but `openclaw` is not found in your terminal:
+If the install succeeded but `synthios` is not found in your terminal:
 
 ```bash
 node -v           # Node installed?

@@ -7,9 +7,9 @@ import {
   type ChannelMessageActionName,
   type ChannelMessageToolDiscovery,
   type ChannelMessageToolSchemaContribution,
-} from "openclaw/plugin-sdk/channel-runtime";
-import type { TelegramActionConfig } from "openclaw/plugin-sdk/config-runtime";
-import { extractToolSend } from "openclaw/plugin-sdk/tool-send";
+} from "synthios/plugin-sdk/channel-runtime";
+import type { TelegramActionConfig } from "synthios/plugin-sdk/config-runtime";
+import { extractToolSend } from "synthios/plugin-sdk/tool-send";
 import {
   createTelegramActionGate,
   listEnabledTelegramAccounts,

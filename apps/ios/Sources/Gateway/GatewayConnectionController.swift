@@ -6,7 +6,7 @@ import CryptoKit
 import EventKit
 import Foundation
 import Darwin
-import OpenClawKit
+import SynthiosKit
 import Network
 import Observation
 import os
@@ -767,7 +767,7 @@ final class GatewayConnectionController {
         if manualClientId?.isEmpty == false {
             return manualClientId!
         }
-        return "openclaw-ios"
+        return "synthios-ios"
     }
 
     private func resolveManualPort(host: String, port: Int, useTLS: Bool) -> Int? {
@@ -797,32 +797,32 @@ final class GatewayConnectionController {
     }
 
     private func currentCaps() -> [String] {
-        var caps = [OpenClawCapability.canvas.rawValue, OpenClawCapability.screen.rawValue]
+        var caps = [SynthiosCapability.canvas.rawValue, SynthiosCapability.screen.rawValue]
 
         // Default-on: if the key doesn't exist yet, treat it as enabled.
         let cameraEnabled =
             UserDefaults.standard.object(forKey: "camera.enabled") == nil
                 ? true
                 : UserDefaults.standard.bool(forKey: "camera.enabled")
-        if cameraEnabled { caps.append(OpenClawCapability.camera.rawValue) }
+        if cameraEnabled { caps.append(SynthiosCapability.camera.rawValue) }
 
         let voiceWakeEnabled = UserDefaults.standard.bool(forKey: VoiceWakePreferences.enabledKey)
-        if voiceWakeEnabled { caps.append(OpenClawCapability.voiceWake.rawValue) }
+        if voiceWakeEnabled { caps.append(SynthiosCapability.voiceWake.rawValue) }
 
         let locationModeRaw = UserDefaults.standard.string(forKey: "location.enabledMode") ?? "off"
-        let locationMode = OpenClawLocationMode(rawValue: locationModeRaw) ?? .off
-        if locationMode != .off { caps.append(OpenClawCapability.location.rawValue) }
+        let locationMode = SynthiosLocationMode(rawValue: locationModeRaw) ?? .off
+        if locationMode != .off { caps.append(SynthiosCapability.location.rawValue) }
 
-        caps.append(OpenClawCapability.device.rawValue)
+        caps.append(SynthiosCapability.device.rawValue)
         if WatchMessagingService.isSupportedOnDevice() {
-            caps.append(OpenClawCapability.watch.rawValue)
+            caps.append(SynthiosCapability.watch.rawValue)
         }
-        caps.append(OpenClawCapability.photos.rawValue)
-        caps.append(OpenClawCapability.contacts.rawValue)
-        caps.append(OpenClawCapability.calendar.rawValue)
-        caps.append(OpenClawCapability.reminders.rawValue)
+        caps.append(SynthiosCapability.photos.rawValue)
+        caps.append(SynthiosCapability.contacts.rawValue)
+        caps.append(SynthiosCapability.calendar.rawValue)
+        caps.append(SynthiosCapability.reminders.rawValue)
         if Self.motionAvailable() {
-            caps.append(OpenClawCapability.motion.rawValue)
+            caps.append(SynthiosCapability.motion.rawValue)
         }
 
         return caps
@@ -830,58 +830,58 @@ final class GatewayConnectionController {
 
     private func currentCommands() -> [String] {
         var commands: [String] = [
-            OpenClawCanvasCommand.present.rawValue,
-            OpenClawCanvasCommand.hide.rawValue,
-            OpenClawCanvasCommand.navigate.rawValue,
-            OpenClawCanvasCommand.evalJS.rawValue,
-            OpenClawCanvasCommand.snapshot.rawValue,
-            OpenClawCanvasA2UICommand.push.rawValue,
-            OpenClawCanvasA2UICommand.pushJSONL.rawValue,
-            OpenClawCanvasA2UICommand.reset.rawValue,
-            OpenClawScreenCommand.record.rawValue,
-            OpenClawSystemCommand.notify.rawValue,
-            OpenClawChatCommand.push.rawValue,
-            OpenClawTalkCommand.pttStart.rawValue,
-            OpenClawTalkCommand.pttStop.rawValue,
-            OpenClawTalkCommand.pttCancel.rawValue,
-            OpenClawTalkCommand.pttOnce.rawValue,
+            SynthiosCanvasCommand.present.rawValue,
+            SynthiosCanvasCommand.hide.rawValue,
+            SynthiosCanvasCommand.navigate.rawValue,
+            SynthiosCanvasCommand.evalJS.rawValue,
+            SynthiosCanvasCommand.snapshot.rawValue,
+            SynthiosCanvasA2UICommand.push.rawValue,
+            SynthiosCanvasA2UICommand.pushJSONL.rawValue,
+            SynthiosCanvasA2UICommand.reset.rawValue,
+            SynthiosScreenCommand.record.rawValue,
+            SynthiosSystemCommand.notify.rawValue,
+            SynthiosChatCommand.push.rawValue,
+            SynthiosTalkCommand.pttStart.rawValue,
+            SynthiosTalkCommand.pttStop.rawValue,
+            SynthiosTalkCommand.pttCancel.rawValue,
+            SynthiosTalkCommand.pttOnce.rawValue,
         ]
 
         let caps = Set(self.currentCaps())
-        if caps.contains(OpenClawCapability.camera.rawValue) {
-            commands.append(OpenClawCameraCommand.list.rawValue)
-            commands.append(OpenClawCameraCommand.snap.rawValue)
-            commands.append(OpenClawCameraCommand.clip.rawValue)
+        if caps.contains(SynthiosCapability.camera.rawValue) {
+            commands.append(SynthiosCameraCommand.list.rawValue)
+            commands.append(SynthiosCameraCommand.snap.rawValue)
+            commands.append(SynthiosCameraCommand.clip.rawValue)
         }
-        if caps.contains(OpenClawCapability.location.rawValue) {
-            commands.append(OpenClawLocationCommand.get.rawValue)
+        if caps.contains(SynthiosCapability.location.rawValue) {
+            commands.append(SynthiosLocationCommand.get.rawValue)
         }
-        if caps.contains(OpenClawCapability.device.rawValue) {
-            commands.append(OpenClawDeviceCommand.status.rawValue)
-            commands.append(OpenClawDeviceCommand.info.rawValue)
+        if caps.contains(SynthiosCapability.device.rawValue) {
+            commands.append(SynthiosDeviceCommand.status.rawValue)
+            commands.append(SynthiosDeviceCommand.info.rawValue)
         }
-        if caps.contains(OpenClawCapability.watch.rawValue) {
-            commands.append(OpenClawWatchCommand.status.rawValue)
-            commands.append(OpenClawWatchCommand.notify.rawValue)
+        if caps.contains(SynthiosCapability.watch.rawValue) {
+            commands.append(SynthiosWatchCommand.status.rawValue)
+            commands.append(SynthiosWatchCommand.notify.rawValue)
         }
-        if caps.contains(OpenClawCapability.photos.rawValue) {
-            commands.append(OpenClawPhotosCommand.latest.rawValue)
+        if caps.contains(SynthiosCapability.photos.rawValue) {
+            commands.append(SynthiosPhotosCommand.latest.rawValue)
         }
-        if caps.contains(OpenClawCapability.contacts.rawValue) {
-            commands.append(OpenClawContactsCommand.search.rawValue)
-            commands.append(OpenClawContactsCommand.add.rawValue)
+        if caps.contains(SynthiosCapability.contacts.rawValue) {
+            commands.append(SynthiosContactsCommand.search.rawValue)
+            commands.append(SynthiosContactsCommand.add.rawValue)
         }
-        if caps.contains(OpenClawCapability.calendar.rawValue) {
-            commands.append(OpenClawCalendarCommand.events.rawValue)
-            commands.append(OpenClawCalendarCommand.add.rawValue)
+        if caps.contains(SynthiosCapability.calendar.rawValue) {
+            commands.append(SynthiosCalendarCommand.events.rawValue)
+            commands.append(SynthiosCalendarCommand.add.rawValue)
         }
-        if caps.contains(OpenClawCapability.reminders.rawValue) {
-            commands.append(OpenClawRemindersCommand.list.rawValue)
-            commands.append(OpenClawRemindersCommand.add.rawValue)
+        if caps.contains(SynthiosCapability.reminders.rawValue) {
+            commands.append(SynthiosRemindersCommand.list.rawValue)
+            commands.append(SynthiosRemindersCommand.add.rawValue)
         }
-        if caps.contains(OpenClawCapability.motion.rawValue) {
-            commands.append(OpenClawMotionCommand.activity.rawValue)
-            commands.append(OpenClawMotionCommand.pedometer.rawValue)
+        if caps.contains(SynthiosCapability.motion.rawValue) {
+            commands.append(SynthiosMotionCommand.activity.rawValue)
+            commands.append(SynthiosMotionCommand.pedometer.rawValue)
         }
 
         return commands

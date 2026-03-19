@@ -1,17 +1,17 @@
-import { createChannelPairingChallengeIssuer } from "openclaw/plugin-sdk/channel-pairing";
-import { loadConfig } from "openclaw/plugin-sdk/config-runtime";
+import { createChannelPairingChallengeIssuer } from "synthios/plugin-sdk/channel-pairing";
+import { loadConfig } from "synthios/plugin-sdk/config-runtime";
 import {
   resolveOpenProviderRuntimeGroupPolicy,
   resolveDefaultGroupPolicy,
   warnMissingProviderGroupPolicyFallbackOnce,
-} from "openclaw/plugin-sdk/config-runtime";
-import { upsertChannelPairingRequest } from "openclaw/plugin-sdk/conversation-runtime";
-import { logVerbose } from "openclaw/plugin-sdk/runtime-env";
+} from "synthios/plugin-sdk/config-runtime";
+import { upsertChannelPairingRequest } from "synthios/plugin-sdk/conversation-runtime";
+import { logVerbose } from "synthios/plugin-sdk/runtime-env";
 import {
   readStoreAllowFromForDmPolicy,
   resolveDmGroupAccessWithLists,
-} from "openclaw/plugin-sdk/security-runtime";
-import { isSelfChatMode, normalizeE164 } from "openclaw/plugin-sdk/text-runtime";
+} from "synthios/plugin-sdk/security-runtime";
+import { isSelfChatMode, normalizeE164 } from "synthios/plugin-sdk/text-runtime";
 import { resolveWhatsAppAccount } from "../accounts.js";
 
 export type InboundAccessControlResult = {

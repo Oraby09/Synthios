@@ -1,10 +1,10 @@
 {
-  "name": "@openclaw/zai-provider",
+  "name": "@synthios/zai-provider",
   "version": "2026.3.14",
   "private": true,
-  "description": "OpenClaw Z.AI provider plugin",
+  "description": "Synthios Z.AI provider plugin",
   "type": "module",
-  "openclaw": {
+  "synthios": {
     "extensions": [
       "./index.ts"
     ]

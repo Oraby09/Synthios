@@ -1,14 +1,14 @@
 import { Routes } from "discord-api-types/v10";
-import { resolveThreadBindingConversationIdFromBindingId } from "openclaw/plugin-sdk/channel-runtime";
-import { getRuntimeConfigSnapshot, type OpenClawConfig } from "openclaw/plugin-sdk/config-runtime";
+import { resolveThreadBindingConversationIdFromBindingId } from "synthios/plugin-sdk/channel-runtime";
+import { getRuntimeConfigSnapshot, type SynthiosConfig } from "synthios/plugin-sdk/config-runtime";
 import {
   registerSessionBindingAdapter,
   unregisterSessionBindingAdapter,
   type BindingTargetKind,
   type SessionBindingRecord,
-} from "openclaw/plugin-sdk/conversation-runtime";
-import { normalizeAccountId, resolveAgentIdFromSessionKey } from "openclaw/plugin-sdk/routing";
-import { logVerbose } from "openclaw/plugin-sdk/runtime-env";
+} from "synthios/plugin-sdk/conversation-runtime";
+import { normalizeAccountId, resolveAgentIdFromSessionKey } from "synthios/plugin-sdk/routing";
+import { logVerbose } from "synthios/plugin-sdk/runtime-env";
 import { createDiscordRestClient } from "../client.js";
 import {
   createThreadForBinding,
@@ -171,7 +171,7 @@ export function createThreadBindingManager(
   params: {
     accountId?: string;
     token?: string;
-    cfg?: OpenClawConfig;
+    cfg?: SynthiosConfig;
     persist?: boolean;
     enableSweeper?: boolean;
     idleTimeoutMs?: number;

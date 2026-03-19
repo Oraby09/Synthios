@@ -1,1 +1,1 @@
-export * from "openclaw/plugin-sdk/google";
+export * from "synthios/plugin-sdk/google";

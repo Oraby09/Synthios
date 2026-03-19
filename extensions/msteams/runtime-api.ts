@@ -1,1 +1,1 @@
-export * from "openclaw/plugin-sdk/msteams";
+export * from "synthios/plugin-sdk/msteams";

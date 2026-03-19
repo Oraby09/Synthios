@@ -244,7 +244,7 @@ describe("provider usage loading", () => {
     await withTempHome(
       async (tempHome) => {
         const agentDir = path.join(
-          process.env.OPENCLAW_STATE_DIR ?? path.join(tempHome, ".openclaw"),
+          process.env.SYNTHIOS_STATE_DIR ?? path.join(tempHome, ".synthios"),
           "agents",
           "main",
           "agent",
@@ -303,9 +303,9 @@ describe("provider usage loading", () => {
       },
       {
         env: {
-          OPENCLAW_STATE_DIR: (home) => path.join(home, ".openclaw"),
+          SYNTHIOS_STATE_DIR: (home) => path.join(home, ".synthios"),
         },
-        prefix: "openclaw-provider-usage-",
+        prefix: "synthios-provider-usage-",
       },
     );
   });

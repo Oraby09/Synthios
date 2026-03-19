@@ -3,15 +3,15 @@ import {
   VENICE_BASE_URL,
   VENICE_DEFAULT_MODEL_REF,
   VENICE_MODEL_CATALOG,
-} from "openclaw/plugin-sdk/provider-models";
+} from "synthios/plugin-sdk/provider-models";
 import {
   applyProviderConfigWithModelCatalogPreset,
-  type OpenClawConfig,
-} from "openclaw/plugin-sdk/provider-onboard";
+  type SynthiosConfig,
+} from "synthios/plugin-sdk/provider-onboard";
 
 export { VENICE_DEFAULT_MODEL_REF };
 
-function applyVenicePreset(cfg: OpenClawConfig, primaryModelRef?: string): OpenClawConfig {
+function applyVenicePreset(cfg: SynthiosConfig, primaryModelRef?: string): SynthiosConfig {
   return applyProviderConfigWithModelCatalogPreset(cfg, {
     providerId: "venice",
     api: "openai-completions",
@@ -22,10 +22,10 @@ function applyVenicePreset(cfg: OpenClawConfig, primaryModelRef?: string): OpenC
   });
 }
 
-export function applyVeniceProviderConfig(cfg: OpenClawConfig): OpenClawConfig {
+export function applyVeniceProviderConfig(cfg: SynthiosConfig): SynthiosConfig {
   return applyVenicePreset(cfg);
 }
 
-export function applyVeniceConfig(cfg: OpenClawConfig): OpenClawConfig {
+export function applyVeniceConfig(cfg: SynthiosConfig): SynthiosConfig {
   return applyVenicePreset(cfg, VENICE_DEFAULT_MODEL_REF);
 }

@@ -1,1 +1,1 @@
-export * from "openclaw/plugin-sdk/device-pair";
+export * from "synthios/plugin-sdk/device-pair";

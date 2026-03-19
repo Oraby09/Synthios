@@ -1,6 +1,6 @@
-import { definePluginEntry } from "openclaw/plugin-sdk/core";
-import { createProviderApiKeyAuthMethod } from "openclaw/plugin-sdk/provider-auth";
-import { buildSingleProviderApiKeyCatalog } from "openclaw/plugin-sdk/provider-catalog";
+import { definePluginEntry } from "synthios/plugin-sdk/core";
+import { createProviderApiKeyAuthMethod } from "synthios/plugin-sdk/provider-auth";
+import { buildSingleProviderApiKeyCatalog } from "synthios/plugin-sdk/provider-catalog";
 import {
   applyModelStudioConfig,
   applyModelStudioConfigCn,

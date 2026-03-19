@@ -1,7 +1,7 @@
-import { formatNormalizedAllowFromEntries } from "openclaw/plugin-sdk/allow-from";
-import { createScopedChannelConfigAdapter } from "openclaw/plugin-sdk/channel-config-helpers";
-import { buildChannelConfigSchema } from "openclaw/plugin-sdk/channel-config-schema";
-import type { ChannelPlugin } from "openclaw/plugin-sdk/core";
+import { formatNormalizedAllowFromEntries } from "synthios/plugin-sdk/allow-from";
+import { createScopedChannelConfigAdapter } from "synthios/plugin-sdk/channel-config-helpers";
+import { buildChannelConfigSchema } from "synthios/plugin-sdk/channel-config-schema";
+import type { ChannelPlugin } from "synthios/plugin-sdk/core";
 import {
   listBlueBubblesAccountIds,
   type ResolvedBlueBubblesAccount,

@@ -28,7 +28,7 @@ describe("matrix credentials storage", () => {
       },
     },
   ): string {
-    const dir = fs.mkdtempSync(path.join(os.tmpdir(), "openclaw-matrix-creds-"));
+    const dir = fs.mkdtempSync(path.join(os.tmpdir(), "synthios-matrix-creds-"));
     tempDirs.push(dir);
     setMatrixRuntime({
       config: {

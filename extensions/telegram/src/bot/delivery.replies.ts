@@ -1,23 +1,23 @@
 import { type Bot, GrammyError, InputFile } from "grammy";
-import type { ReplyToMode } from "openclaw/plugin-sdk/config-runtime";
-import type { MarkdownTableMode } from "openclaw/plugin-sdk/config-runtime";
-import { fireAndForgetHook } from "openclaw/plugin-sdk/hook-runtime";
-import { createInternalHookEvent, triggerInternalHook } from "openclaw/plugin-sdk/hook-runtime";
+import type { ReplyToMode } from "synthios/plugin-sdk/config-runtime";
+import type { MarkdownTableMode } from "synthios/plugin-sdk/config-runtime";
+import { fireAndForgetHook } from "synthios/plugin-sdk/hook-runtime";
+import { createInternalHookEvent, triggerInternalHook } from "synthios/plugin-sdk/hook-runtime";
 import {
   buildCanonicalSentMessageHookContext,
   toInternalMessageSentContext,
   toPluginMessageContext,
   toPluginMessageSentEvent,
-} from "openclaw/plugin-sdk/hook-runtime";
-import { formatErrorMessage } from "openclaw/plugin-sdk/infra-runtime";
-import { buildOutboundMediaLoadOptions } from "openclaw/plugin-sdk/media-runtime";
-import { isGifMedia, kindFromMime } from "openclaw/plugin-sdk/media-runtime";
-import { getGlobalHookRunner } from "openclaw/plugin-sdk/plugin-runtime";
-import type { ReplyPayload } from "openclaw/plugin-sdk/reply-runtime";
-import { chunkMarkdownTextWithMode, type ChunkMode } from "openclaw/plugin-sdk/reply-runtime";
-import type { RuntimeEnv } from "openclaw/plugin-sdk/runtime-env";
-import { danger, logVerbose } from "openclaw/plugin-sdk/runtime-env";
-import { loadWebMedia } from "openclaw/plugin-sdk/web-media";
+} from "synthios/plugin-sdk/hook-runtime";
+import { formatErrorMessage } from "synthios/plugin-sdk/infra-runtime";
+import { buildOutboundMediaLoadOptions } from "synthios/plugin-sdk/media-runtime";
+import { isGifMedia, kindFromMime } from "synthios/plugin-sdk/media-runtime";
+import { getGlobalHookRunner } from "synthios/plugin-sdk/plugin-runtime";
+import type { ReplyPayload } from "synthios/plugin-sdk/reply-runtime";
+import { chunkMarkdownTextWithMode, type ChunkMode } from "synthios/plugin-sdk/reply-runtime";
+import type { RuntimeEnv } from "synthios/plugin-sdk/runtime-env";
+import { danger, logVerbose } from "synthios/plugin-sdk/runtime-env";
+import { loadWebMedia } from "synthios/plugin-sdk/web-media";
 import type { TelegramInlineButtons } from "../button-types.js";
 import { splitTelegramCaption } from "../caption.js";
 import {
